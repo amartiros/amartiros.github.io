@@ -28,13 +28,6 @@
       'trust.offline': 'Auch offline nutzbar',
       'trust.languages': 'Deutsch & Englisch',
 
-      'preview.dashboard': 'Dashboard',
-      'preview.latestInr': 'Neuester INR-Wert',
-      'preview.inRange': 'Im Zielbereich',
-      'preview.trend': 'INR-Trend',
-      'preview.tablets': 'Tabletten',
-      'preview.takenToday': 'Heute, 08:00 – eingenommen',
-
       'features.title': 'Alles für Ihre Therapie – in einer App',
       'features.sub': 'Entwickelt für den Alltag mit Gerinnungshemmern: übersichtlich, gut lesbar und einfach zu bedienen.',
       'features.inr.title': 'INR-Verlauf & Zielbereich',
@@ -52,10 +45,10 @@
 
       'shots.title': 'Ein Blick in die App',
       'shots.sub': 'Klare Oberfläche, große Schrift, hoher Kontrast – gestaltet für den täglichen Gebrauch.',
-      'shots.cap1': 'Dashboard mit aktuellem INR-Wert',
-      'shots.cap2': 'INR-Verlauf mit Zielbereich',
-      'shots.cap3': 'Wochenplan & Erinnerungen',
-      'shots.cap4': 'microINR®-Gerät verbinden',
+      'shots.cap1': 'INR-Verlauf mit Zielbereich',
+      'shots.cap2': 'INR-Trend & Arztbericht als PDF',
+      'shots.cap3': 'Wochenplan mit Tablettenübersicht',
+      'shots.cap4': 'Zuverlässige Erinnerungen',
 
       'how.title': 'So funktioniert’s',
       'how.sub': 'In drei Schritten zu einem verlässlichen Überblick über Ihre Therapie.',
@@ -113,13 +106,6 @@
       'trust.offline': 'Works offline',
       'trust.languages': 'German & English',
 
-      'preview.dashboard': 'Dashboard',
-      'preview.latestInr': 'Latest INR reading',
-      'preview.inRange': 'Within target range',
-      'preview.trend': 'INR trend',
-      'preview.tablets': 'tablets',
-      'preview.takenToday': 'Today, 08:00 – taken',
-
       'features.title': 'Everything for your therapy – in one app',
       'features.sub': 'Built for everyday life on anticoagulants: clear, easy to read and simple to use.',
       'features.inr.title': 'INR history & target range',
@@ -137,10 +123,10 @@
 
       'shots.title': 'A look inside the app',
       'shots.sub': 'Clear interface, large text, high contrast – designed for daily use.',
-      'shots.cap1': 'Dashboard with latest INR value',
-      'shots.cap2': 'INR history with target range',
-      'shots.cap3': 'Weekly plan & reminders',
-      'shots.cap4': 'Connect microINR® device',
+      'shots.cap1': 'INR history with target range',
+      'shots.cap2': 'INR trend & doctor report as PDF',
+      'shots.cap3': 'Weekly plan with tablet overview',
+      'shots.cap4': 'Reliable reminders',
 
       'how.title': 'How it works',
       'how.sub': 'Three steps to a reliable overview of your therapy.',

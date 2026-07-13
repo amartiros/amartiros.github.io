@@ -4,19 +4,20 @@
    =================================================================== */
 
 :root {
-  --ink: #16303f;
-  --ink-soft: #4a6273;
+  /* Palette taken from the Medinote app (lib/theme/app_theme.dart) */
+  --ink: #2d201d;
+  --ink-soft: #6d5450;
   --bg: #ffffff;
-  --bg-soft: #f2f7fa;
-  --line: #dbe7ee;
-  --accent: #0e5f8a;        /* calm medical blue */
-  --accent-dark: #0a4a6c;
-  --accent-soft: #e3eff6;
-  --teal: #0f8a7a;          /* in-range / success */
-  --teal-soft: #e0f3f0;
-  --range-band: rgba(15, 138, 122, 0.14);
+  --bg-soft: #fdf3f1;       /* app scaffold: soft warm pink */
+  --line: #f0dcd8;
+  --accent: #c0564e;        /* app primary — calm "clinical brick" red */
+  --accent-dark: #8a4a45;   /* app secondary — muted deep red-brown */
+  --accent-soft: #f8e5e2;
+  --logo-teal: #00969b;     /* app icon teal */
+  --success: #3d8b40;       /* in-range / taken */
+  --success-soft: #e6f3e7;
   --radius: 14px;
-  --shadow: 0 10px 30px rgba(22, 48, 63, 0.10);
+  --shadow: 0 10px 30px rgba(74, 38, 34, 0.12);
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -67,7 +68,7 @@ img { max-width: 100%; display: block; }
   color: var(--ink);
 }
 
-.brand-mark svg { display: block; border-radius: 8px; }
+.brand-mark img { display: block; border-radius: 8px; }
 
 .brand-name {
   font-size: 1.25rem;
@@ -175,8 +176,8 @@ img { max-width: 100%; display: block; }
 
 .badge {
   display: inline-block;
-  background: var(--teal-soft);
-  color: var(--teal);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
   font-weight: 600;
   font-size: 0.88rem;
   padding: 0.35rem 0.9rem;
@@ -223,7 +224,7 @@ img { max-width: 100%; display: block; }
   width: 290px;
   aspect-ratio: 290 / 600;
   border-radius: 42px;
-  background: #10222e;
+  background: #241a18;
   padding: 12px;
   box-shadow: var(--shadow);
   position: relative;
@@ -239,7 +240,7 @@ img { max-width: 100%; display: block; }
   transform: translateX(-50%);
   width: 38%;
   height: 22px;
-  background: #10222e;
+  background: #241a18;
   border-radius: 0 0 14px 14px;
   z-index: 2;
 }
@@ -260,101 +261,6 @@ img { max-width: 100%; display: block; }
   object-fit: cover;
 }
 
-/* screenshot placeholder */
-.shot-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background:
-    repeating-linear-gradient(45deg, transparent 0 14px, rgba(14, 95, 138, 0.05) 14px 28px),
-    linear-gradient(180deg, var(--accent-soft), var(--bg-soft));
-  color: var(--accent);
-}
-
-.shot-icon { font-size: 2.4rem; }
-
-.shot-hint {
-  font-size: 0.75rem;
-  color: var(--ink-soft);
-  letter-spacing: 0.04em;
-}
-
-/* stylized in-app preview inside the hero phone */
-.app-preview {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 44px 14px 14px;
-}
-
-.ap-header .ap-title { font-weight: 700; font-size: 1.05rem; }
-
-.ap-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 12px 14px;
-  box-shadow: 0 2px 8px rgba(22, 48, 63, 0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.ap-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ink-soft);
-}
-
-.ap-inr .ap-value {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--accent);
-  line-height: 1;
-}
-
-.ap-pill {
-  align-self: flex-start;
-  background: var(--teal-soft);
-  color: var(--teal);
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.2rem 0.7rem;
-  border-radius: 999px;
-}
-
-.ap-chart { width: 100%; height: 60px; }
-
-.ap-med {
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
-
-.ap-med > div { display: flex; flex-direction: column; flex: 1; }
-
-.ap-dot { font-size: 1.3rem; }
-
-.ap-med-name { font-weight: 600; font-size: 0.9rem; }
-
-.ap-med-time { font-size: 0.78rem; color: var(--ink-soft); }
-
-.ap-check {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--teal);
-  color: #fff;
-  font-size: 0.85rem;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
 
 /* ---------- Sections ---------- */
 
@@ -547,8 +453,8 @@ img { max-width: 100%; display: block; }
 /* ---------- Footer ---------- */
 
 .site-footer {
-  background: #10222e;
-  color: #b9cbd6;
+  background: #2e1d1a;
+  color: #dcc7c2;
   padding: 3rem 0 2rem;
   font-size: 0.92rem;
 }
@@ -572,11 +478,11 @@ img { max-width: 100%; display: block; }
   gap: 0.5rem;
 }
 
-.footer-links a { color: #b9cbd6; text-decoration: none; }
+.footer-links a { color: #dcc7c2; text-decoration: none; }
 .footer-links a:hover { color: #fff; text-decoration: underline; }
 
 .footer-legal { padding-top: 1.6rem; }
-.footer-legal p { margin-bottom: 0.6rem; font-size: 0.85rem; color: #8aa2b1; }
+.footer-legal p { margin-bottom: 0.6rem; font-size: 0.85rem; color: #b0958f; }
 
 /* ---------- Legal pages (impressum / datenschutz) ---------- */
 

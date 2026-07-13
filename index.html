@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Medinote – INR-Werte &amp; Medikamente sicher dokumentieren</title>
   <meta name="description" content="Medinote hilft Patientinnen und Patienten unter Antikoagulations-Therapie, INR-Werte und Medikamenteneinnahme einfach zu dokumentieren – mit Erinnerungen, Spracheingabe und microINR®-Anbindung.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230e5f8a'/><path d='M50 26c-9 10-17 17-17 27a17 17 0 0 0 34 0c0-10-8-17-17-27z' fill='white'/></svg>">
+  <link rel="icon" type="image/png" href="assets/icon/app-icon.png">
+  <link rel="apple-touch-icon" href="assets/icon/app-icon.png">
+  <meta name="theme-color" content="#c0564e">
   <link rel="stylesheet" href="css/style.css">
   <meta property="og:title" content="Medinote – INR-Werte & Medikamente sicher dokumentieren">
   <meta property="og:description" content="Die App für Menschen unter Gerinnungshemmer-Therapie: INR-Verlauf, Medikamenten-Tagebuch, Erinnerungen und microINR®-Anbindung. DSGVO-konform.">
   <meta property="og:url" content="https://medi-note.de/">
+  <meta property="og:image" content="https://medi-note.de/assets/icon/app-icon.png">
   <meta property="og:type" content="website">
 </head>
 <body>
@@ -18,7 +21,7 @@
   <nav class="nav container">
     <a class="brand" href="#top" aria-label="Medinote – Startseite">
       <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 100 100" width="30" height="30"><rect width="100" height="100" rx="22" fill="#0e5f8a"/><path d="M50 26c-9 10-17 17-17 27a17 17 0 0 0 34 0c0-10-8-17-17-27z" fill="#fff"/></svg>
+        <img src="assets/icon/app-icon.png" width="30" height="30" alt="">
       </span>
       <span class="brand-name">Medinote</span>
     </a>
@@ -62,35 +65,12 @@
         </ul>
       </div>
 
-      <!-- Stylized app preview (not a real screenshot) -->
-      <div class="hero-visual reveal" aria-hidden="true">
+      <!-- Real app screenshot: "Heute" home screen -->
+      <div class="hero-visual reveal">
         <div class="phone">
           <div class="phone-notch"></div>
-          <div class="phone-screen app-preview">
-            <div class="ap-header">
-              <span class="ap-title" data-i18n="preview.dashboard">Dashboard</span>
-            </div>
-            <div class="ap-card ap-inr">
-              <span class="ap-label" data-i18n="preview.latestInr">Neuester INR-Wert</span>
-              <span class="ap-value">2,6</span>
-              <span class="ap-pill" data-i18n="preview.inRange">Im Zielbereich</span>
-            </div>
-            <div class="ap-card">
-              <span class="ap-label" data-i18n="preview.trend">INR-Trend</span>
-              <svg class="ap-chart" viewBox="0 0 200 60" preserveAspectRatio="none">
-                <rect x="0" y="14" width="200" height="26" fill="var(--range-band)"/>
-                <polyline points="5,44 40,36 75,24 110,30 145,20 180,26" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="180" cy="26" r="4" fill="var(--accent)"/>
-              </svg>
-            </div>
-            <div class="ap-card ap-med">
-              <span class="ap-dot">💊</span>
-              <div>
-                <span class="ap-med-name">Marcumar · 1,5&nbsp;<span data-i18n="preview.tablets">Tabletten</span></span>
-                <span class="ap-med-time" data-i18n="preview.takenToday">Heute, 08:00 – eingenommen</span>
-              </div>
-              <span class="ap-check">✓</span>
-            </div>
+          <div class="phone-screen">
+            <img src="assets/screenshots/IMG_9519.PNG" alt="Medinote Startbildschirm „Heute“ mit heutigen Aufgaben, letztem INR-Wert und Schnellaktionen" loading="eager">
           </div>
         </div>
       </div>
@@ -154,63 +134,44 @@
       </header>
 
       <div class="shots-row">
-        <!--
-          Screenshot placeholders.
-          To use real screenshots, replace the .shot-placeholder div inside each
-          .phone-screen with e.g.:
-            <img src="assets/screenshots/dashboard-de.png" alt="Medinote Dashboard" loading="lazy">
-          Recommended source size: 1290 × 2796 px (iPhone portrait), displayed at ~250 × 542 px.
-        -->
         <figure class="shot reveal">
           <div class="phone phone-sm">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <div class="shot-placeholder">
-                <span class="shot-icon" aria-hidden="true">📊</span>
-                <span class="shot-hint">1290 × 2796</span>
-              </div>
+              <img src="assets/screenshots/IMG_9515.PNG" alt="INR-Verlauf als Diagramm mit Zielbereich und Werteliste" loading="lazy">
             </div>
           </div>
-          <figcaption data-i18n="shots.cap1">Dashboard mit aktuellem INR-Wert</figcaption>
+          <figcaption data-i18n="shots.cap1">INR-Verlauf mit Zielbereich</figcaption>
         </figure>
 
         <figure class="shot reveal">
           <div class="phone phone-sm">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <div class="shot-placeholder">
-                <span class="shot-icon" aria-hidden="true">📈</span>
-                <span class="shot-hint">1290 × 2796</span>
-              </div>
+              <img src="assets/screenshots/IMG_9513.PNG" alt="Verlauf mit INR-Trend, Medikamentenverlauf und Arztbericht" loading="lazy">
             </div>
           </div>
-          <figcaption data-i18n="shots.cap2">INR-Verlauf mit Zielbereich</figcaption>
+          <figcaption data-i18n="shots.cap2">INR-Trend &amp; Arztbericht als PDF</figcaption>
         </figure>
 
         <figure class="shot reveal">
           <div class="phone phone-sm">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <div class="shot-placeholder">
-                <span class="shot-icon" aria-hidden="true">⏰</span>
-                <span class="shot-hint">1290 × 2796</span>
-              </div>
+              <img src="assets/screenshots/IMG_9517.PNG" alt="Wochenplan mit Tablettenanzahl pro Wochentag" loading="lazy">
             </div>
           </div>
-          <figcaption data-i18n="shots.cap3">Wochenplan &amp; Erinnerungen</figcaption>
+          <figcaption data-i18n="shots.cap3">Wochenplan mit Tablettenübersicht</figcaption>
         </figure>
 
         <figure class="shot reveal">
           <div class="phone phone-sm">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <div class="shot-placeholder">
-                <span class="shot-icon" aria-hidden="true">📡</span>
-                <span class="shot-hint">1290 × 2796</span>
-              </div>
+              <img src="assets/screenshots/IMG_9518.PNG" alt="Medikamentenerinnerungen mit Uhrzeit, Dosierung und Wochentagen" loading="lazy">
             </div>
           </div>
-          <figcaption data-i18n="shots.cap4">microINR®-Gerät verbinden</figcaption>
+          <figcaption data-i18n="shots.cap4">Zuverlässige Erinnerungen</figcaption>
         </figure>
       </div>
     </div>
