@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medinote – INR-Werte &amp; Medikamente sicher dokumentieren</title>
+  <meta name="description" content="Medinote hilft Patientinnen und Patienten unter Antikoagulations-Therapie, INR-Werte und Medikamenteneinnahme einfach zu dokumentieren – mit Erinnerungen, Spracheingabe und microINR®-Anbindung.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230e5f8a'/><path d='M50 26c-9 10-17 17-17 27a17 17 0 0 0 34 0c0-10-8-17-17-27z' fill='white'/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <meta property="og:title" content="Medinote – INR-Werte & Medikamente sicher dokumentieren">
+  <meta property="og:description" content="Die App für Menschen unter Gerinnungshemmer-Therapie: INR-Verlauf, Medikamenten-Tagebuch, Erinnerungen und microINR®-Anbindung. DSGVO-konform.">
+  <meta property="og:url" content="https://medi-note.de/">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container">
+    <a class="brand" href="#top" aria-label="Medinote – Startseite">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="30" height="30"><rect width="100" height="100" rx="22" fill="#0e5f8a"/><path d="M50 26c-9 10-17 17-17 27a17 17 0 0 0 34 0c0-10-8-17-17-27z" fill="#fff"/></svg>
+      </span>
+      <span class="brand-name">Medinote</span>
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-menu" id="nav-menu">
+      <a href="#features" data-i18n="nav.features">Funktionen</a>
+      <a href="#screenshots" data-i18n="nav.screenshots">Einblicke</a>
+      <a href="#how" data-i18n="nav.how">So funktioniert’s</a>
+      <a href="#privacy" data-i18n="nav.privacy">Datenschutz</a>
+      <a href="#download" class="btn btn-small btn-primary" data-i18n="nav.contact">Tester werden</a>
+      <div class="lang-switch" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" class="active" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <p class="badge" data-i18n="hero.badge">Pilotphase in Deutschland – jetzt mittesten</p>
+        <h1 data-i18n="hero.title">Ihre Gerinnungstherapie. Sicher dokumentiert.</h1>
+        <p class="lead" data-i18n="hero.lead">Medinote unterstützt Menschen unter Antikoagulations-Therapie – z.&nbsp;B. mit Marcumar, Falithrom oder Warfarin – beim Dokumentieren von INR-Werten und Medikamenteneinnahme. Mit Erinnerungen, Spracheingabe und direkter Übertragung vom microINR®-Messgerät.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download" data-i18n="hero.ctaPrimary">Jetzt Tester werden</a>
+          <a class="btn btn-ghost" href="#features" data-i18n="hero.ctaSecondary">Funktionen ansehen</a>
+        </div>
+        <ul class="trust-bar" aria-label="Vertrauensmerkmale">
+          <li><span aria-hidden="true">🇪🇺</span> <span data-i18n="trust.gdpr">DSGVO-konform</span></li>
+          <li><span aria-hidden="true">🔒</span> <span data-i18n="trust.encrypted">Verschlüsselte Gesundheitsdaten</span></li>
+          <li><span aria-hidden="true">📶</span> <span data-i18n="trust.offline">Auch offline nutzbar</span></li>
+          <li><span aria-hidden="true">🌐</span> <span data-i18n="trust.languages">Deutsch &amp; Englisch</span></li>
+        </ul>
+      </div>
+
+      <!-- Stylized app preview (not a real screenshot) -->
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen app-preview">
+            <div class="ap-header">
+              <span class="ap-title" data-i18n="preview.dashboard">Dashboard</span>
+            </div>
+            <div class="ap-card ap-inr">
+              <span class="ap-label" data-i18n="preview.latestInr">Neuester INR-Wert</span>
+              <span class="ap-value">2,6</span>
+              <span class="ap-pill" data-i18n="preview.inRange">Im Zielbereich</span>
+            </div>
+            <div class="ap-card">
+              <span class="ap-label" data-i18n="preview.trend">INR-Trend</span>
+              <svg class="ap-chart" viewBox="0 0 200 60" preserveAspectRatio="none">
+                <rect x="0" y="14" width="200" height="26" fill="var(--range-band)"/>
+                <polyline points="5,44 40,36 75,24 110,30 145,20 180,26" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="180" cy="26" r="4" fill="var(--accent)"/>
+              </svg>
+            </div>
+            <div class="ap-card ap-med">
+              <span class="ap-dot">💊</span>
+              <div>
+                <span class="ap-med-name">Marcumar · 1,5&nbsp;<span data-i18n="preview.tablets">Tabletten</span></span>
+                <span class="ap-med-time" data-i18n="preview.takenToday">Heute, 08:00 – eingenommen</span>
+              </div>
+              <span class="ap-check">✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section id="features" class="section">
+    <div class="container">
+      <header class="section-head reveal">
+        <h2 data-i18n="features.title">Alles für Ihre Therapie – in einer App</h2>
+        <p data-i18n="features.sub">Entwickelt für den Alltag mit Gerinnungshemmern: übersichtlich, gut lesbar und einfach zu bedienen.</p>
+      </header>
+
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">📈</div>
+          <h3 data-i18n="features.inr.title">INR-Verlauf &amp; Zielbereich</h3>
+          <p data-i18n="features.inr.text">Erfassen Sie Ihre INR-Werte und sehen Sie den Verlauf als Diagramm. Medinote zeigt sofort, ob ein Wert in Ihrem persönlichen Zielbereich liegt (z.&nbsp;B. 2,0–3,0).</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">💊</div>
+          <h3 data-i18n="features.meds.title">Medikamenten-Tagebuch</h3>
+          <p data-i18n="features.meds.text">Marcumar/Falithrom, Warfarin, Acenocoumarol und weitere Medikamente mit einem Tipp protokollieren – inklusive Wochenplan mit Tablettenübersicht und Einnahmeverlauf.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">⏰</div>
+          <h3 data-i18n="features.reminders.title">Zuverlässige Erinnerungen</h3>
+          <p data-i18n="features.reminders.text">Push-Benachrichtigungen zu Ihren Einnahmezeiten. Einnahme direkt aus der Benachrichtigung als „Eingenommen“ oder „Nicht eingenommen“ markieren.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">🎤</div>
+          <h3 data-i18n="features.voice.title">Spracheingabe</h3>
+          <p data-i18n="features.voice.text">„Mein INR war 2,5“ oder „Marcumar genommen“ – Werte freihändig erfassen, auf Deutsch und Englisch. Ideal, wenn Tippen gerade schwerfällt.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">📡</div>
+          <h3 data-i18n="features.device.title">microINR®-Anbindung</h3>
+          <p data-i18n="features.device.text">Messwerte per Bluetooth direkt vom microINR®-Messgerät übernehmen – ohne Abtippen und ohne Übertragungsfehler.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">☁️</div>
+          <h3 data-i18n="features.sync.title">Offline &amp; synchronisiert</h3>
+          <p data-i18n="features.sync.text">Medinote funktioniert auch ohne Internet. Sobald Sie online sind, werden Ihre Daten automatisch und verschlüsselt synchronisiert.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCREENSHOTS ============ -->
+  <section id="screenshots" class="section section-alt">
+    <div class="container">
+      <header class="section-head reveal">
+        <h2 data-i18n="shots.title">Ein Blick in die App</h2>
+        <p data-i18n="shots.sub">Klare Oberfläche, große Schrift, hoher Kontrast – gestaltet für den täglichen Gebrauch.</p>
+      </header>
+
+      <div class="shots-row">
+        <!--
+          Screenshot placeholders.
+          To use real screenshots, replace the .shot-placeholder div inside each
+          .phone-screen with e.g.:
+            <img src="assets/screenshots/dashboard-de.png" alt="Medinote Dashboard" loading="lazy">
+          Recommended source size: 1290 × 2796 px (iPhone portrait), displayed at ~250 × 542 px.
+        -->
+        <figure class="shot reveal">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="shot-placeholder">
+                <span class="shot-icon" aria-hidden="true">📊</span>
+                <span class="shot-hint">1290 × 2796</span>
+              </div>
+            </div>
+          </div>
+          <figcaption data-i18n="shots.cap1">Dashboard mit aktuellem INR-Wert</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="shot-placeholder">
+                <span class="shot-icon" aria-hidden="true">📈</span>
+                <span class="shot-hint">1290 × 2796</span>
+              </div>
+            </div>
+          </div>
+          <figcaption data-i18n="shots.cap2">INR-Verlauf mit Zielbereich</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="shot-placeholder">
+                <span class="shot-icon" aria-hidden="true">⏰</span>
+                <span class="shot-hint">1290 × 2796</span>
+              </div>
+            </div>
+          </div>
+          <figcaption data-i18n="shots.cap3">Wochenplan &amp; Erinnerungen</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="shot-placeholder">
+                <span class="shot-icon" aria-hidden="true">📡</span>
+                <span class="shot-hint">1290 × 2796</span>
+              </div>
+            </div>
+          </div>
+          <figcaption data-i18n="shots.cap4">microINR®-Gerät verbinden</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section id="how" class="section">
+    <div class="container">
+      <header class="section-head reveal">
+        <h2 data-i18n="how.title">So funktioniert’s</h2>
+        <p data-i18n="how.sub">In drei Schritten zu einem verlässlichen Überblick über Ihre Therapie.</p>
+      </header>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-num">1</span>
+          <h3 data-i18n="how.s1.title">Einrichten</h3>
+          <p data-i18n="how.s1.text">Konto erstellen, Ihr Antikoagulans auswählen und Ihren persönlichen INR-Zielbereich festlegen – gemeinsam mit den Vorgaben Ihrer Ärztin oder Ihres Arztes.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-num">2</span>
+          <h3 data-i18n="how.s2.title">Erfassen</h3>
+          <p data-i18n="how.s2.text">INR-Werte und Einnahmen dokumentieren – per Tipp, per Sprachbefehl oder automatisch über die Bluetooth-Verbindung zum microINR®-Messgerät.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-num">3</span>
+          <h3 data-i18n="how.s3.title">Überblicken</h3>
+          <p data-i18n="how.s3.text">Trends verfolgen, den Verlauf beim Arztbesuch zeigen und Ihre Daten jederzeit als Datei exportieren.</p>
+        </li>
+      </ol>
+
+      <p class="disclaimer reveal" data-i18n="how.disclaimer">Hinweis: Medinote ist ein Werkzeug zur Dokumentation und ersetzt keine ärztliche Beratung. Entscheidungen über Ihre Dosierung treffen Sie immer gemeinsam mit Ihrer Ärztin oder Ihrem Arzt.</p>
+    </div>
+  </section>
+
+  <!-- ============ PRIVACY ============ -->
+  <section id="privacy" class="section section-alt">
+    <div class="container">
+      <header class="section-head reveal">
+        <h2 data-i18n="privacy.title">Ihre Daten gehören Ihnen</h2>
+        <p data-i18n="privacy.sub">Gesundheitsdaten sind besonders sensibel. Medinote wurde von Anfang an nach den Vorgaben der DSGVO entwickelt.</p>
+      </header>
+
+      <div class="privacy-grid">
+        <article class="privacy-card reveal">
+          <h3><span aria-hidden="true">🔒</span> <span data-i18n="privacy.enc.title">Verschlüsselung</span></h3>
+          <p data-i18n="privacy.enc.text">Ihre Gesundheitsdaten – INR-Werte und Medikationsaufzeichnungen – werden verschlüsselt gespeichert und übertragen.</p>
+        </article>
+        <article class="privacy-card reveal">
+          <h3><span aria-hidden="true">✅</span> <span data-i18n="privacy.consent.title">Ausdrückliche Einwilligung</span></h3>
+          <p data-i18n="privacy.consent.text">Die Verarbeitung Ihrer Gesundheitsdaten erfolgt nur mit Ihrer ausdrücklichen Zustimmung (DSGVO Art. 6 und 9) – transparent und jederzeit widerrufbar.</p>
+        </article>
+        <article class="privacy-card reveal">
+          <h3><span aria-hidden="true">📤</span> <span data-i18n="privacy.export.title">Export &amp; Löschung</span></h3>
+          <p data-i18n="privacy.export.text">Sie können Ihre Daten jederzeit in der App exportieren und Ihr Konto samt aller Daten dauerhaft löschen – ohne Rückfragen.</p>
+        </article>
+        <article class="privacy-card reveal">
+          <h3><span aria-hidden="true">🚫</span> <span data-i18n="privacy.noads.title">Keine Werbung, kein Datenverkauf</span></h3>
+          <p data-i18n="privacy.noads.text">Medinote zeigt keine Werbung und verkauft keine Daten. Wir erheben nur, was für die Funktion der App notwendig ist.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOWNLOAD / CONTACT ============ -->
+  <section id="download" class="section cta-section">
+    <div class="container cta-inner reveal">
+      <h2 data-i18n="cta.title">Machen Sie mit – in der Pilotphase</h2>
+      <p data-i18n="cta.text">Medinote befindet sich derzeit in der Pilotphase in Deutschland. Werden Sie Teil des Testprogramms und gestalten Sie die App mit Ihrem Feedback mit.</p>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="mailto:kontakt@medi-note.de?subject=Medinote%20Pilotphase" data-i18n="cta.button">Per E-Mail anmelden</a>
+      </div>
+      <p class="cta-mail">kontakt@medi-note.de</p>
+      <div class="store-badges" aria-label="App-Store-Verfügbarkeit">
+        <span class="store-badge"> <span aria-hidden="true"></span> App Store · <span data-i18n="cta.soon">bald verfügbar</span></span>
+        <span class="store-badge">▶ Google Play · <span data-i18n="cta.soon2">bald verfügbar</span></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">Medinote</p>
+      <p class="footer-note" data-i18n="footer.claim">Die App für Menschen unter Gerinnungshemmer-Therapie.</p>
+    </div>
+    <nav class="footer-links" aria-label="Rechtliches">
+      <a href="impressum.html" data-i18n="footer.imprint">Impressum</a>
+      <a href="datenschutz.html" data-i18n="footer.privacy">Datenschutzerklärung</a>
+      <a href="mailto:kontakt@medi-note.de" data-i18n="footer.contact">Kontakt</a>
+    </nav>
+  </div>
+  <div class="container footer-legal">
+    <p data-i18n="footer.disclaimer">Medinote ersetzt keine ärztliche Beratung, Diagnose oder Behandlung. Wenden Sie sich bei Fragen zu Ihrer Therapie immer an Ihre Ärztin oder Ihren Arzt.</p>
+    <p data-i18n="footer.trademark">microINR® ist eine eingetragene Marke von iLine Microsystems S.L. Medinote steht in keiner geschäftlichen Verbindung zu iLine Microsystems.</p>
+    <p>© <span id="year">2026</span> Medinote</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
