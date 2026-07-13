@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Medinote – INR-Werte &amp; Medikamente sicher dokumentieren</title>
-  <meta name="description" content="Medinote hilft Patientinnen und Patienten unter Antikoagulations-Therapie, INR-Werte und Medikamenteneinnahme einfach zu dokumentieren – mit Erinnerungen, Spracheingabe und microINR®-Anbindung.">
+  <meta name="description" content="Medinote hilft Patientinnen und Patienten unter Antikoagulations-Therapie, INR-Werte und Medikamente einfach zu dokumentieren – mit Erinnerungen, Wochenplan und automatischer microINR®-Übertragung. Ohne Konto nutzbar: Ihre Daten bleiben auf Ihrem Telefon.">
   <link rel="icon" type="image/png" href="assets/icon/app-icon.png">
   <link rel="apple-touch-icon" href="assets/icon/app-icon.png">
   <meta name="theme-color" content="#c0564e">
   <link rel="stylesheet" href="css/style.css">
   <meta property="og:title" content="Medinote – INR-Werte & Medikamente sicher dokumentieren">
-  <meta property="og:description" content="Die App für Menschen unter Gerinnungshemmer-Therapie: INR-Verlauf, Medikamenten-Tagebuch, Erinnerungen und microINR®-Anbindung. DSGVO-konform.">
+  <meta property="og:description" content="Die App für Menschen unter Gerinnungshemmer-Therapie: INR-Verlauf, Wochenplan, Erinnerungen und automatische microINR®-Übertragung. Ohne Konto nutzbar – Ihre Daten bleiben auf Ihrem Telefon. DSGVO-konform.">
   <meta property="og:url" content="https://medi-note.de/">
   <meta property="og:image" content="https://medi-note.de/assets/icon/app-icon.png">
   <meta property="og:type" content="website">
@@ -52,15 +52,15 @@
       <div class="hero-copy reveal">
         <p class="badge" data-i18n="hero.badge">Pilotphase in Deutschland – jetzt mittesten</p>
         <h1 data-i18n="hero.title">Ihre Gerinnungstherapie. Sicher dokumentiert.</h1>
-        <p class="lead" data-i18n="hero.lead">Medinote unterstützt Menschen unter Antikoagulations-Therapie – z.&nbsp;B. mit Marcumar, Falithrom oder Warfarin – beim Dokumentieren von INR-Werten und Medikamenteneinnahme. Mit Erinnerungen, Spracheingabe und direkter Übertragung vom microINR®-Messgerät.</p>
+        <p class="lead" data-i18n="hero.lead">Medinote begleitet Menschen unter Antikoagulations-Therapie – z.&nbsp;B. mit Marcumar, Falithrom oder Warfarin. Mit Wochenplan und zuverlässigen Erinnerungen behalten Sie Ihre Einnahmen im Griff, Ihre INR-Werte übernimmt die App auf Wunsch automatisch vom microINR®-Messgerät. Und das Beste: Sie brauchen kein Konto – alle Daten bleiben auf Ihrem Telefon.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#download" data-i18n="hero.ctaPrimary">Jetzt Tester werden</a>
           <a class="btn btn-ghost" href="#features" data-i18n="hero.ctaSecondary">Funktionen ansehen</a>
         </div>
         <ul class="trust-bar" aria-label="Vertrauensmerkmale">
+          <li><span aria-hidden="true">📱</span> <span data-i18n="trust.noaccount">Ohne Konto nutzbar</span></li>
+          <li><span aria-hidden="true">🔒</span> <span data-i18n="trust.encrypted">Daten bleiben auf Ihrem Telefon</span></li>
           <li><span aria-hidden="true">🇪🇺</span> <span data-i18n="trust.gdpr">DSGVO-konform</span></li>
-          <li><span aria-hidden="true">🔒</span> <span data-i18n="trust.encrypted">Verschlüsselte Gesundheitsdaten</span></li>
-          <li><span aria-hidden="true">📶</span> <span data-i18n="trust.offline">Auch offline nutzbar</span></li>
           <li><span aria-hidden="true">🌐</span> <span data-i18n="trust.languages">Deutsch &amp; Englisch</span></li>
         </ul>
       </div>
@@ -87,6 +87,24 @@
 
       <div class="feature-grid">
         <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">⏰</div>
+          <h3 data-i18n="features.reminders.title">Erinnerungen, auf die Verlass ist</h3>
+          <p data-i18n="features.reminders.text">Nie wieder eine Einnahme vergessen: Medinote erinnert Sie pünktlich per Push-Benachrichtigung – und mit einem Tipp markieren Sie die Einnahme direkt als „Eingenommen“ oder „Nicht eingenommen“.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">📅</div>
+          <h3 data-i18n="features.weekplan.title">Ihr Wochenplan auf einen Blick</h3>
+          <p data-i18n="features.weekplan.text">Welche Tablette an welchem Tag? Der Wochenplan zeigt Ihre Dosierung für jeden Wochentag – klar und übersichtlich, genau wie auf dem Dosierungsplan Ihrer Ärztin oder Ihres Arztes.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">📡</div>
+          <h3 data-i18n="features.device.title">microINR®: Werte kommen automatisch</h3>
+          <p data-i18n="features.device.text">Einmal per Bluetooth verbinden – fertig. Ihre Messwerte überträgt das microINR®-Messgerät automatisch in die App: ohne Abtippen, ohne Zahlendreher, ohne Aufwand.</p>
+        </article>
+
+        <article class="feature-card reveal">
           <div class="feature-icon" aria-hidden="true">📈</div>
           <h3 data-i18n="features.inr.title">INR-Verlauf &amp; Zielbereich</h3>
           <p data-i18n="features.inr.text">Erfassen Sie Ihre INR-Werte und sehen Sie den Verlauf als Diagramm. Medinote zeigt sofort, ob ein Wert in Ihrem persönlichen Zielbereich liegt (z.&nbsp;B. 2,0–3,0).</p>
@@ -95,31 +113,13 @@
         <article class="feature-card reveal">
           <div class="feature-icon" aria-hidden="true">💊</div>
           <h3 data-i18n="features.meds.title">Medikamenten-Tagebuch</h3>
-          <p data-i18n="features.meds.text">Marcumar/Falithrom, Warfarin, Acenocoumarol und weitere Medikamente mit einem Tipp protokollieren – inklusive Wochenplan mit Tablettenübersicht und Einnahmeverlauf.</p>
+          <p data-i18n="features.meds.text">Marcumar/Falithrom, Warfarin, Acenocoumarol und weitere Medikamente mit einem Tipp protokollieren – Ihr vollständiger Einnahmeverlauf, jederzeit griffbereit beim Arztbesuch.</p>
         </article>
 
         <article class="feature-card reveal">
-          <div class="feature-icon" aria-hidden="true">⏰</div>
-          <h3 data-i18n="features.reminders.title">Zuverlässige Erinnerungen</h3>
-          <p data-i18n="features.reminders.text">Push-Benachrichtigungen zu Ihren Einnahmezeiten. Einnahme direkt aus der Benachrichtigung als „Eingenommen“ oder „Nicht eingenommen“ markieren.</p>
-        </article>
-
-        <article class="feature-card reveal">
-          <div class="feature-icon" aria-hidden="true">🎤</div>
-          <h3 data-i18n="features.voice.title">Spracheingabe</h3>
-          <p data-i18n="features.voice.text">„Mein INR war 2,5“ oder „Marcumar genommen“ – Werte freihändig erfassen, auf Deutsch und Englisch. Ideal, wenn Tippen gerade schwerfällt.</p>
-        </article>
-
-        <article class="feature-card reveal">
-          <div class="feature-icon" aria-hidden="true">📡</div>
-          <h3 data-i18n="features.device.title">microINR®-Anbindung</h3>
-          <p data-i18n="features.device.text">Messwerte per Bluetooth direkt vom microINR®-Messgerät übernehmen – ohne Abtippen und ohne Übertragungsfehler.</p>
-        </article>
-
-        <article class="feature-card reveal">
-          <div class="feature-icon" aria-hidden="true">☁️</div>
-          <h3 data-i18n="features.sync.title">Offline &amp; synchronisiert</h3>
-          <p data-i18n="features.sync.text">Medinote funktioniert auch ohne Internet. Sobald Sie online sind, werden Ihre Daten automatisch und verschlüsselt synchronisiert.</p>
+          <div class="feature-icon" aria-hidden="true">📱</div>
+          <h3 data-i18n="features.local.title">Ihre Daten bleiben bei Ihnen</h3>
+          <p data-i18n="features.local.text">Medinote funktioniert ganz ohne Konto und ohne Registrierung: Alle Daten werden ausschließlich auf Ihrem Telefon gespeichert. Ein Konto erstellen Sie nur, wenn Sie es möchten.</p>
         </article>
       </div>
     </div>
@@ -188,18 +188,18 @@
       <ol class="steps">
         <li class="step reveal">
           <span class="step-num">1</span>
-          <h3 data-i18n="how.s1.title">Einrichten</h3>
-          <p data-i18n="how.s1.text">Konto erstellen, Ihr Antikoagulans auswählen und Ihren persönlichen INR-Zielbereich festlegen – gemeinsam mit den Vorgaben Ihrer Ärztin oder Ihres Arztes.</p>
+          <h3 data-i18n="how.s1.title">Loslegen – ohne Konto</h3>
+          <p data-i18n="how.s1.text">App öffnen und direkt starten, ganz ohne Registrierung. Antikoagulans auswählen, INR-Zielbereich nach ärztlicher Vorgabe festlegen und Wochenplan anlegen – fertig.</p>
         </li>
         <li class="step reveal">
           <span class="step-num">2</span>
           <h3 data-i18n="how.s2.title">Erfassen</h3>
-          <p data-i18n="how.s2.text">INR-Werte und Einnahmen dokumentieren – per Tipp, per Sprachbefehl oder automatisch über die Bluetooth-Verbindung zum microINR®-Messgerät.</p>
+          <p data-i18n="how.s2.text">Einnahmen mit einem Tipp dokumentieren – die Erinnerung meldet sich von selbst. INR-Werte übernimmt die App automatisch per Bluetooth vom microINR®-Messgerät.</p>
         </li>
         <li class="step reveal">
           <span class="step-num">3</span>
           <h3 data-i18n="how.s3.title">Überblicken</h3>
-          <p data-i18n="how.s3.text">Trends verfolgen, den Verlauf beim Arztbesuch zeigen und Ihre Daten jederzeit als Datei exportieren.</p>
+          <p data-i18n="how.s3.text">Trends verfolgen, den Verlauf beim Arztbesuch zeigen und Ihre Daten jederzeit als Datei exportieren. Alles bleibt dabei auf Ihrem Telefon.</p>
         </li>
       </ol>
 
@@ -212,21 +212,21 @@
     <div class="container">
       <header class="section-head reveal">
         <h2 data-i18n="privacy.title">Ihre Daten gehören Ihnen</h2>
-        <p data-i18n="privacy.sub">Gesundheitsdaten sind besonders sensibel. Medinote wurde von Anfang an nach den Vorgaben der DSGVO entwickelt.</p>
+        <p data-i18n="privacy.sub">Gesundheitsdaten sind besonders sensibel. Deshalb gilt bei Medinote: Alles bleibt auf Ihrem Telefon – ein Konto ist freiwillig. Entwickelt von Anfang an nach den Vorgaben der DSGVO.</p>
       </header>
 
       <div class="privacy-grid">
         <article class="privacy-card reveal">
-          <h3><span aria-hidden="true">🔒</span> <span data-i18n="privacy.enc.title">Verschlüsselung</span></h3>
-          <p data-i18n="privacy.enc.text">Ihre Gesundheitsdaten – INR-Werte und Medikationsaufzeichnungen – werden verschlüsselt gespeichert und übertragen.</p>
+          <h3><span aria-hidden="true">📱</span> <span data-i18n="privacy.local.title">Kein Konto nötig</span></h3>
+          <p data-i18n="privacy.local.text">Nutzen Sie Medinote sofort und ohne Registrierung. Ihre Gesundheitsdaten – INR-Werte und Medikationseinträge – werden ausschließlich lokal auf Ihrem Telefon gespeichert.</p>
         </article>
         <article class="privacy-card reveal">
-          <h3><span aria-hidden="true">✅</span> <span data-i18n="privacy.consent.title">Ausdrückliche Einwilligung</span></h3>
-          <p data-i18n="privacy.consent.text">Die Verarbeitung Ihrer Gesundheitsdaten erfolgt nur mit Ihrer ausdrücklichen Zustimmung (DSGVO Art. 6 und 9) – transparent und jederzeit widerrufbar.</p>
+          <h3><span aria-hidden="true">🔒</span> <span data-i18n="privacy.consent.title">Konto? Nur wenn Sie möchten</span></h3>
+          <p data-i18n="privacy.consent.text">Ein Konto ist optional. Wenn Sie eines erstellen, werden Ihre Daten verschlüsselt übertragen – und nur mit Ihrer ausdrücklichen Einwilligung verarbeitet (DSGVO Art. 6 und 9), jederzeit widerrufbar.</p>
         </article>
         <article class="privacy-card reveal">
           <h3><span aria-hidden="true">📤</span> <span data-i18n="privacy.export.title">Export &amp; Löschung</span></h3>
-          <p data-i18n="privacy.export.text">Sie können Ihre Daten jederzeit in der App exportieren und Ihr Konto samt aller Daten dauerhaft löschen – ohne Rückfragen.</p>
+          <p data-i18n="privacy.export.text">Sie können Ihre Daten jederzeit in der App exportieren und vollständig löschen – auf Wunsch samt Konto, ohne Rückfragen.</p>
         </article>
         <article class="privacy-card reveal">
           <h3><span aria-hidden="true">🚫</span> <span data-i18n="privacy.noads.title">Keine Werbung, kein Datenverkauf</span></h3>
