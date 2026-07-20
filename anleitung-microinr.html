@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>microINR® mit Medinote koppeln – Anleitung</title>
+  <meta name="description" content="Schritt-für-Schritt-Anleitung: So koppeln Sie Ihr microINR®-Messgerät per Bluetooth mit der Medinote-App und übertragen Ihre INR-Werte automatisch.">
+  <link rel="icon" type="image/png" href="assets/icon/app-icon.png">
+  <link rel="apple-touch-icon" href="assets/icon/app-icon.png">
+  <meta name="theme-color" content="#c0564e">
+  <link rel="stylesheet" href="css/style.css">
+  <meta property="og:title" content="microINR® mit Medinote koppeln – Anleitung">
+  <meta property="og:description" content="In wenigen Schritten das microINR®-Messgerät mit der Medinote-App verbinden und INR-Werte automatisch übertragen.">
+  <meta property="og:url" content="https://medi-note.de/anleitung-microinr.html">
+  <meta property="og:image" content="https://medi-note.de/assets/icon/app-icon.png">
+  <meta property="og:type" content="article">
+
+  <style>
+    /* ---- Page-specific styles for the microINR pairing guide ---- */
+    .guide-intro {
+      background: linear-gradient(180deg, var(--bg-soft) 0%, #fff 100%);
+      padding: 3.4rem 0 2.4rem;
+    }
+    .guide-intro .container { max-width: 58em; text-align: center; }
+    .guide-eyebrow {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-weight: 600; font-size: 0.88rem;
+      padding: 0.35rem 0.9rem; border-radius: 999px; margin-bottom: 1.1rem;
+    }
+    .guide-intro h1 {
+      font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+      line-height: 1.14; letter-spacing: -0.02em; margin-bottom: 0.9rem;
+    }
+    .guide-intro .lead { color: var(--ink-soft); font-size: 1.13rem; max-width: 40em; margin: 0 auto; }
+    .guide-callout {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      margin-top: 1.6rem; padding: 0.6rem 1.1rem;
+      background: var(--success-soft); color: #2c6b2f;
+      border: 1px solid #bfe0c1; border-radius: 999px;
+      font-weight: 600; font-size: 0.95rem;
+    }
+
+    .part { padding: 3.4rem 0; }
+    .part-alt { background: var(--bg-soft); }
+    .part-head { max-width: 46em; margin: 0 auto 2.4rem; text-align: center; }
+    .part-tag {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 0.8rem; letter-spacing: 0.03em;
+      padding: 0.3rem 0.85rem; border-radius: 999px; margin-bottom: 0.8rem;
+    }
+    .part-head h2 { font-size: clamp(1.6rem, 2.8vw, 2.15rem); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .part-head p { color: var(--ink-soft); font-size: 1.05rem; }
+
+    /* Steps */
+    .gstep {
+      display: grid; grid-template-columns: 1fr minmax(230px, 290px);
+      gap: 2.8rem; align-items: center; padding: 2.2rem 0;
+    }
+    .gstep + .gstep { border-top: 1px solid var(--line); }
+    .gnum {
+      display: grid; place-items: center; width: 44px; height: 44px;
+      border-radius: 50%; background: var(--accent); color: #fff;
+      font-weight: 800; font-size: 1.15rem; margin-bottom: 0.9rem;
+    }
+    .gstep h3 { font-size: 1.3rem; letter-spacing: -0.01em; margin-bottom: 0.7rem; }
+    .gstep p { color: var(--ink-soft); margin-bottom: 0.6rem; }
+    .gstep p:last-child { margin-bottom: 0; }
+    .gstep .k { color: var(--ink); font-weight: 600; }
+    .gstep .media { justify-self: center; }
+
+    /* Device (microINR display) mockups */
+    .devices { display: flex; align-items: center; justify-content: center; gap: 1.1rem; flex-wrap: wrap; }
+    .device { width: 132px; background: #34363c; border-radius: 20px; padding: 12px 12px 16px; box-shadow: var(--shadow); }
+    .device .lcd { border: 2px solid #14141a; border-radius: 5px; overflow: hidden; background: #00529b; }
+    .device .lcd img { width: 100%; display: block; image-rendering: pixelated; image-rendering: crisp-edges; }
+    .device .keys { display: flex; justify-content: space-between; margin-top: 9px; }
+    .device .keys i { width: 30px; height: 8px; border-radius: 4px; background: #9a9ca3; }
+    .device-arrow { text-align: center; color: var(--accent); font-weight: 700; font-size: 0.82rem; }
+    .device-arrow .a { display: block; font-size: 1.7rem; line-height: 1; }
+    .device-cap { margin-top: 0.6rem; text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--ink-soft); }
+
+    /* Callout boxes */
+    .tip { border-radius: var(--radius); padding: 1rem 1.25rem; font-size: 0.98rem; }
+    .tip-warn { background: #fff6e0; border: 1px solid #eeddaa; color: #7a5c00; }
+    .tip-info {
+      background: var(--success-soft); border: 1px solid #bfe0c1; color: #2c6b2f;
+      max-width: 52em; margin: 2.4rem auto 0; text-align: center; font-weight: 500;
+    }
+
+    /* Transfer cards */
+    .transfer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .transfer-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.8rem 1.7rem; }
+    .transfer-card .lbl {
+      display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+      background: var(--accent); color: #fff; font-weight: 800; font-size: 1.1rem; margin-bottom: 0.9rem;
+    }
+    .transfer-card h3 { font-size: 1.18rem; margin-bottom: 0.6rem; }
+    .transfer-card p { color: var(--ink-soft); margin-bottom: 0.8rem; }
+    .transfer-card ol { color: var(--ink-soft); padding-left: 1.2rem; margin-bottom: 0; }
+    .transfer-card ol li { margin-bottom: 0.55rem; }
+    .transfer-card .device-inline { display: flex; align-items: center; gap: 1rem; margin-top: 1.2rem; }
+    .transfer-card .device-inline .device { width: 108px; flex: 0 0 auto; }
+
+    /* Checklist */
+    .checklist { background: var(--accent-soft); border-radius: var(--radius); padding: 1.8rem 2rem; max-width: 60em; margin: 0 auto; }
+    .checklist h3 { color: var(--accent-dark); font-size: 1.2rem; margin-bottom: 1rem; }
+    .checklist ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 1.6rem; }
+    .checklist li { display: flex; align-items: flex-start; gap: 0.55rem; color: var(--ink); }
+    .checklist li::before { content: "✓"; color: var(--success); font-weight: 800; }
+
+    .back-link { display: inline-block; margin-top: 2.6rem; color: var(--accent); font-weight: 600; text-decoration: none; }
+    .back-link:hover { text-decoration: underline; }
+
+    @media (max-width: 780px) {
+      .gstep { grid-template-columns: 1fr; gap: 1.6rem; }
+      .gstep .media { order: 2; }
+      .transfer-grid { grid-template-columns: 1fr; }
+      .checklist ul { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container">
+    <a class="brand" href="index.html" aria-label="Medinote – Startseite">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="assets/icon/app-icon.png" width="30" height="30" alt="">
+      </span>
+      <span class="brand-name">Medinote</span>
+    </a>
+    <div class="nav-menu">
+      <a href="index.html#features">Funktionen</a>
+      <a href="index.html">Zurück zur Startseite</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ INTRO ============ -->
+  <section class="guide-intro">
+    <div class="container">
+      <span class="guide-eyebrow">Anleitung für Patientinnen und Patienten</span>
+      <h1>microINR® mit Medinote koppeln</h1>
+      <p class="lead">So verbinden Sie Ihr microINR®-Messgerät einmalig per Bluetooth mit der Medinote-App – und übertragen Ihre INR-Werte danach ganz automatisch. Schritt für Schritt erklärt.</p>
+      <div class="guide-callout"><span aria-hidden="true">🔵</span> Bluetooth am Handy muss eingeschaltet sein.</div>
+    </div>
+  </section>
+
+  <!-- ============ TEIL 1 — KOPPELN ============ -->
+  <section class="part">
+    <div class="container">
+      <header class="part-head">
+        <span class="part-tag">TEIL 1</span>
+        <h2>Gerät koppeln – einmalig einrichten</h2>
+        <p>Diese Einrichtung ist nur beim ersten Mal nötig.</p>
+      </header>
+
+      <!-- Schritt 1 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">1</div>
+          <h3>App öffnen – „Gerät verbinden“</h3>
+          <p>Öffnen Sie in der Medinote-App den Bildschirm <span class="k">„Gerät verbinden“</span>.</p>
+          <p>Der Balken <span class="k">„Bluetooth aktiv“</span> muss grün angezeigt werden.</p>
+        </div>
+        <div class="media">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img src="assets/anleitung/app-verbinden.png" alt="Medinote-Bildschirm „Gerät verbinden“ mit grünem Balken „Bluetooth aktiv“ und Schaltfläche „Geräte suchen“" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schritt 2 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">2</div>
+          <h3>microINR® einschalten</h3>
+          <p><span class="k">Neues Gerät:</span> Das Menü öffnet sich automatisch.</p>
+          <p><span class="k">Schon benutzt:</span> Linke und rechte Taste gleichzeitig ca. 4 Sekunden gedrückt halten, bis das Menü erscheint.</p>
+          <p>Zeigt das Gerät das <span class="k">linke Symbol</span>, drücken Sie die <span class="k">linke Taste</span> – dann erscheint das Übertragungs-Symbol (rechts).</p>
+        </div>
+        <div class="media">
+          <div class="devices">
+            <figure class="device">
+              <div class="lcd"><img src="assets/anleitung/geraet-menu-1.png" alt="microINR-Display: Kopplungs-Symbol (Handy mit Bluetooth)"></div>
+              <div class="keys"><i></i><i></i></div>
+            </figure>
+            <div class="device-arrow"><span>linke Taste</span><span class="a" aria-hidden="true">→</span></div>
+            <figure class="device">
+              <div class="lcd"><img src="assets/anleitung/geraet-menu-2.png" alt="microINR-Display: Übertragungs-Symbol (zwei Geräte mit Pfeil)"></div>
+              <div class="keys"><i></i><i></i></div>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schritt 3 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">3</div>
+          <h3>Gerät suchen &amp; verbinden</h3>
+          <p>Tippen Sie in der App auf <span class="k">„Geräte suchen“</span>.</p>
+          <p>Ihr Gerät erscheint in der Liste als <span class="k">„uINR_…“</span>. Tippen Sie daneben auf <span class="k">„Verbinden“</span>.</p>
+        </div>
+        <div class="media">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img src="assets/anleitung/app-geraet-gefunden.png" alt="Medinote zeigt das gefundene Gerät „uINR_“ in der Liste mit Schaltfläche „Verbinden“" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schritt 4 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">4</div>
+          <h3>Kopplung bestätigen – fertig!</h3>
+          <p>Im Hinweis <span class="k">„Bluetooth Pairing Request“</span> auf <span class="k">„Pair“</span> tippen.</p>
+          <p>Der Status wechselt auf <span class="k">„Verbunden“</span> und <span class="k">„Gekoppelt“</span> – das Gerät bleibt jetzt dauerhaft verbunden.</p>
+        </div>
+        <div class="media">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img src="assets/anleitung/app-gekoppelt.png" alt="Status „Verbunden“ und „Gekoppelt“ mit iPhone-Dialog „Bluetooth Pairing Request“ und Schaltfläche „Pair“" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="tip tip-info">Einmal gekoppelt, bleibt das Gerät verbunden – künftig genügt es, die App zu öffnen.</p>
+    </div>
+  </section>
+
+  <!-- ============ TEIL 2 — ÜBERTRAGEN ============ -->
+  <section class="part part-alt">
+    <div class="container">
+      <header class="part-head">
+        <span class="part-tag">TEIL 2</span>
+        <h2>Messwerte übertragen</h2>
+        <p>So kommen Ihre INR-Ergebnisse in die App.</p>
+      </header>
+
+      <div class="transfer-grid">
+        <article class="transfer-card">
+          <div class="lbl">A</div>
+          <h3>Nach einer neuen Messung – automatisch</h3>
+          <p>Öffnen Sie die Medinote-App und führen Sie die Messung am microINR® durch. Sobald das Ergebnis am Gerät erscheint, wird es automatisch an die App gesendet.</p>
+          <p class="tip tip-warn"><strong>Wichtig:</strong> App dabei geöffnet lassen – erst dann kommt das Ergebnis an.</p>
+        </article>
+
+        <article class="transfer-card">
+          <div class="lbl">B</div>
+          <h3>Bereits gespeicherte Ergebnisse senden</h3>
+          <p>Sie können alle im microINR® gespeicherten Messungen auf einmal übertragen:</p>
+          <ol>
+            <li>Menü öffnen: beide Tasten ca. 4 Sekunden gedrückt halten.</li>
+            <li>Rechte Taste 2× drücken, bis das Symbol <span class="k">„Alle Daten senden“</span> erscheint.</li>
+            <li>Dieses Symbol bestätigen – alle Ergebnisse werden an die App gesendet.</li>
+          </ol>
+          <div class="device-inline">
+            <figure class="device">
+              <div class="lcd"><img src="assets/anleitung/geraet-menu-3.png" alt="microINR-Display: Symbol „Alle Daten senden“ (Dokument mit Pfeil)"></div>
+              <div class="keys"><i></i><i></i></div>
+            </figure>
+            <span class="device-cap">Symbol „Alle Daten senden“</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HILFE ============ -->
+  <section class="part">
+    <div class="container">
+      <div class="checklist">
+        <h3>Wenn es nicht klappt – kurz prüfen:</h3>
+        <ul>
+          <li>Bluetooth am Handy eingeschaltet?</li>
+          <li>microINR® eingeschaltet und im Menü?</li>
+          <li>Medinote-App geöffnet?</li>
+          <li>Gerät nah am Handy (max. 1–2 m)?</li>
+        </ul>
+      </div>
+      <div style="text-align:center;">
+        <a class="back-link" href="index.html">← Zurück zur Startseite</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">Medinote</p>
+      <p class="footer-note">Die App für Menschen unter Gerinnungshemmer-Therapie.</p>
+    </div>
+    <nav class="footer-links" aria-label="Rechtliches">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutzerklärung</a>
+      <a href="mailto:kontakt@medi-note.de">Kontakt</a>
+    </nav>
+  </div>
+  <div class="container footer-legal">
+    <p>Medinote ersetzt keine ärztliche Beratung, Diagnose oder Behandlung. Wenden Sie sich bei Fragen zu Ihrer Therapie immer an Ihre Ärztin oder Ihren Arzt.</p>
+    <p>microINR® ist eine eingetragene Marke von iLine Microsystems S.L. Medinote steht in keiner geschäftlichen Verbindung zu iLine Microsystems.</p>
+    <p>© 2026 Medinote</p>
+  </div>
+</footer>
+
+</body>
+</html>
