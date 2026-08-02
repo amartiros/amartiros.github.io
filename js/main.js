@@ -19,7 +19,7 @@
 
       'hero.badge': 'Pilotphase in Deutschland – jetzt mittesten',
       'hero.title': 'Ihre Gerinnungstherapie. Sicher dokumentiert.',
-      'hero.lead': 'Medinote begleitet Menschen unter Antikoagulations-Therapie – z. B. mit Marcumar, Falithrom oder Warfarin. Mit Wochenplan und zuverlässigen Erinnerungen behalten Sie Ihre Einnahmen im Griff, Ihre INR-Werte übernimmt die App auf Wunsch automatisch vom microINR®-Messgerät. Und das Beste: Sie brauchen kein Konto – alle Daten bleiben auf Ihrem Telefon.',
+      'hero.lead': 'Medinote begleitet Menschen unter Antikoagulations-Therapie – z. B. mit Marcumar, Falithrom oder Warfarin. Mit Wochenplan und zuverlässigen Erinnerungen behalten Sie Ihre Einnahmen im Griff, Ihre INR-Werte übernimmt die App auf Wunsch automatisch vom Messgerät – microINR® oder CoaguChek® INRange. Und das Beste: Sie brauchen kein Konto – alle Daten bleiben auf Ihrem Telefon.',
       'hero.ctaPrimary': 'Jetzt Tester werden',
       'hero.ctaSecondary': 'Funktionen ansehen',
 
@@ -34,8 +34,10 @@
       'features.reminders.text': 'Nie wieder eine Einnahme vergessen: Medinote erinnert Sie pünktlich per Push-Benachrichtigung – und mit einem Tipp markieren Sie die Einnahme direkt als „Eingenommen“ oder „Nicht eingenommen“.',
       'features.weekplan.title': 'Ihr Wochenplan auf einen Blick',
       'features.weekplan.text': 'Welche Tablette an welchem Tag? Der Wochenplan zeigt Ihre Dosierung für jeden Wochentag – klar und übersichtlich, genau wie auf dem Dosierungsplan Ihrer Ärztin oder Ihres Arztes.',
-      'features.device.title': 'microINR®: Werte kommen automatisch',
-      'features.device.text': 'Einmal per Bluetooth verbinden – fertig. Ihre Messwerte überträgt das microINR®-Messgerät automatisch in die App: ohne Abtippen, ohne Zahlendreher, ohne Aufwand.',
+      'features.device.title': 'Messgerät: Werte kommen automatisch',
+      'features.device.text': 'Einmal per Bluetooth verbinden – fertig. Ihre Messwerte übertragen microINR® und CoaguChek® INRange automatisch in die App: ohne Abtippen, ohne Zahlendreher, ohne Aufwand.',
+      'features.device.link1': 'Anleitung: microINR® koppeln →',
+      'features.device.link2': 'Anleitung: CoaguChek® INRange koppeln →',
       'features.inr.title': 'INR-Verlauf & Zielbereich',
       'features.inr.text': 'Erfassen Sie Ihre INR-Werte und sehen Sie den Verlauf als Diagramm. Medinote zeigt sofort, ob ein Wert in Ihrem persönlichen Zielbereich liegt (z. B. 2,0–3,0).',
       'features.meds.title': 'Medikamenten-Tagebuch',
@@ -55,7 +57,7 @@
       'how.s1.title': 'Loslegen – ohne Konto',
       'how.s1.text': 'App öffnen und direkt starten, ganz ohne Registrierung. Antikoagulans auswählen, INR-Zielbereich nach ärztlicher Vorgabe festlegen und Wochenplan anlegen – fertig.',
       'how.s2.title': 'Erfassen',
-      'how.s2.text': 'Einnahmen mit einem Tipp dokumentieren – die Erinnerung meldet sich von selbst. INR-Werte übernimmt die App automatisch per Bluetooth vom microINR®-Messgerät.',
+      'how.s2.text': 'Einnahmen mit einem Tipp dokumentieren – die Erinnerung meldet sich von selbst. INR-Werte übernimmt die App automatisch per Bluetooth vom Messgerät (microINR® oder CoaguChek® INRange).',
       'how.s3.title': 'Überblicken',
       'how.s3.text': 'Trends verfolgen, den Verlauf beim Arztbesuch zeigen und Ihre Daten jederzeit als Datei exportieren. Alles bleibt dabei auf Ihrem Telefon.',
       'how.disclaimer': 'Hinweis: Medinote ist ein Werkzeug zur Dokumentation und ersetzt keine ärztliche Beratung. Entscheidungen über Ihre Dosierung treffen Sie immer gemeinsam mit Ihrer Ärztin oder Ihrem Arzt.',
@@ -82,7 +84,7 @@
       'footer.privacy': 'Datenschutzerklärung',
       'footer.contact': 'Kontakt',
       'footer.disclaimer': 'Medinote ersetzt keine ärztliche Beratung, Diagnose oder Behandlung. Wenden Sie sich bei Fragen zu Ihrer Therapie immer an Ihre Ärztin oder Ihren Arzt.',
-      'footer.trademark': 'microINR® ist eine eingetragene Marke von iLine Microsystems S.L. Medinote steht in keiner geschäftlichen Verbindung zu iLine Microsystems.'
+      'footer.trademark': 'microINR® ist eine eingetragene Marke von iLine Microsystems S.L., CoaguChek® eine eingetragene Marke von Roche. Medinote steht in keiner geschäftlichen Verbindung zu iLine Microsystems oder Roche Diagnostics.'
     },
 
     en: {
@@ -97,7 +99,7 @@
 
       'hero.badge': 'Pilot phase in Germany – become a tester',
       'hero.title': 'Your anticoagulation therapy. Reliably documented.',
-      'hero.lead': 'Medinote supports people on anticoagulation therapy – e.g. with Marcumar, Falithrom or warfarin. A weekly plan and reliable reminders keep your doses on track, and the app can receive your INR readings automatically from the microINR® meter. Best of all: no account needed – all your data stays on your phone.',
+      'hero.lead': 'Medinote supports people on anticoagulation therapy – e.g. with Marcumar, Falithrom or warfarin. A weekly plan and reliable reminders keep your doses on track, and the app can receive your INR readings automatically from your meter – microINR® or CoaguChek® INRange. Best of all: no account needed – all your data stays on your phone.',
       'hero.ctaPrimary': 'Become a tester',
       'hero.ctaSecondary': 'See features',
 
@@ -112,8 +114,10 @@
       'features.reminders.text': 'Never miss a dose again: Medinote sends a push notification right on time – and one tap marks the dose as “taken” or “skipped”, straight from the notification.',
       'features.weekplan.title': 'Your weekly plan at a glance',
       'features.weekplan.text': 'Which tablet on which day? The weekly plan shows your dosage for every day of the week – clear and easy to read, just like the dosing schedule from your doctor.',
-      'features.device.title': 'microINR®: readings arrive automatically',
-      'features.device.text': 'Pair once via Bluetooth – done. Your microINR® meter transfers readings straight into the app: no retyping, no transposed digits, no effort.',
+      'features.device.title': 'Meter: readings arrive automatically',
+      'features.device.text': 'Pair once via Bluetooth – done. Both microINR® and CoaguChek® INRange transfer readings straight into the app: no retyping, no transposed digits, no effort.',
+      'features.device.link1': 'Guide: pair microINR® →',
+      'features.device.link2': 'Guide: pair CoaguChek® INRange →',
       'features.inr.title': 'INR history & target range',
       'features.inr.text': 'Record your INR values and follow the trend as a chart. Medinote instantly shows whether a reading is within your personal target range (e.g. 2.0–3.0).',
       'features.meds.title': 'Medication diary',
@@ -133,7 +137,7 @@
       'how.s1.title': 'Get started – no account',
       'how.s1.text': 'Open the app and start right away, no registration needed. Select your anticoagulant, set your INR target range as advised by your doctor and create your weekly plan – done.',
       'how.s2.title': 'Record',
-      'how.s2.text': 'Document doses with a single tap – the reminder will prompt you on time. INR readings are received automatically from the microINR® meter via Bluetooth.',
+      'how.s2.text': 'Document doses with a single tap – the reminder will prompt you on time. INR readings are received automatically from your meter (microINR® or CoaguChek® INRange) via Bluetooth.',
       'how.s3.title': 'Stay on top',
       'how.s3.text': 'Follow trends, show your history at doctor visits and export your data as a file at any time. Everything stays on your phone.',
       'how.disclaimer': 'Note: Medinote is a documentation tool and does not replace medical advice. Always make dosage decisions together with your doctor.',
@@ -160,7 +164,7 @@
       'footer.privacy': 'Privacy policy',
       'footer.contact': 'Contact',
       'footer.disclaimer': 'Medinote does not replace medical advice, diagnosis or treatment. Always consult your doctor with questions about your therapy.',
-      'footer.trademark': 'microINR® is a registered trademark of iLine Microsystems S.L. Medinote is not affiliated with iLine Microsystems.'
+      'footer.trademark': 'microINR® is a registered trademark of iLine Microsystems S.L.; CoaguChek® is a registered trademark of Roche. Medinote is not affiliated with iLine Microsystems or Roche Diagnostics.'
     }
   };
 

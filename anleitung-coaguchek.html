@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoaguChek® INRange mit Medinote koppeln – Anleitung</title>
+  <meta name="description" content="Schritt-für-Schritt-Anleitung: So richten Sie den Gerätecode ein, koppeln Ihr CoaguChek® INRange per Bluetooth mit der Medinote-App und übertragen Ihre INR-Werte.">
+  <link rel="icon" type="image/png" href="assets/icon/app-icon.png">
+  <link rel="apple-touch-icon" href="assets/icon/app-icon.png">
+  <meta name="theme-color" content="#c0564e">
+  <link rel="stylesheet" href="css/style.css">
+  <meta property="og:title" content="CoaguChek® INRange mit Medinote koppeln – Anleitung">
+  <meta property="og:description" content="In drei Teilen erklärt: Gerätecode eingeben, Bluetooth koppeln, INR-Werte übertragen.">
+  <meta property="og:url" content="https://medi-note.de/anleitung-coaguchek.html">
+  <meta property="og:image" content="https://medi-note.de/assets/icon/app-icon.png">
+  <meta property="og:type" content="article">
+
+  <style>
+    /* ---- Page-specific styles for the CoaguChek INRange pairing guide ---- */
+    .guide-intro {
+      background: linear-gradient(180deg, var(--bg-soft) 0%, #fff 100%);
+      padding: 3.4rem 0 2.4rem;
+    }
+    .guide-intro .container { max-width: 58em; text-align: center; }
+    .guide-eyebrow {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-weight: 600; font-size: 0.88rem;
+      padding: 0.35rem 0.9rem; border-radius: 999px; margin-bottom: 1.1rem;
+    }
+    .guide-intro h1 {
+      font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+      line-height: 1.14; letter-spacing: -0.02em; margin-bottom: 0.9rem;
+    }
+    .guide-intro .lead { color: var(--ink-soft); font-size: 1.13rem; max-width: 42em; margin: 0 auto; }
+    .guide-callout {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      margin-top: 1.6rem; padding: 0.6rem 1.1rem;
+      background: var(--success-soft); color: #2c6b2f;
+      border: 1px solid #bfe0c1; border-radius: 999px;
+      font-weight: 600; font-size: 0.95rem;
+    }
+
+    /* Overview / roadmap */
+    .roadmap {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem;
+      max-width: 60em; margin: 2.4rem auto 0; text-align: left;
+    }
+    .roadmap a {
+      display: block; text-decoration: none; color: inherit;
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 1.1rem 1.2rem; transition: border-color .15s, transform .15s;
+    }
+    .roadmap a:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .roadmap .n { color: var(--accent); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.04em; }
+    .roadmap strong { display: block; margin: 0.15rem 0 0.25rem; font-size: 1.02rem; }
+    .roadmap span { color: var(--ink-soft); font-size: 0.92rem; }
+
+    .part { padding: 3.4rem 0; scroll-margin-top: 80px; }
+    .part-alt { background: var(--bg-soft); }
+    .part-head { max-width: 48em; margin: 0 auto 2.4rem; text-align: center; }
+    .part-tag {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 0.8rem; letter-spacing: 0.03em;
+      padding: 0.3rem 0.85rem; border-radius: 999px; margin-bottom: 0.8rem;
+    }
+    .part-head h2 { font-size: clamp(1.6rem, 2.8vw, 2.15rem); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .part-head p { color: var(--ink-soft); font-size: 1.05rem; }
+
+    /* Steps */
+    .gstep {
+      display: grid; grid-template-columns: 1fr minmax(240px, 320px);
+      gap: 2.8rem; align-items: center; padding: 2.2rem 0;
+    }
+    .gstep + .gstep { border-top: 1px solid var(--line); }
+    .gnum {
+      display: grid; place-items: center; width: 44px; height: 44px;
+      border-radius: 50%; background: var(--accent); color: #fff;
+      font-weight: 800; font-size: 1.15rem; margin-bottom: 0.9rem;
+    }
+    .gstep h3 { font-size: 1.3rem; letter-spacing: -0.01em; margin-bottom: 0.7rem; }
+    .gstep p { color: var(--ink-soft); margin-bottom: 0.6rem; }
+    .gstep p:last-child { margin-bottom: 0; }
+    .gstep .k { color: var(--ink); font-weight: 600; }
+    .gstep .media { justify-self: center; }
+    .gstep ol { color: var(--ink-soft); padding-left: 1.25rem; margin: 0.2rem 0 0.8rem; }
+    .gstep ol li { margin-bottom: 0.4rem; }
+
+    /* Menu path breadcrumb, e.g. Hauptmenü › Einstellungen › Datenübertragung */
+    .path {
+      display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.35rem;
+      background: var(--accent-soft); border-radius: 10px;
+      padding: 0.45rem 0.75rem; margin: 0.2rem 0 0.9rem;
+      font-size: 0.95rem; font-weight: 600; color: var(--accent-dark);
+    }
+    .path i { font-style: normal; opacity: 0.55; }
+
+    /* ---- CoaguChek INRange device mockup (pure CSS) ---- */
+    .ccs { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+    .cc { width: 186px; }
+    .cc-body {
+      background: linear-gradient(180deg, #fbf9f4 0%, #ece7dd 100%);
+      border: 1px solid #ddd6c9;
+      border-radius: 26px 26px 20px 20px;
+      padding: 9px 9px 11px;
+      box-shadow: var(--shadow);
+    }
+    .cc-bezel {
+      background: linear-gradient(180deg, #8fc0dc 0%, #6ba6c8 100%);
+      border-radius: 20px; padding: 7px;
+    }
+    .cc-brand {
+      text-align: center; font-size: 0.56rem; font-weight: 700; font-style: italic;
+      color: #35505f; letter-spacing: 0.01em; margin-bottom: 5px;
+    }
+    .cc-screen {
+      background: #fff; border: 1px solid #4a5560; border-radius: 3px;
+      overflow: hidden; font-size: 0.6rem; line-height: 1.35;
+    }
+    .cc-title {
+      background: #16181c; color: #fff; text-align: center;
+      font-weight: 600; padding: 3px 4px; font-size: 0.6rem;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+    }
+    .cc-list { padding: 5px 0 6px; min-height: 132px; display: flex; flex-direction: column; }
+    .cc-row {
+      background: linear-gradient(180deg, #eceded 0%, #cfd1d3 100%);
+      border-top: 1px solid #fff; color: #1d2024;
+      padding: 3px 6px; display: flex; align-items: center; gap: 4px;
+    }
+    .cc-row.is-sel { background: #3a4da4; color: #fff; border-top-color: #3a4da4; }
+    .cc-row .dot {
+      margin-left: auto; width: 9px; height: 9px; border-radius: 50%;
+      background: #fff; border: 1px solid #8d9095; flex: 0 0 auto;
+    }
+    .cc-row .dot.on { background: #35bf3f; border-color: #2a8f31; box-shadow: inset 0 0 0 1px #fff; }
+    .cc-row .ico { flex: 0 0 auto; font-size: 0.6rem; }
+    .cc-foot {
+      margin-top: auto; padding: 3px 6px 0; text-align: right;
+      color: #7b7f85; font-size: 0.55rem;
+    }
+    .cc-center { padding: 10px 6px; text-align: center; color: #1d2024; }
+    .cc-center .big { font-size: 1.5rem; line-height: 1; margin: 6px 0; color: #2f7fbf; }
+    .cc-center .qr {
+      width: 58px; height: 58px; margin: 5px auto;
+      background:
+        repeating-linear-gradient(90deg, #16181c 0 3px, #fff 3px 6px),
+        repeating-linear-gradient(0deg, #16181c 0 3px, #fff 3px 6px);
+      background-blend-mode: difference; background-color: #fff;
+    }
+    .cc-center .mono { font-size: 0.5rem; letter-spacing: 0.02em; color: #55595e; }
+    .cc-keys { display: flex; align-items: stretch; gap: 4px; margin-top: 7px; }
+    .cc-keys span {
+      flex: 1; background: linear-gradient(180deg, #fcfaf5 0%, #e6e0d5 100%);
+      border: 1px solid #d7d0c3; border-radius: 5px;
+      display: grid; place-items: center; padding: 2px 0;
+      font-size: 0.58rem; color: #5d6068; min-height: 18px;
+    }
+    .cc-keys .nav { flex: 0.8; line-height: 0.85; font-size: 0.42rem; }
+    .cc-keys .is-press { background: linear-gradient(180deg, #f6ded9 0%, #edc7c0 100%); border-color: var(--accent); color: var(--accent-dark); font-weight: 700; }
+    .cc-cap { margin-top: 0.5rem; text-align: center; font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); }
+    .cc-arrow {
+      text-align: center; color: var(--accent);
+      font-weight: 700; font-size: 0.78rem; margin: 0.1rem 0;
+    }
+    .cc-arrow .a { display: block; font-size: 1.5rem; line-height: 1; }
+    .bt { width: 0.85em; height: 0.85em; vertical-align: -0.1em; }
+    .cc-center .bt-big { width: 26px; height: 26px; color: #2f7fbf; margin: 7px auto; display: block; }
+
+    /* Inline key badge used in body copy */
+    .key {
+      display: inline-grid; place-items: center; min-width: 1.35em; height: 1.35em;
+      padding: 0 0.3em; border: 1px solid var(--line); border-radius: 5px;
+      background: #fff; font-size: 0.85em; vertical-align: baseline;
+    }
+
+    /* Callout boxes */
+    .tip { border-radius: var(--radius); padding: 1rem 1.25rem; font-size: 0.98rem; }
+    .tip-warn { background: #fff6e0; border: 1px solid #eeddaa; color: #7a5c00; }
+    .tip-info {
+      background: var(--success-soft); border: 1px solid #bfe0c1; color: #2c6b2f;
+      max-width: 54em; margin: 2.4rem auto 0; text-align: center; font-weight: 500;
+    }
+    .tip-priv { background: #eef3fb; border: 1px solid #cbd9ee; color: #33507d; }
+
+    /* Prerequisites */
+    .prep { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem 1.8rem; max-width: 60em; margin: 0 auto; }
+    .prep h3 { font-size: 1.15rem; margin-bottom: 0.9rem; }
+    .prep ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem 1.6rem; }
+    .prep li { display: flex; align-items: flex-start; gap: 0.55rem; color: var(--ink-soft); }
+    .prep li::before { content: "•"; color: var(--accent); font-weight: 800; }
+
+    /* Transfer cards */
+    .transfer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .transfer-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.8rem 1.7rem; }
+    .transfer-card .lbl {
+      display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+      background: var(--accent); color: #fff; font-weight: 800; font-size: 1.1rem; margin-bottom: 0.9rem;
+    }
+    .transfer-card h3 { font-size: 1.18rem; margin-bottom: 0.6rem; }
+    .transfer-card p { color: var(--ink-soft); margin-bottom: 0.8rem; }
+    .transfer-card ol { color: var(--ink-soft); padding-left: 1.2rem; margin-bottom: 0.9rem; }
+    .transfer-card ol li { margin-bottom: 0.55rem; }
+
+    /* FAQ / troubleshooting */
+    .faq { max-width: 60em; margin: 0 auto; }
+    .faq details {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 0.9rem 1.2rem; margin-bottom: 0.7rem;
+    }
+    .faq summary { font-weight: 600; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.6rem; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::before { content: "+"; color: var(--accent); font-weight: 800; font-size: 1.15rem; }
+    .faq details[open] summary::before { content: "–"; }
+    .faq p { color: var(--ink-soft); margin-top: 0.6rem; padding-left: 1.55rem; }
+
+    .checklist { background: var(--accent-soft); border-radius: var(--radius); padding: 1.8rem 2rem; max-width: 60em; margin: 0 auto 2rem; }
+    .checklist h3 { color: var(--accent-dark); font-size: 1.2rem; margin-bottom: 1rem; }
+    .checklist ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 1.6rem; }
+    .checklist li { display: flex; align-items: flex-start; gap: 0.55rem; color: var(--ink); }
+    .checklist li::before { content: "✓"; color: var(--success); font-weight: 800; }
+
+    .back-link { display: inline-block; margin-top: 2.6rem; color: var(--accent); font-weight: 600; text-decoration: none; }
+    .back-link:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .roadmap { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 780px) {
+      .gstep { grid-template-columns: 1fr; gap: 1.6rem; }
+      .gstep .media { order: 2; }
+      .transfer-grid { grid-template-columns: 1fr; }
+      .checklist ul, .prep ul { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container">
+    <a class="brand" href="index.html" aria-label="Medinote – Startseite">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="assets/icon/app-icon.png" width="30" height="30" alt="">
+      </span>
+      <span class="brand-name">Medinote</span>
+    </a>
+    <div class="nav-menu">
+      <a href="index.html#features">Funktionen</a>
+      <a href="anleitung-microinr.html">microINR®-Anleitung</a>
+      <a href="index.html">Zurück zur Startseite</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ INTRO ============ -->
+  <section class="guide-intro">
+    <div class="container">
+      <span class="guide-eyebrow">Anleitung für Patientinnen und Patienten</span>
+      <h1>CoaguChek® INRange mit Medinote koppeln</h1>
+      <p class="lead">Ihr CoaguChek® INRange verschlüsselt seine Messwerte. Deshalb geben Sie der App einmalig den Gerätecode Ihres Messgeräts – danach koppeln Sie beide Geräte per Bluetooth und Ihre INR-Werte kommen von selbst in Medinote an.</p>
+      <div class="guide-callout"><span aria-hidden="true">🔵</span> Bluetooth am Handy muss eingeschaltet sein.</div>
+
+      <div class="roadmap">
+        <a href="#teil1">
+          <span class="n">TEIL 1 · SCHRITT 1–5</span>
+          <strong>Gerätecode einrichten</strong>
+          <span>Code am Messgerät ablesen und in die App scannen. Nur einmal nötig.</span>
+        </a>
+        <a href="#teil2">
+          <span class="n">TEIL 2 · SCHRITT 6–9</span>
+          <strong>Bluetooth koppeln</strong>
+          <span>Am Messgerät Bluetooth einschalten und die Verbindung bestätigen.</span>
+        </a>
+        <a href="#teil3">
+          <span class="n">TEIL 3 · DANACH IMMER</span>
+          <strong>Werte übertragen</strong>
+          <span>Neue Messungen und bereits gespeicherte Werte in die App senden.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VORBEREITUNG ============ -->
+  <section class="part part-alt">
+    <div class="container">
+      <div class="prep">
+        <h3>Was Sie dafür brauchen</h3>
+        <ul>
+          <li>Ihr CoaguChek® INRange Messgerät mit geladenen Batterien</li>
+          <li>Ihr Handy mit installierter Medinote-App</li>
+          <li>Bluetooth am Handy eingeschaltet</li>
+          <li>Etwa 5 Minuten Zeit – danach läuft alles automatisch</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEIL 1 — GERÄTECODE ============ -->
+  <section class="part" id="teil1">
+    <div class="container">
+      <header class="part-head">
+        <span class="part-tag">TEIL 1</span>
+        <h2>Gerätecode einrichten</h2>
+        <p>Ihr Messgerät verschlüsselt seine Ergebnisse. Damit Medinote sie lesen kann, braucht die App einmalig den Schlüsselcode des Geräts.</p>
+      </header>
+
+      <!-- Schritt 1 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">1</div>
+          <h3>Am Messgerät den Info-Bildschirm öffnen</h3>
+          <p>Schalten Sie das Messgerät mit der Eingabe-Taste <span class="key">◼</span> ein und warten Sie, bis das <span class="k">Hauptmenü</span> erscheint.</p>
+          <div class="path">Hauptmenü <i>›</i> Sonstiges <i>›</i> Info</div>
+          <p>Wählen Sie mit den Pfeil-Tasten <span class="key">▲</span> <span class="key">▼</span> den Eintrag <span class="k">Sonstiges</span> und bestätigen Sie mit <span class="key">◼</span>. Wählen Sie dort <span class="k">Info</span> und bestätigen Sie erneut.</p>
+        </div>
+        <div class="media">
+          <div class="ccs">
+            <figure class="cc">
+              <div class="cc-body">
+                <div class="cc-bezel">
+                  <div class="cc-brand">CoaguChek® INRange</div>
+                  <div class="cc-screen">
+                    <div class="cc-title">Hauptmenü</div>
+                    <div class="cc-list">
+                      <div class="cc-row">Messung</div>
+                      <div class="cc-row">Meine Ergebnisse</div>
+                      <div class="cc-row">Erinnerungen</div>
+                      <div class="cc-row">Einstellungen</div>
+                      <div class="cc-row is-sel">Sonstiges</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cc-keys"><span>↰</span><span class="nav">▲<br>▼</span><span class="is-press">◼</span></div>
+              </div>
+              <figcaption class="cc-cap">Hauptmenü</figcaption>
+            </figure>
+            <div class="cc-arrow"><span class="a" aria-hidden="true">↓</span></div>
+            <figure class="cc">
+              <div class="cc-body">
+                <div class="cc-bezel">
+                  <div class="cc-brand">CoaguChek® INRange</div>
+                  <div class="cc-screen">
+                    <div class="cc-title">Sonstiges</div>
+                    <div class="cc-list">
+                      <div class="cc-row is-sel">Info</div>
+                      <div class="cc-row">Speicher löschen</div>
+                      <div class="cc-row">Gerätemeldungen</div>
+                      <div class="cc-row">Anzeigetest</div>
+                      <div class="cc-row">Firmware-Update</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cc-keys"><span>↰</span><span class="nav">▲<br>▼</span><span class="is-press">◼</span></div>
+              </div>
+              <figcaption class="cc-cap">Menü „Sonstiges“</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schritt 2 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">2</div>
+          <h3>Eine Seite weiter zum Schlüsselcode</h3>
+          <p>Zuerst sehen Sie Seriennummer, Firmware-Version und das Datum der Ersteinrichtung.</p>
+          <p>Drücken Sie die Eingabe-Taste <span class="key">◼</span> noch einmal. Jetzt erscheint der Bildschirm mit dem <span class="k">QR-Code</span>, dem <span class="k">CoaguChek-Schlüsselcode</span> und der BLE-Geräteadresse.</p>
+          <p class="tip tip-warn"><strong>Diesen Bildschirm bitte offen lassen</strong> – im nächsten Schritt scannen Sie ihn mit dem Handy ab.</p>
+        </div>
+        <div class="media">
+          <div class="ccs">
+            <figure class="cc">
+              <div class="cc-body">
+                <div class="cc-bezel">
+                  <div class="cc-brand">CoaguChek® INRange</div>
+                  <div class="cc-screen">
+                    <div class="cc-title">Info</div>
+                    <div class="cc-center">
+                      <div style="font-size:0.55rem;color:#55595e;">Seriennummer<br><strong style="color:#1d2024;">00010000</strong></div>
+                      <div style="font-size:0.55rem;color:#55595e;margin-top:7px;">Firmware<br><strong style="color:#1d2024;">01.05.00 YT</strong></div>
+                      <div style="font-size:0.55rem;color:#55595e;margin-top:7px;">Ersteinrichtung<br><strong style="color:#1d2024;">11 Mär 2022</strong></div>
+                      <div class="cc-foot" style="margin-top:9px;">Weiter ◼</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cc-keys"><span>↰</span><span class="nav">▲<br>▼</span><span class="is-press">◼</span></div>
+              </div>
+              <figcaption class="cc-cap">1. Info-Seite</figcaption>
+            </figure>
+            <div class="cc-arrow"><span class="a" aria-hidden="true">↓</span></div>
+            <figure class="cc">
+              <div class="cc-body">
+                <div class="cc-bezel">
+                  <div class="cc-brand">CoaguChek® INRange</div>
+                  <div class="cc-screen">
+                    <div class="cc-title">Info</div>
+                    <div class="cc-center">
+                      <div class="qr" aria-hidden="true"></div>
+                      <div style="font-size:0.53rem;font-weight:600;">CoaguChek-Schlüsselcode</div>
+                      <div class="mono">01 02 03 04 – 05 06 07 08<br>09 10 0A 0B – 0C 0D 0E 0F</div>
+                      <div style="font-size:0.53rem;font-weight:600;margin-top:5px;">Adresse des BLE-Gerätes</div>
+                      <div class="mono">B8-78-79-38-88-7D</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cc-keys"><span>↰</span><span class="nav">▲<br>▼</span><span>◼</span></div>
+              </div>
+              <figcaption class="cc-cap">2. Info-Seite – hier steht Ihr Code</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schritt 3 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">3</div>
+          <h3>In Medinote den Gerätecode öffnen</h3>
+          <p>Öffnen Sie in der Medinote-App den Bildschirm <span class="k">CoaguChek INRange</span>.</p>
+          <p>Im Feld <span class="k">„Gerätecode eingeben“</span> haben Sie zwei Möglichkeiten:</p>
+          <ol>
+            <li><span class="k">Code scannen</span> – der einfachste Weg (Schritt 4).</li>
+            <li><span class="k">oder manuell eingeben</span> – die 16 Zahlen-Buchstaben-Paare abtippen und auf <span class="k">„Code speichern“</span> tippen.</li>
+          </ol>
+        </div>
+        <div class="media">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img src="assets/anleitung/coaguchek-code-eingeben.png" alt="Medinote-Bildschirm mit dem Feld „Gerätecode eingeben“, der Schaltfläche „Code scannen“ und dem Eingabefeld für die manuelle Eingabe" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schritt 4 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">4</div>
+          <h3>Code scannen</h3>
+          <p>Tippen Sie auf <span class="k">„Code scannen“</span> und halten Sie die Kamera auf den QR-Code am Messgerät – etwa 10–15 cm Abstand.</p>
+          <p>Sobald der Code im Rahmen liegt, wird er automatisch erkannt. Sie müssen nichts weiter drücken.</p>
+        </div>
+        <div class="media">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img src="assets/anleitung/coaguchek-code-scannen.png" alt="Medinote-Bildschirm „Gerätecode scannen“: die Kamera ist auf den QR-Code im Info-Bildschirm des CoaguChek INRange gerichtet" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schritt 5 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">5</div>
+          <h3>Code gespeichert – Teil 1 fertig</h3>
+          <p>Medinote bestätigt: <span class="k">„Ihr CoaguChek INRange ist eingerichtet“</span>. Tippen Sie auf <span class="k">„Verstanden“</span>.</p>
+          <p>Der Code bleibt sicher auf Ihrem Telefon gespeichert. Sie müssen ihn nur einmal eingeben – über <span class="k">„Code ändern“</span> oder <span class="k">„Code entfernen“</span> können Sie ihn jederzeit anpassen.</p>
+          <p class="tip tip-priv">Der Gerätecode gehört zu Ihrem persönlichen Messgerät. Geben Sie ihn nicht weiter und veröffentlichen Sie kein Foto des Info-Bildschirms.</p>
+        </div>
+        <div class="media">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img src="assets/anleitung/coaguchek-eingerichtet.png" alt="Bestätigung in Medinote: „Ihr CoaguChek INRange ist eingerichtet“ mit Schaltfläche „Verstanden“" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEIL 2 — KOPPELN ============ -->
+  <section class="part part-alt" id="teil2">
+    <div class="container">
+      <header class="part-head">
+        <span class="part-tag">TEIL 2</span>
+        <h2>Bluetooth koppeln</h2>
+        <p>Jetzt verbinden Sie Messgerät und Handy miteinander. Auch das ist nur einmal nötig.</p>
+      </header>
+
+      <!-- Schritt 6 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">6</div>
+          <h3>Am Messgerät auf Bluetooth umstellen</h3>
+          <div class="path">Hauptmenü <i>›</i> Einstellungen <i>›</i> Datenübertragung</div>
+          <ol>
+            <li>Wählen Sie <span class="k">Einstellungen</span> und bestätigen Sie mit <span class="key">◼</span>.</li>
+            <li>Blättern Sie mit <span class="key">▼</span> zu <span class="k">Datenübertragung</span> und bestätigen Sie mit <span class="key">◼</span>.</li>
+            <li>Wählen Sie <span class="k">Bluetooth</span> und drücken Sie <span class="key">◼</span> – ein <span class="k">grüner Punkt</span> zeigt die aktive Einstellung.</li>
+            <li>Drücken Sie <span class="key">◼</span> noch einmal, um zu <span class="k">speichern</span>.</li>
+          </ol>
+          <p class="tip tip-warn"><strong>Wichtig:</strong> Steht hier <span class="k">USB</span> oder <span class="k">Aus</span>, findet das Handy Ihr Messgerät nicht.</p>
+        </div>
+        <div class="media">
+          <div class="ccs">
+            <figure class="cc">
+              <div class="cc-body">
+                <div class="cc-bezel">
+                  <div class="cc-brand">CoaguChek® INRange</div>
+                  <div class="cc-screen">
+                    <div class="cc-title">Einstellungen</div>
+                    <div class="cc-list">
+                      <div class="cc-row">Ergebnisformat</div>
+                      <div class="cc-row">Zielbereiche definieren</div>
+                      <div class="cc-row">Signallautstärke</div>
+                      <div class="cc-row">Helligkeit der Anzeige</div>
+                      <div class="cc-row">Tastenton</div>
+                      <div class="cc-row is-sel">Datenübertragung</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cc-keys"><span>↰</span><span class="nav">▲<br>▼</span><span class="is-press">◼</span></div>
+              </div>
+              <figcaption class="cc-cap">Einstellungen</figcaption>
+            </figure>
+            <div class="cc-arrow"><span class="a" aria-hidden="true">↓</span></div>
+            <figure class="cc">
+              <div class="cc-body">
+                <div class="cc-bezel">
+                  <div class="cc-brand">CoaguChek® INRange</div>
+                  <div class="cc-screen">
+                    <div class="cc-title">Datenübertragung</div>
+                    <div class="cc-list">
+                      <div class="cc-row">Aus <span class="dot"></span></div>
+                      <div class="cc-row is-sel"><svg class="bt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 7.5 17.5 16.5 12 21V3l5.5 4.5L6.5 16.5"/></svg> Bluetooth <span class="dot on"></span></div>
+                      <div class="cc-row">USB <span class="dot"></span></div>
+                      <div class="cc-foot">Speichern ◼</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cc-keys"><span>↰</span><span class="nav">▲<br>▼</span><span class="is-press">◼</span></div>
+              </div>
+              <figcaption class="cc-cap">Bluetooth auswählen &amp; speichern</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schritt 7 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">7</div>
+          <h3>Medinote wartet auf das Gerät</h3>
+          <p>Öffnen Sie in Medinote wieder den Bildschirm <span class="k">CoaguChek INRange</span>. Oben steht <span class="k">„Bereit für Ihr CoaguChek INRange“</span> und darunter <span class="k">„Suche in der Nähe nach Ihrem Messgerät…“</span>.</p>
+          <p class="tip tip-warn"><strong>Beim ersten Koppeln:</strong> Lassen Sie diesen Bildschirm geöffnet und legen Sie Handy und Messgerät nebeneinander (höchstens 1–2 Meter Abstand).</p>
+        </div>
+        <div class="media">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img src="assets/anleitung/coaguchek-bereit.png" alt="Medinote-Bildschirm „Bereit für Ihr CoaguChek INRange“ mit dem Hinweis „Suche in der Nähe nach Ihrem Messgerät“ und gespeichertem Gerätecode" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schritt 8 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">8</div>
+          <h3>Am Messgerät die Übertragung starten</h3>
+          <div class="path">Hauptmenü <i>›</i> Meine Ergebnisse <i>›</i> Daten übertragen</div>
+          <ol>
+            <li>Wählen Sie im Hauptmenü <span class="k">Meine Ergebnisse</span> und bestätigen Sie mit <span class="key">◼</span>.</li>
+            <li>Wählen Sie <span class="k">Daten übertragen</span> und bestätigen Sie mit <span class="key">◼</span>.</li>
+          </ol>
+          <p>Auf dem Display erscheint <span class="k">„Bluetooth wird aktiviert“</span> mit dem Bluetooth-Symbol. Das Messgerät wartet nun auf die Verbindung.</p>
+        </div>
+        <div class="media">
+          <div class="ccs">
+            <figure class="cc">
+              <div class="cc-body">
+                <div class="cc-bezel">
+                  <div class="cc-brand">CoaguChek® INRange</div>
+                  <div class="cc-screen">
+                    <div class="cc-title">Meine Ergebnisse</div>
+                    <div class="cc-list">
+                      <div class="cc-row">Ergebnisspeicher</div>
+                      <div class="cc-row">Verlauf</div>
+                      <div class="cc-row">Zielbereich</div>
+                      <div class="cc-row is-sel">Daten übertragen</div>
+                      <div class="cc-row">Berichte</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cc-keys"><span>↰</span><span class="nav">▲<br>▼</span><span class="is-press">◼</span></div>
+              </div>
+              <figcaption class="cc-cap">Meine Ergebnisse</figcaption>
+            </figure>
+            <div class="cc-arrow"><span class="a" aria-hidden="true">↓</span></div>
+            <figure class="cc">
+              <div class="cc-body">
+                <div class="cc-bezel">
+                  <div class="cc-brand">CoaguChek® INRange</div>
+                  <div class="cc-screen">
+                    <div class="cc-title">Daten übertragen</div>
+                    <div class="cc-center">
+                      <div style="font-size:0.56rem;font-weight:600;">Bluetooth wird aktiviert</div>
+                      <svg class="bt-big" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 7.5 17.5 16.5 12 21V3l5.5 4.5L6.5 16.5"/></svg>
+                      <div style="font-size:0.56rem;color:#55595e;">BT Smart</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cc-keys"><span>↰</span><span class="nav">▲<br>▼</span><span>◼</span></div>
+              </div>
+              <figcaption class="cc-cap">Gerät wartet auf die Verbindung</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schritt 9 -->
+      <div class="gstep">
+        <div class="copy">
+          <div class="gnum">9</div>
+          <h3>Kopplung bestätigen – fertig!</h3>
+          <p>Auf dem Handy erscheint der Hinweis <span class="k">„Bluetooth Pairing Request“</span>. Tippen Sie auf <span class="k">„Pair“</span> (auf Deutsch: „Koppeln“).</p>
+          <p>In Medinote steht jetzt <span class="k">„Verbinde mit Ihrem CoaguChek INRange…“</span> – kurz darauf sind Ihre Werte in der App.</p>
+        </div>
+        <div class="media">
+          <div class="phone phone-sm">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <img src="assets/anleitung/coaguchek-pairing.png" alt="iPhone-Dialog „Bluetooth Pairing Request“: CoaguChek möchte sich mit dem iPhone koppeln, mit den Schaltflächen „Cancel“ und „Pair“" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="tip tip-info">Diese Kopplung ist nur einmal nötig. Danach erkennt Medinote Ihr Messgerät von selbst – Sie müssen den Bildschirm nicht mehr offen lassen.</p>
+    </div>
+  </section>
+
+  <!-- ============ TEIL 3 — ÜBERTRAGEN ============ -->
+  <section class="part" id="teil3">
+    <div class="container">
+      <header class="part-head">
+        <span class="part-tag">TEIL 3</span>
+        <h2>Messwerte übertragen</h2>
+        <p>So kommen Ihre INR-Ergebnisse ab jetzt in die App.</p>
+      </header>
+
+      <div class="transfer-grid">
+        <article class="transfer-card">
+          <div class="lbl">A</div>
+          <h3>Nach einer neuen Messung</h3>
+          <p>Führen Sie die Messung wie gewohnt durch. Sobald das Ergebnis auf dem Display steht, bietet Ihnen das Messgerät <span class="k">„Daten übertragen“</span> an.</p>
+          <ol>
+            <li>Ergebnis abwarten.</li>
+            <li><span class="k">Daten übertragen</span> wählen und mit <span class="key">◼</span> bestätigen.</li>
+            <li>Das Messergebnis wird an Medinote gesendet – fertig.</li>
+          </ol>
+          <p class="tip tip-warn"><strong>Tipp:</strong> Handy in der Nähe lassen. Die App muss dafür nicht geöffnet sein.</p>
+        </article>
+
+        <article class="transfer-card">
+          <div class="lbl">B</div>
+          <h3>Bereits gespeicherte Werte senden</h3>
+          <p>Alle im Messgerät gespeicherten Ergebnisse übertragen Sie jederzeit nachträglich:</p>
+          <ol>
+            <li>Messgerät einschalten und warten, bis das <span class="k">Hauptmenü</span> erscheint.</li>
+            <li><span class="k">Meine Ergebnisse</span> wählen und mit <span class="key">◼</span> bestätigen.</li>
+            <li><span class="k">Daten übertragen</span> wählen und mit <span class="key">◼</span> bestätigen.</li>
+            <li>Das Display zeigt <span class="k">„Bluetooth wird aktiviert“</span> – die Werte gehen automatisch an die App.</li>
+          </ol>
+          <p>Bereits vorhandene Werte erkennt Medinote und legt sie nicht doppelt an.</p>
+        </article>
+      </div>
+
+      <p class="tip tip-info">Ihre Werte bleiben auf Ihrem Telefon. Medinote braucht kein Konto und sendet Ihre Messwerte an keinen Server.</p>
+    </div>
+  </section>
+
+  <!-- ============ HILFE ============ -->
+  <section class="part part-alt">
+    <div class="container">
+      <header class="part-head">
+        <h2>Wenn es nicht klappt</h2>
+        <p>Meistens liegt es an einer dieser Kleinigkeiten.</p>
+      </header>
+
+      <div class="checklist">
+        <h3>Kurz prüfen:</h3>
+        <ul>
+          <li>Bluetooth am Handy eingeschaltet?</li>
+          <li>Am Messgerät: Datenübertragung auf <strong>Bluetooth</strong> gestellt?</li>
+          <li>Gerätecode in Medinote gespeichert?</li>
+          <li>Gerät nah am Handy (max. 1–2 m)?</li>
+          <li>Am Messgerät <strong>Daten übertragen</strong> gestartet?</li>
+          <li>Batterien des Messgeräts noch voll genug?</li>
+        </ul>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Die App findet mein Messgerät nicht</summary>
+          <p>Prüfen Sie am Messgerät unter <strong>Einstellungen › Datenübertragung</strong>, ob der grüne Punkt neben <strong>Bluetooth</strong> steht. Starten Sie danach am Gerät <strong>Meine Ergebnisse › Daten übertragen</strong> – erst dann sendet das Messgerät ein Signal, auf das die App reagieren kann.</p>
+        </details>
+        <details>
+          <summary>Der QR-Code lässt sich nicht scannen</summary>
+          <p>Achten Sie auf gutes Licht ohne Spiegelungen auf dem Display und halten Sie das Handy etwa 10–15 cm entfernt. Klappt es weiterhin nicht, tippen Sie den Code unter <strong>„oder manuell eingeben“</strong> ein – die 16 Paare stehen direkt unter dem QR-Code auf dem Messgerät.</p>
+        </details>
+        <details>
+          <summary>Wo finde ich den Gerätecode noch?</summary>
+          <p>Derselbe Code steht als 2D-Barcode auch im Batteriefach des Messgeräts – sichtbar, wenn die Batterien entnommen sind.</p>
+        </details>
+        <details>
+          <summary>Es kommen keine Werte an, obwohl gekoppelt ist</summary>
+          <p>Starten Sie die Übertragung am Messgerät erneut über <strong>Meine Ergebnisse › Daten übertragen</strong>. Hilft das nicht, schalten Sie Bluetooth am Handy einmal aus und wieder ein und öffnen Sie in Medinote den Bildschirm <strong>CoaguChek INRange</strong>.</p>
+        </details>
+        <details>
+          <summary>Ich habe ein neues Messgerät bekommen</summary>
+          <p>Jedes Messgerät hat einen eigenen Gerätecode. Tippen Sie in Medinote auf <strong>„Code ändern“</strong> und scannen Sie den Code des neuen Geräts. Danach koppeln Sie es wie in Teil 2 beschrieben.</p>
+        </details>
+      </div>
+
+      <div style="text-align:center;">
+        <a class="back-link" href="index.html">← Zurück zur Startseite</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">Medinote</p>
+      <p class="footer-note">Die App für Menschen unter Gerinnungshemmer-Therapie.</p>
+    </div>
+    <nav class="footer-links" aria-label="Rechtliches">
+      <a href="index.html">Startseite</a>
+      <a href="anleitung-microinr.html">microINR®-Anleitung</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutzerklärung</a>
+      <a href="mailto:kontakt@medi-note.de">Kontakt</a>
+    </nav>
+  </div>
+  <div class="container footer-legal">
+    <p>Medinote ersetzt keine ärztliche Beratung, Diagnose oder Behandlung. Wenden Sie sich bei Fragen zu Ihrer Therapie immer an Ihre Ärztin oder Ihren Arzt.</p>
+    <p>CoaguChek® ist eine eingetragene Marke von Roche. Medinote steht in keiner geschäftlichen Verbindung zu Roche Diagnostics.</p>
+    <p>© 2026 Medinote</p>
+  </div>
+</footer>
+
+</body>
+</html>
