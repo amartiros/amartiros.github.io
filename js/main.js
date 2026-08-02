@@ -9,7 +9,7 @@
   var translations = {
     de: {
       'meta.title': 'Medinote – INR-Werte & Medikamente sicher dokumentieren',
-      'meta.description': 'Medinote hilft Patientinnen und Patienten unter Antikoagulations-Therapie, INR-Werte und Medikamente einfach zu dokumentieren – mit Erinnerungen, Wochenplan und automatischer microINR®-Übertragung. Ohne Konto nutzbar: Ihre Daten bleiben auf Ihrem Telefon.',
+      'meta.description': 'Medinote hilft Patientinnen und Patienten unter Antikoagulations-Therapie, INR-Werte und Medikamente einfach zu dokumentieren – mit Erinnerungen, Wochenplan und automatischer microINR®-Übertragung. Ohne Konto nutzbar: Dann bleiben Ihre Daten auf Ihrem Telefon.',
 
       'nav.features': 'Funktionen',
       'nav.screenshots': 'Einblicke',
@@ -19,19 +19,19 @@
 
       'hero.badge': 'Pilotphase in Deutschland – jetzt mittesten',
       'hero.title': 'Ihre Gerinnungstherapie. Sicher dokumentiert.',
-      'hero.lead': 'Medinote begleitet Menschen unter Antikoagulations-Therapie – z. B. mit Marcumar, Falithrom oder Warfarin. Mit Wochenplan und zuverlässigen Erinnerungen behalten Sie Ihre Einnahmen im Griff, Ihre INR-Werte übernimmt die App auf Wunsch automatisch vom Messgerät – microINR® oder CoaguChek® INRange. Und das Beste: Sie brauchen kein Konto – alle Daten bleiben auf Ihrem Telefon.',
+      'hero.lead': 'Medinote begleitet Menschen unter Antikoagulations-Therapie – z. B. mit Marcumar, Falithrom oder Warfarin. Mit Wochenplan und zuverlässigen Erinnerungen behalten Sie Ihre Einnahmen im Griff, Ihre INR-Werte übernimmt die App auf Wunsch automatisch vom Messgerät – microINR® oder CoaguChek® INRange. Sie brauchen kein Konto: Ohne Anmeldung bleiben alle Daten auf Ihrem Telefon.',
       'hero.ctaPrimary': 'Jetzt Tester werden',
       'hero.ctaSecondary': 'Funktionen ansehen',
 
       'trust.noaccount': 'Ohne Konto nutzbar',
-      'trust.encrypted': 'Daten bleiben auf Ihrem Telefon',
-      'trust.gdpr': 'DSGVO-konform',
+      'trust.local': 'Ohne Konto: Daten bleiben lokal',
+      'trust.noads': 'Keine Werbung, kein Datenverkauf',
       'trust.languages': 'Deutsch & Englisch',
 
       'features.title': 'Alles für Ihre Therapie – in einer App',
       'features.sub': 'Entwickelt für den Alltag mit Gerinnungshemmern: übersichtlich, gut lesbar und einfach zu bedienen.',
       'features.reminders.title': 'Erinnerungen, auf die Verlass ist',
-      'features.reminders.text': 'Nie wieder eine Einnahme vergessen: Medinote erinnert Sie pünktlich per Push-Benachrichtigung – und mit einem Tipp markieren Sie die Einnahme direkt als „Eingenommen“ oder „Nicht eingenommen“.',
+      'features.reminders.text': 'Medinote meldet sich zur eingestellten Zeit per Push-Benachrichtigung – und mit einem Tipp markieren Sie die Einnahme direkt als „Eingenommen“ oder „Nicht eingenommen“. So bleibt Ihr Einnahmeverlauf lückenlos.',
       'features.weekplan.title': 'Ihr Wochenplan auf einen Blick',
       'features.weekplan.text': 'Welche Tablette an welchem Tag? Der Wochenplan zeigt Ihre Dosierung für jeden Wochentag – klar und übersichtlich, genau wie auf dem Dosierungsplan Ihrer Ärztin oder Ihres Arztes.',
       'features.device.title': 'Messgerät: Werte kommen automatisch',
@@ -43,7 +43,7 @@
       'features.meds.title': 'Medikamenten-Tagebuch',
       'features.meds.text': 'Marcumar/Falithrom, Warfarin, Acenocoumarol und weitere Medikamente mit einem Tipp protokollieren – Ihr vollständiger Einnahmeverlauf, jederzeit griffbereit beim Arztbesuch.',
       'features.local.title': 'Ihre Daten bleiben bei Ihnen',
-      'features.local.text': 'Medinote funktioniert ganz ohne Konto und ohne Registrierung: Alle Daten werden ausschließlich auf Ihrem Telefon gespeichert. Ein Konto erstellen Sie nur, wenn Sie es möchten.',
+      'features.local.text': 'Medinote funktioniert ganz ohne Konto: Ohne Registrierung werden alle Daten ausschließlich auf Ihrem Telefon gespeichert. Ein Konto erstellen Sie nur, wenn Sie es möchten.',
 
       'shots.title': 'Ein Blick in die App',
       'shots.sub': 'Klare Oberfläche, große Schrift, hoher Kontrast – gestaltet für den täglichen Gebrauch.',
@@ -59,13 +59,13 @@
       'how.s2.title': 'Erfassen',
       'how.s2.text': 'Einnahmen mit einem Tipp dokumentieren – die Erinnerung meldet sich von selbst. INR-Werte übernimmt die App automatisch per Bluetooth vom Messgerät (microINR® oder CoaguChek® INRange).',
       'how.s3.title': 'Überblicken',
-      'how.s3.text': 'Trends verfolgen, den Verlauf beim Arztbesuch zeigen und Ihre Daten jederzeit als Datei exportieren. Alles bleibt dabei auf Ihrem Telefon.',
+      'how.s3.text': 'Trends verfolgen, den Verlauf beim Arztbesuch zeigen und Ihre Daten jederzeit als Datei exportieren. Ohne Konto bleibt dabei alles auf Ihrem Telefon.',
       'how.disclaimer': 'Hinweis: Medinote ist ein Werkzeug zur Dokumentation und ersetzt keine ärztliche Beratung. Entscheidungen über Ihre Dosierung treffen Sie immer gemeinsam mit Ihrer Ärztin oder Ihrem Arzt.',
 
       'privacy.title': 'Ihre Daten gehören Ihnen',
-      'privacy.sub': 'Gesundheitsdaten sind besonders sensibel. Deshalb gilt bei Medinote: Alles bleibt auf Ihrem Telefon – ein Konto ist freiwillig. Entwickelt von Anfang an nach den Vorgaben der DSGVO.',
+      'privacy.sub': 'Gesundheitsdaten sind besonders sensibel. Deshalb gilt bei Medinote: Ohne Konto bleibt alles auf Ihrem Telefon – ein Konto ist freiwillig. Entwickelt von Anfang an nach den Vorgaben der DSGVO.',
       'privacy.local.title': 'Kein Konto nötig',
-      'privacy.local.text': 'Nutzen Sie Medinote sofort und ohne Registrierung. Ihre Gesundheitsdaten – INR-Werte und Medikationseinträge – werden ausschließlich lokal auf Ihrem Telefon gespeichert.',
+      'privacy.local.text': 'Nutzen Sie Medinote sofort und ohne Registrierung. Ohne Konto werden Ihre Gesundheitsdaten – INR-Werte und Medikationseinträge – ausschließlich lokal auf Ihrem Telefon gespeichert.',
       'privacy.consent.title': 'Konto? Nur wenn Sie möchten',
       'privacy.consent.text': 'Ein Konto ist optional. Wenn Sie eines erstellen, werden Ihre Daten verschlüsselt übertragen – und nur mit Ihrer ausdrücklichen Einwilligung verarbeitet (DSGVO Art. 6 und 9), jederzeit widerrufbar.',
       'privacy.export.title': 'Export & Löschung',
@@ -89,7 +89,7 @@
 
     en: {
       'meta.title': 'Medinote – Track INR values & medication with confidence',
-      'meta.description': 'Medinote helps patients on anticoagulation therapy track INR values and medication with ease – with reminders, a weekly plan and automatic microINR® transfer. No account needed: your data stays on your phone.',
+      'meta.description': 'Medinote helps patients on anticoagulation therapy track INR values and medication with ease – with reminders, a weekly plan and automatic microINR® transfer. No account needed: without one, your data stays on your phone.',
 
       'nav.features': 'Features',
       'nav.screenshots': 'Screenshots',
@@ -99,19 +99,19 @@
 
       'hero.badge': 'Pilot phase in Germany – become a tester',
       'hero.title': 'Your anticoagulation therapy. Reliably documented.',
-      'hero.lead': 'Medinote supports people on anticoagulation therapy – e.g. with Marcumar, Falithrom or warfarin. A weekly plan and reliable reminders keep your doses on track, and the app can receive your INR readings automatically from your meter – microINR® or CoaguChek® INRange. Best of all: no account needed – all your data stays on your phone.',
+      'hero.lead': 'Medinote supports people on anticoagulation therapy – e.g. with Marcumar, Falithrom or warfarin. A weekly plan and reliable reminders keep your doses on track, and the app can receive your INR readings automatically from your meter – microINR® or CoaguChek® INRange. You don’t need an account: without one, all your data stays on your phone.',
       'hero.ctaPrimary': 'Become a tester',
       'hero.ctaSecondary': 'See features',
 
       'trust.noaccount': 'No account required',
-      'trust.encrypted': 'Your data stays on your phone',
-      'trust.gdpr': 'GDPR compliant',
+      'trust.local': 'No account: data stays local',
+      'trust.noads': 'No ads, no data selling',
       'trust.languages': 'German & English',
 
       'features.title': 'Everything for your therapy – in one app',
       'features.sub': 'Built for everyday life on anticoagulants: clear, easy to read and simple to use.',
       'features.reminders.title': 'Reminders you can count on',
-      'features.reminders.text': 'Never miss a dose again: Medinote sends a push notification right on time – and one tap marks the dose as “taken” or “skipped”, straight from the notification.',
+      'features.reminders.text': 'Medinote sends a push notification at the time you set – and one tap marks the dose as “taken” or “skipped”, straight from the notification. Your intake history stays complete.',
       'features.weekplan.title': 'Your weekly plan at a glance',
       'features.weekplan.text': 'Which tablet on which day? The weekly plan shows your dosage for every day of the week – clear and easy to read, just like the dosing schedule from your doctor.',
       'features.device.title': 'Meter: readings arrive automatically',
@@ -123,7 +123,7 @@
       'features.meds.title': 'Medication diary',
       'features.meds.text': 'Log Marcumar/Falithrom, warfarin, acenocoumarol and other medications with a single tap – your complete intake history, always at hand at doctor visits.',
       'features.local.title': 'Your data stays with you',
-      'features.local.text': 'Medinote works entirely without an account or registration: all data is stored only on your phone. You create an account only if you want to.',
+      'features.local.text': 'Medinote works entirely without an account: without registration, all data is stored only on your phone. You create an account only if you want to.',
 
       'shots.title': 'A look inside the app',
       'shots.sub': 'Clear interface, large text, high contrast – designed for daily use.',
@@ -139,13 +139,13 @@
       'how.s2.title': 'Record',
       'how.s2.text': 'Document doses with a single tap – the reminder will prompt you on time. INR readings are received automatically from your meter (microINR® or CoaguChek® INRange) via Bluetooth.',
       'how.s3.title': 'Stay on top',
-      'how.s3.text': 'Follow trends, show your history at doctor visits and export your data as a file at any time. Everything stays on your phone.',
+      'how.s3.text': 'Follow trends, show your history at doctor visits and export your data as a file at any time. Without an account, everything stays on your phone.',
       'how.disclaimer': 'Note: Medinote is a documentation tool and does not replace medical advice. Always make dosage decisions together with your doctor.',
 
       'privacy.title': 'Your data belongs to you',
-      'privacy.sub': 'Health data is highly sensitive. That is why with Medinote everything stays on your phone – an account is optional. Built to GDPR requirements from day one.',
+      'privacy.sub': 'Health data is highly sensitive. That is why with Medinote, without an account everything stays on your phone – an account is optional. Built to GDPR requirements from day one.',
       'privacy.local.title': 'No account needed',
-      'privacy.local.text': 'Use Medinote right away, without registration. Your health data – INR values and medication records – is stored only locally on your phone.',
+      'privacy.local.text': 'Use Medinote right away, without registration. Without an account, your health data – INR values and medication records – is stored only locally on your phone.',
       'privacy.consent.title': 'An account? Only if you want one',
       'privacy.consent.text': 'An account is optional. If you create one, your data is transferred in encrypted form – and processed only with your explicit consent (GDPR Art. 6 and 9), revocable at any time.',
       'privacy.export.title': 'Export & deletion',
