@@ -1,0 +1,3 @@
+# Markdown notes (keep README)
+*.md
+!README.md
