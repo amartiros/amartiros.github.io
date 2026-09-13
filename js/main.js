@@ -156,7 +156,7 @@
       'wx.b3.text': 'If you prefer, without medication names, doses or INR values.',
       'wx.ctaIphone': 'Guide: iPhone',
       'wx.ctaAndroid': 'Guide: Android',
-      'wx.note': 'iPhone with iOS 16 or later. Widgets show your saved plan – your reminders still arrive as notifications. The step-by-step guide is in German.',
+      'wx.note': 'iPhone with iOS 16 or later. Widgets show your saved plan – your reminders still arrive as notifications.',
       'wx.w.take': 'Take today · 8:00 PM',
       'wx.w.dose': '1.5 tablets · 4.5 mg',
       'wx.w.taken': 'Taken today',
@@ -199,7 +199,7 @@
       'cta.soon2': 'coming soon',
 
       'footer.claim': 'The app for people on anticoagulant therapy.',
-      'footer.widgets': 'Widget guide (German)',
+      'footer.widgets': 'Widget guide',
       'footer.imprint': 'Legal notice',
       'footer.privacy': 'Privacy policy',
       'footer.contact': 'Contact',
@@ -208,6 +208,17 @@
     }
   };
 
+  // Pages with their own copy (e.g. anleitung-widgets.html) load a
+  // dictionary into window.medinotePageTranslations before this file; its
+  // keys are added to — and override — the shared ones above.
+  var pageTranslations = window.medinotePageTranslations;
+  if (pageTranslations) {
+    Object.keys(translations).forEach(function (lang) {
+      var extra = pageTranslations[lang] || {};
+      Object.keys(extra).forEach(function (key) { translations[lang][key] = extra[key]; });
+    });
+  }
+
   function setLanguage(lang) {
     var dict = translations[lang];
     if (!dict) return;
@@ -215,6 +226,16 @@
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
       if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+    // Strings with inline markup (<strong>, &nbsp;). Only our own
+    // dictionaries feed this, never visitor input.
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-aria');
+      if (dict[key] !== undefined) el.setAttribute('aria-label', dict[key]);
     });
 
     document.documentElement.lang = lang;

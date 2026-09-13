@@ -24,6 +24,14 @@ applied via `data-i18n` attributes. The visitor's choice is stored in
 **When editing copy, change it in both places:** the German text in
 `index.html` *and* the `de`/`en` dictionaries in `js/main.js`.
 
+Pages with their own copy use the same mechanism with a page dictionary:
+`anleitung-widgets.html` loads `js/widgets-i18n.js` (which sets
+`window.medinotePageTranslations`) before `js/main.js`, and main.js merges it
+over the shared dictionary — so nav, footer and widget texts (`wx.w.*`) are
+shared. Besides `data-i18n` (plain text), `data-i18n-html` fills strings with
+inline markup such as `<strong>`, and `data-i18n-aria` sets an `aria-label`.
+The microINR® and CoaguChek® guides and the legal pages are German only.
+
 ## Replacing the screenshot placeholders
 
 Each phone mockup contains a `.shot-placeholder` div. Replace it with an image:

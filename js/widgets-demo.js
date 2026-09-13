@@ -28,10 +28,24 @@
     });
   }
 
+  // Play/pause follows the demo's state, so it can't be a plain data-i18n key.
+  var LABELS = {
+    de: { pause: 'Pause', play: 'Abspielen' },
+    en: { pause: 'Pause', play: 'Play' }
+  };
+  function label(name) {
+    return (LABELS[document.documentElement.lang] || LABELS.de)[name];
+  }
+
+  var demos = [];
+
   renderDates();
   if ('MutationObserver' in window) {
-    // main.js switches <html lang> when the visitor changes language.
-    new MutationObserver(renderDates).observe(document.documentElement, {
+    // main.js switches <html lang> after replacing the page's text.
+    new MutationObserver(function () {
+      renderDates();
+      demos.forEach(function (d) { d.refreshText(); });
+    }).observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['lang']
     });
@@ -142,12 +156,19 @@
   Demo.prototype.update = function () {
     var playing = this.playing();
     this.root.classList.toggle('paused', !playing);
-    if (this.toggleBtn) {
-      this.toggleBtn.textContent = this.wanted
-        ? this.toggleBtn.getAttribute('data-label-pause')
-        : this.toggleBtn.getAttribute('data-label-play');
-    }
+    this.refreshText();
     this.schedule();
+  };
+
+  /** Texts that depend on state: the play/pause label and, on narrow
+      screens, the name of the current step under the phone. */
+  Demo.prototype.refreshText = function () {
+    if (this.toggleBtn) this.toggleBtn.textContent = label(this.wanted ? 'pause' : 'play');
+    var caption = this.root.querySelector('.demo-caption');
+    var active = this.root.querySelector('.demo-steps button.active');
+    if (caption && active) {
+      caption.textContent = active.getAttribute('data-step') + '. ' + active.querySelector('strong').textContent;
+    }
   };
 
   Demo.prototype.schedule = function () {
@@ -187,12 +208,10 @@
 
   Demo.prototype.markStep = function (step) {
     var ms = this.frames.reduce(function (sum, f) { return f.step === step ? sum + f.ms : sum; }, 0);
-    var caption = this.root.querySelector('.demo-caption');
     this.steps.forEach(function (btn) {
       var active = Number(btn.getAttribute('data-step')) === step;
       btn.classList.toggle('active', active);
       if (active) {
-        if (caption) caption.textContent = step + '. ' + btn.querySelector('strong').textContent;
         btn.setAttribute('aria-current', 'step');
         btn.style.setProperty('--step-ms', ms + 'ms');
         var bar = btn.querySelector('.bar');
@@ -201,9 +220,9 @@
         btn.removeAttribute('aria-current');
       }
     });
+    this.refreshText();
   };
 
-  var demos = [];
   document.querySelectorAll('[data-demo]').forEach(function (root) {
     if (FRAMES[root.getAttribute('data-demo')]) demos.push(new Demo(root));
   });
