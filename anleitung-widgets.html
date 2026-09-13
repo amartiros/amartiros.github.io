@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medinote-Widgets einrichten – iPhone &amp; Android</title>
+  <meta name="description" content="Schritt-für-Schritt-Anleitung mit Animation: So fügen Sie die Medinote-Widgets zum iPhone-Sperrbildschirm oder zum Android-Startbildschirm hinzu – und sehen auf einen Blick, ob die heutige Einnahme noch offen ist.">
+  <link rel="icon" type="image/png" href="assets/icon/app-icon.png">
+  <link rel="apple-touch-icon" href="assets/icon/app-icon.png">
+  <meta name="theme-color" content="#c0564e">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/widgets.css">
+  <meta property="og:title" content="Medinote-Widgets einrichten – iPhone & Android">
+  <meta property="og:description" content="Heute offen oder schon eingenommen? Die Medinote-Widgets zeigen es auf dem Sperrbildschirm bzw. Startbildschirm. So richten Sie sie ein.">
+  <meta property="og:url" content="https://medi-note.de/anleitung-widgets.html">
+  <meta property="og:image" content="https://medi-note.de/assets/icon/app-icon.png">
+  <meta property="og:type" content="article">
+
+  <style>
+    /* ---- Page-specific styles, same pattern as the other guides ---- */
+    .guide-intro {
+      background: linear-gradient(180deg, var(--bg-soft) 0%, #fff 100%);
+      padding: 3.4rem 0 2.4rem;
+    }
+    .guide-intro .container { max-width: 58em; text-align: center; }
+    .guide-eyebrow {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-weight: 600; font-size: 0.88rem;
+      padding: 0.35rem 0.9rem; border-radius: 999px; margin-bottom: 1.1rem;
+    }
+    .guide-intro h1 {
+      font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+      line-height: 1.14; letter-spacing: -0.02em; margin-bottom: 0.9rem;
+    }
+    .guide-intro .lead { color: var(--ink-soft); font-size: 1.13rem; max-width: 40em; margin: 0 auto; }
+    .guide-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.6rem; }
+    .guide-chip {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.5rem 1rem; border-radius: 999px;
+      background: #fff; border: 1px solid var(--line);
+      font-weight: 600; font-size: 0.93rem; color: var(--ink);
+    }
+    .guide-chip.ok { background: var(--success-soft); border-color: #bfe0c1; color: #2c6b2f; }
+
+    .part { padding: 3.4rem 0; }
+    .part-alt { background: var(--bg-soft); }
+    .part-head { max-width: 46em; margin: 0 auto 2.4rem; text-align: center; }
+    .part-tag {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 0.8rem; letter-spacing: 0.03em;
+      padding: 0.3rem 0.85rem; border-radius: 999px; margin-bottom: 0.8rem;
+    }
+    .part-head h2 { font-size: clamp(1.6rem, 2.8vw, 2.15rem); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .part-head p { color: var(--ink-soft); font-size: 1.05rem; }
+
+    .states-note { max-width: 52em; margin: 1.8rem auto 0; text-align: center; color: var(--ink-soft); }
+
+    .info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-bottom: 2.4rem; }
+    .info-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.5rem 1.4rem; }
+    .info-card h3 { display: flex; align-items: center; gap: 0.55rem; font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .info-card h3 svg { width: 22px; height: 22px; fill: var(--accent); flex: none; }
+    .info-card p { color: var(--ink-soft); font-size: 0.98rem; }
+
+    .checklist { background: var(--accent-soft); border-radius: var(--radius); padding: 1.8rem 2rem; max-width: 60em; margin: 0 auto; }
+    .checklist h3 { color: var(--accent-dark); font-size: 1.2rem; margin-bottom: 1rem; }
+    .checklist ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 1.6rem; }
+    .checklist li { display: flex; align-items: flex-start; gap: 0.55rem; color: var(--ink); }
+    .checklist li::before { content: "✓"; color: var(--success); font-weight: 800; }
+
+    .back-link { display: inline-block; margin-top: 2.6rem; color: var(--accent); font-weight: 600; text-decoration: none; }
+    .back-link:hover { text-decoration: underline; }
+
+    @media (max-width: 780px) {
+      .info-grid { grid-template-columns: 1fr; }
+      .checklist ul { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-pill" viewBox="0 0 24 24"><g transform="rotate(-45 12 12)"><path d="M7.5 7.5H12v9H7.5a4.5 4.5 0 0 1 0-9z"/><path fill-rule="evenodd" d="M12 7.5h4.5a4.5 4.5 0 0 1 0 9H12zm1.7 1.7v5.6h2.8a2.8 2.8 0 0 0 0-5.6z"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM6.3 12.6l1.6-1.6 2.6 2.6 5.6-5.6 1.6 1.6-7.2 7.2z"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.3c.3 0 .6.15.8.4C14.9 5.5 19 10.9 19 14.8a7 7 0 0 1-14 0c0-3.9 4.1-9.3 6.2-12.1.2-.25.5-.4.8-.4z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M12 22a2.6 2.6 0 0 0 2.5-2h-5A2.6 2.6 0 0 0 12 22zm7.5-4.5-1.8-2v-5.1a5.7 5.7 0 0 0-4.4-5.6V4a1.3 1.3 0 0 0-2.6 0v.8a5.7 5.7 0 0 0-4.4 5.6v5.1l-1.8 2V19h15z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M7 2h2v2h6V2h2v2h2a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2zM5 9v10h14V9z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 0 1 6 0v3z"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M12 4a8 8 0 0 1 7.4 5H17v2h6V5h-2v2.3A10 10 0 0 0 2 12h2a8 8 0 0 1 8-8zm8 8a8 8 0 0 1-15.4 3H7v-2H1v6h2v-2.3A10 10 0 0 0 22 12z"/></symbol>
+</svg>
+
+<header class="site-header">
+  <nav class="nav container">
+    <a class="brand" href="index.html" aria-label="Medinote – Startseite">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="assets/icon/app-icon.png" width="30" height="30" alt="">
+      </span>
+      <span class="brand-name">Medinote</span>
+    </a>
+    <div class="nav-menu">
+      <a href="index.html#features">Funktionen</a>
+      <a href="index.html">Zurück zur Startseite</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ INTRO ============ -->
+  <section class="guide-intro">
+    <div class="container">
+      <span class="guide-eyebrow">Anleitung für Patientinnen und Patienten</span>
+      <h1>Medinote-Widgets einrichten</h1>
+      <p class="lead">Sehen Sie auf einen Blick, ob die heutige Einnahme noch offen ist oder schon dokumentiert wurde – auf dem iPhone-Sperrbildschirm oder dem Android-Startbildschirm. In einer Minute eingerichtet.</p>
+      <div class="guide-chips">
+        <span class="guide-chip">iPhone: Sperrbildschirm, ab iOS&nbsp;16</span>
+        <span class="guide-chip">Android: Startbildschirm</span>
+        <span class="guide-chip ok">Tipp: Medinote vorher einmal öffnen</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ÜBERBLICK ============ -->
+  <section class="part">
+    <div class="container">
+      <header class="part-head">
+        <span class="part-tag">ÜBERBLICK</span>
+        <h2>Was die Widgets zeigen</h2>
+        <p>Zwei Widgets stehen zur Wahl: <strong>Medikamente heute</strong> und <strong>INR-Übersicht</strong>. Die Beispiele zeigen erfundene Werte.</p>
+      </header>
+
+      <div class="wstates">
+        <article class="wstate">
+          <div class="wstate-stage" aria-hidden="true">
+            <div class="wg-lock"><div class="wg">
+              <div class="wg-head"><svg class="wg-ic"><use href="#i-pill"/></svg><span>Heute einnehmen · 20:00</span></div>
+              <div class="wg-title">Marcumar</div>
+              <div class="wg-detail">1,5 Tabletten · 4,5 mg</div>
+            </div></div>
+          </div>
+          <div class="wstate-body">
+            <span class="wstate-tag">Medikamente heute</span>
+            <h3>Noch offen: „Heute einnehmen“</h3>
+            <p>Die Einnahme aus Ihrem Plan ist noch nicht dokumentiert – mit Uhrzeit, Medikament und Dosis. Stehen heute noch weitere an, steht dort zusätzlich „+1 weitere heute“.</p>
+          </div>
+        </article>
+
+        <article class="wstate">
+          <div class="wstate-stage" aria-hidden="true">
+            <div class="wg-lock"><div class="wg">
+              <div class="wg-head"><svg class="wg-ic"><use href="#i-check"/></svg><span>Heute eingenommen</span></div>
+              <div class="wg-title">Marcumar</div>
+              <div class="wg-detail">Nächste: Morgen, 20:00</div>
+            </div></div>
+          </div>
+          <div class="wstate-body">
+            <span class="wstate-tag">Medikamente heute</span>
+            <h3>Dokumentiert: „Heute eingenommen“</h3>
+            <p>Alle heutigen Einnahmen sind als eingenommen markiert – dazu die nächste geplante Einnahme. Haben Sie eine Einnahme als ausgelassen markiert, steht dort „Heute erledigt“.</p>
+          </div>
+        </article>
+
+        <article class="wstate">
+          <div class="wstate-stage" aria-hidden="true">
+            <div class="wg-lock"><div class="wg">
+              <div class="wg-head"><svg class="wg-ic"><use href="#i-drop"/></svg><span>INR · <span data-date="-3:dm">10. Sept.</span></span></div>
+              <div class="wg-title big">2,4</div>
+              <div class="wg-detail">Nächste Messung: <span data-date="11:wdm">Do., 24. Sept.</span></div>
+            </div></div>
+          </div>
+          <div class="wstate-body">
+            <span class="wstate-tag">INR-Übersicht</span>
+            <h3>Letzter Wert und nächste Messung</h3>
+            <p>Ihr zuletzt eingetragener INR-Wert mit Messdatum – genau so, wie er gespeichert ist – und die nächste Messung, die Sie in Medinote geplant haben.</p>
+          </div>
+        </article>
+
+        <article class="wstate">
+          <div class="wstate-stage" aria-hidden="true">
+            <div class="wg-lock"><div class="wg">
+              <div class="wg-head"><svg class="wg-ic"><use href="#i-bell"/></svg><span>Heute offen · 20:00</span></div>
+              <div class="wg-title">Erinnerung</div>
+            </div></div>
+          </div>
+          <div class="wstate-body">
+            <span class="wstate-tag">Diskreter Modus</span>
+            <h3>Keine Namen, Dosen oder INR-Werte</h3>
+            <p>Sie sehen nur, ob heute noch etwas offen ist. Einschalten in Medinote unter Einstellungen: „Diskreter Sperrbildschirm“ (iPhone) bzw. „Diskrete Benachrichtigungen“ (Android).</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="states-note">Auf Android erscheinen dieselben Inhalte als Karte auf dem Startbildschirm. Ein Tipp auf ein Widget öffnet Medinote – bei „Heute“ oder bei Ihren INR-Werten.</p>
+    </div>
+  </section>
+
+  <!-- ============ EINRICHTEN ============ -->
+  <section class="part part-alt" id="einrichten">
+    <div class="container">
+      <header class="part-head">
+        <span class="part-tag">EINRICHTEN</span>
+        <h2>Schritt für Schritt</h2>
+        <p>Wählen Sie Ihr Telefon. Die Animation zeigt, wohin Sie tippen – mit einem Klick auf einen Schritt springen Sie direkt dorthin.</p>
+      </header>
+
+      <div class="ptabs-wrap">
+        <div class="ptabs" role="tablist" aria-label="Telefon auswählen">
+          <button type="button" role="tab" id="tab-iphone" data-platform="iphone" aria-controls="panel-iphone" aria-selected="true">iPhone</button>
+          <button type="button" role="tab" id="tab-android" data-platform="android" aria-controls="panel-android" aria-selected="false" tabindex="-1">Android</button>
+        </div>
+      </div>
+
+      <!-- ---------- iPhone ---------- -->
+      <div id="panel-iphone" role="tabpanel" aria-labelledby="tab-iphone">
+        <div class="demo" data-demo="ios">
+          <div class="demo-device">
+            <div class="phone" aria-hidden="true">
+              <div class="phone-notch"></div>
+              <div class="phone-screen demo-screen ios">
+                <div class="ios-lock">
+                  <div class="ios-date" data-date="0:lock">Sonntag, 13. September</div>
+                  <div class="ios-time">9:41</div>
+                  <div class="ios-editbox date"></div>
+                  <div class="ios-editbox time"></div>
+                  <div class="ios-editbox slots"><span>+</span></div>
+                  <div class="ios-slots">
+                    <div class="wg-lock wg-swap ios-slot-med">
+                      <div class="wg wg-open">
+                        <div class="wg-head"><svg class="wg-ic"><use href="#i-pill"/></svg><span>Heute einnehmen · 20:00</span></div>
+                        <div class="wg-title">Marcumar</div>
+                        <div class="wg-detail">1,5 Tabletten · 4,5 mg</div>
+                      </div>
+                      <div class="wg wg-taken">
+                        <div class="wg-head"><svg class="wg-ic"><use href="#i-check"/></svg><span>Heute eingenommen</span></div>
+                        <div class="wg-title">Marcumar</div>
+                        <div class="wg-detail">Nächste: Morgen, 20:00</div>
+                      </div>
+                    </div>
+                    <div class="wg-lock ios-slot-inr"><div class="wg">
+                      <div class="wg-head"><svg class="wg-ic"><use href="#i-drop"/></svg><span>INR · <span data-date="-3:dm">10. Sept.</span></span></div>
+                      <div class="wg-title big">2,4</div>
+                      <div class="wg-detail">Nächste Messung: <span data-date="11:wdm">Do., 24. Sept.</span></div>
+                    </div></div>
+                  </div>
+                  <div class="ios-foot"><i></i><i></i></div>
+                  <div class="ios-homebar"></div>
+                </div>
+
+                <div class="ios-pill ios-customize">Anpassen</div>
+                <div class="ios-pill ios-done">Fertig</div>
+
+                <div class="ios-choose">
+                  <figure><div class="mini">9:41</div>Sperrbildschirm</figure>
+                  <figure><div class="mini home"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>Home-Bildschirm</figure>
+                </div>
+
+                <div class="ios-sheet">
+                  <div class="grab"></div>
+                  <div class="search">Widgets suchen</div>
+                  <div class="sheet-list">
+                    <div class="sheet-row"><i></i><b></b></div>
+                    <div class="sheet-row"><i></i><b></b></div>
+                    <div class="sheet-row"><img src="assets/icon/app-icon.png" alt=""><span>Medinote</span></div>
+                    <div class="sheet-row"><i></i><b></b></div>
+                  </div>
+                  <div class="sheet-app">
+                    <div class="app-head"><img src="assets/icon/app-icon.png" alt="">Medinote</div>
+                    <div class="sheet-previews">
+                      <div class="sheet-prev">
+                        <div class="tile"><div class="wg-lock"><div class="wg">
+                          <div class="wg-head"><svg class="wg-ic"><use href="#i-pill"/></svg><span>Heute einnehmen · 20:00</span></div>
+                          <div class="wg-title">Marcumar</div>
+                          <div class="wg-detail">1,5 Tabletten · 4,5 mg</div>
+                        </div></div></div>
+                        Medikamente heute
+                      </div>
+                      <div class="sheet-prev">
+                        <div class="tile"><div class="wg-lock"><div class="wg">
+                          <div class="wg-head"><svg class="wg-ic"><use href="#i-drop"/></svg><span>INR</span></div>
+                          <div class="wg-title big">2,4</div>
+                          <div class="wg-detail">Nächste Messung</div>
+                        </div></div></div>
+                        INR-Übersicht
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="demo-toast"><svg><use href="#i-check"/></svg>In Medinote dokumentiert</div>
+                <div class="touch"></div>
+              </div>
+            </div>
+            <p class="demo-caption" aria-hidden="true"></p>
+            <div class="demo-controls">
+              <button type="button" class="demo-btn" data-demo-toggle data-label-pause="Pause" data-label-play="Abspielen">Pause</button>
+              <button type="button" class="demo-btn" data-demo-restart>Von vorn</button>
+            </div>
+          </div>
+
+          <ol class="demo-steps">
+            <li><button type="button" data-step="1"><span class="n">1</span><span><strong>Sperrbildschirm gedrückt halten</strong><small>iPhone mit Face ID oder Touch ID entsperren, aber auf dem Sperrbildschirm bleiben. Dann eine freie Stelle gedrückt halten.</small></span><span class="bar"></span></button></li>
+            <li><button type="button" data-step="2"><span class="n">2</span><span><strong>„Anpassen“ tippen</strong><small>Unten auf „Anpassen“ tippen und – falls gefragt – „Sperrbildschirm“ wählen.</small></span><span class="bar"></span></button></li>
+            <li><button type="button" data-step="3"><span class="n">3</span><span><strong>Feld unter der Uhrzeit antippen</strong><small>Es öffnet sich die Liste der Widgets.</small></span><span class="bar"></span></button></li>
+            <li><button type="button" data-step="4"><span class="n">4</span><span><strong>„Medinote“ wählen</strong><small>„Medikamente heute“ und/oder „INR-Übersicht“ antippen – das Widget erscheint unter der Uhr.</small></span><span class="bar"></span></button></li>
+            <li><button type="button" data-step="5"><span class="n">5</span><span><strong>Mit „Fertig“ bestätigen</strong><small>Liste schließen und oben rechts auf „Fertig“ tippen.</small></span><span class="bar"></span></button></li>
+            <li><button type="button" data-step="6"><span class="n">6</span><span><strong>Immer auf dem aktuellen Stand</strong><small>Sobald Sie die Einnahme in Medinote dokumentieren, zeigt das Widget „Heute eingenommen“.</small></span><span class="bar"></span></button></li>
+          </ol>
+        </div>
+        <p class="demo-note">Noch kompakter: Tippen Sie beim Anpassen auf das <strong>Datum über der Uhrzeit</strong> und wählen Sie Medinote – dann steht z.&nbsp;B. „Heute einnehmen · 20:00“ in einer Zeile über der Uhr.</p>
+      </div>
+
+      <!-- ---------- Android ---------- -->
+      <div id="panel-android" role="tabpanel" aria-labelledby="tab-android" hidden>
+        <div class="demo" data-demo="android">
+          <div class="demo-device">
+            <div class="phone" aria-hidden="true">
+              <div class="phone-notch"></div>
+              <div class="phone-screen demo-screen android">
+                <div class="and-status">9:41</div>
+                <div class="and-glance" data-date="0:wdm">So., 13. Sept.</div>
+
+                <div class="and-widget">
+                  <div class="wg-card wg-swap">
+                    <div class="wg wg-open">
+                      <div class="wg-head"><svg class="wg-ic"><use href="#i-pill"/></svg><span>Heute einnehmen · 20:00</span></div>
+                      <div class="wg-title">Marcumar</div>
+                      <div class="wg-detail">1,5 Tabletten · 4,5 mg</div>
+                    </div>
+                    <div class="wg wg-taken">
+                      <div class="wg-head"><svg class="wg-ic"><use href="#i-check"/></svg><span>Heute eingenommen</span></div>
+                      <div class="wg-title">Marcumar</div>
+                      <div class="wg-detail">Nächste: Morgen, 20:00</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="and-grid"><i></i><i></i><i></i><i></i><i></i><img src="assets/icon/app-icon.png" alt=""><i></i><i></i></div>
+                <div class="and-dock"><i></i><i></i><i></i><i></i></div>
+                <div class="and-search"></div>
+
+                <div class="and-menu">
+                  <div><i></i>Hintergrund &amp; Stil</div>
+                  <div class="hl"><i></i>Widgets</div>
+                  <div><i></i>Einstellungen</div>
+                </div>
+
+                <div class="and-picker">
+                  <div class="pk-title">Widgets</div>
+                  <div class="pk-search"><i></i>Medinote</div>
+                  <div class="pk-app">
+                    <div class="pk-row"><img src="assets/icon/app-icon.png" alt=""><span>Medinote</span><small>2 Widgets</small></div>
+                    <div class="pk-previews">
+                      <div class="pk-prev">
+                        <div class="tile"><div class="wg-card"><div class="wg">
+                          <div class="wg-head"><svg class="wg-ic"><use href="#i-pill"/></svg><span>Heute einnehmen · 20:00</span></div>
+                          <div class="wg-title">Marcumar</div>
+                          <div class="wg-detail">1,5 Tabletten · 4,5 mg</div>
+                        </div></div></div>
+                        Medikamente heute
+                      </div>
+                      <div class="pk-prev">
+                        <div class="tile"><div class="wg-card"><div class="wg">
+                          <div class="wg-head"><svg class="wg-ic"><use href="#i-drop"/></svg><span>INR</span></div>
+                          <div class="wg-title big">2,4</div>
+                        </div></div></div>
+                        INR-Übersicht
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pk-other"><i></i><b></b></div>
+                  <div class="pk-other"><i></i><b></b></div>
+                </div>
+
+                <div class="and-drag">
+                  <div class="wg-card"><div class="wg">
+                    <div class="wg-head"><svg class="wg-ic"><use href="#i-pill"/></svg><span>Heute einnehmen · 20:00</span></div>
+                    <div class="wg-title">Marcumar</div>
+                    <div class="wg-detail">1,5 Tabletten · 4,5 mg</div>
+                  </div></div>
+                </div>
+
+                <div class="demo-toast"><svg><use href="#i-check"/></svg>In Medinote dokumentiert</div>
+                <div class="touch"></div>
+              </div>
+            </div>
+            <p class="demo-caption" aria-hidden="true"></p>
+            <div class="demo-controls">
+              <button type="button" class="demo-btn" data-demo-toggle data-label-pause="Pause" data-label-play="Abspielen">Pause</button>
+              <button type="button" class="demo-btn" data-demo-restart>Von vorn</button>
+            </div>
+          </div>
+
+          <ol class="demo-steps">
+            <li><button type="button" data-step="1"><span class="n">1</span><span><strong>Freie Stelle gedrückt halten</strong><small>Auf dem Startbildschirm eine freie Stelle gedrückt halten, bis ein Menü erscheint.</small></span><span class="bar"></span></button></li>
+            <li><button type="button" data-step="2"><span class="n">2</span><span><strong>„Widgets“ tippen</strong><small>Bei manchen Telefonen steht „Widgets“ unten am Bildschirmrand.</small></span><span class="bar"></span></button></li>
+            <li><button type="button" data-step="3"><span class="n">3</span><span><strong>„Medinote“ suchen</strong><small>Oben „Medinote“ eingeben oder zur App scrollen und antippen.</small></span><span class="bar"></span></button></li>
+            <li><button type="button" data-step="4"><span class="n">4</span><span><strong>Widget auf den Startbildschirm ziehen</strong><small>„Medikamente heute“ oder „INR-Übersicht“ gedrückt halten und an einen freien Platz ziehen. Auf manchen Telefonen tippen Sie stattdessen auf „Hinzufügen“.</small></span><span class="bar"></span></button></li>
+            <li><button type="button" data-step="5"><span class="n">5</span><span><strong>Loslassen – fertig</strong><small>Über die Ränder können Sie die Größe des Widgets anpassen.</small></span><span class="bar"></span></button></li>
+            <li><button type="button" data-step="6"><span class="n">6</span><span><strong>Immer auf dem aktuellen Stand</strong><small>Sobald Sie die Einnahme in Medinote dokumentieren, zeigt das Widget „Heute eingenommen“.</small></span><span class="bar"></span></button></li>
+          </ol>
+        </div>
+        <p class="demo-note">Die Bezeichnungen können je nach Hersteller (z.&nbsp;B. Samsung, Xiaomi) leicht abweichen – der Weg über „Widgets“ ist überall gleich.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUT ZU WISSEN ============ -->
+  <section class="part">
+    <div class="container">
+      <header class="part-head">
+        <span class="part-tag">GUT ZU WISSEN</span>
+        <h2>Häufige Fragen</h2>
+      </header>
+
+      <div class="info-grid">
+        <article class="info-card">
+          <h3><svg aria-hidden="true"><use href="#i-refresh"/></svg>Wann aktualisieren sich die Widgets?</h3>
+          <p>Sobald Sie in Medinote etwas speichern – etwa eine Einnahme oder einen INR-Wert – und jeweils kurz nach Mitternacht für den neuen Tag.</p>
+        </article>
+        <article class="info-card">
+          <h3><svg aria-hidden="true"><use href="#i-bell"/></svg>Ersetzen Widgets die Erinnerungen?</h3>
+          <p>Nein. Die Widgets zeigen Ihren gespeicherten Plan. Ihre Erinnerungen erhalten Sie weiterhin als Benachrichtigung.</p>
+        </article>
+        <article class="info-card">
+          <h3><svg aria-hidden="true"><use href="#i-lock"/></svg>Wer kann die Widgets sehen?</h3>
+          <p>Jede Person, die Ihren Bildschirm sieht. Möchten Sie das nicht, schalten Sie den diskreten Modus ein. Die Widget-Daten bleiben auf Ihrem Telefon.</p>
+        </article>
+        <article class="info-card">
+          <h3><svg aria-hidden="true"><use href="#i-calendar"/></svg>Kann ich im Widget etwas eintragen?</h3>
+          <p>Nein, ein Tipp öffnet nur die App. Einnahmen dokumentieren Sie wie gewohnt in Medinote oder direkt über die Benachrichtigung.</p>
+        </article>
+      </div>
+
+      <div class="checklist">
+        <h3>Das Widget zeigt nur „Medinote öffnen“? Kurz prüfen:</h3>
+        <ul>
+          <li>Medinote einmal öffnen – danach erscheinen Ihre Daten.</li>
+          <li>Nach einem Neustart das Telefon einmal entsperren.</li>
+          <li>iPhone: Ist iOS 16 oder neuer installiert?</li>
+          <li>Nach einer Reise in eine andere Zeitzone oder über eine Woche ohne Medinote: App kurz öffnen.</li>
+        </ul>
+      </div>
+      <div style="text-align:center;">
+        <a class="back-link" href="index.html">← Zurück zur Startseite</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">Medinote</p>
+      <p class="footer-note">Die App für Menschen unter Gerinnungshemmer-Therapie.</p>
+    </div>
+    <nav class="footer-links" aria-label="Rechtliches">
+      <a href="index.html">Startseite</a>
+      <a href="anleitung-microinr.html">microINR®-Anleitung</a>
+      <a href="anleitung-coaguchek.html">CoaguChek®-Anleitung</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutzerklärung</a>
+      <a href="mailto:kontakt@medi-note.de">Kontakt</a>
+    </nav>
+  </div>
+  <div class="container footer-legal">
+    <p>Medinote ersetzt keine ärztliche Beratung, Diagnose oder Behandlung. Wenden Sie sich bei Fragen zu Ihrer Therapie immer an Ihre Ärztin oder Ihren Arzt.</p>
+    <p>iPhone ist eine Marke der Apple Inc., Android eine Marke der Google LLC. Die Abbildungen sind vereinfachte Darstellungen.</p>
+    <p>© 2026 Medinote</p>
+  </div>
+</footer>
+
+<script src="js/widgets-demo.js"></script>
+</body>
+</html>

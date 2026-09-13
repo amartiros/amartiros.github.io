@@ -9,6 +9,7 @@
   <link rel="apple-touch-icon" href="assets/icon/app-icon.png">
   <meta name="theme-color" content="#c0564e">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/widgets.css">
   <meta property="og:title" content="Medinote – INR-Werte & Medikamente sicher dokumentieren">
   <meta property="og:description" content="Die App für Menschen unter Gerinnungshemmer-Therapie: INR-Verlauf, Wochenplan, Erinnerungen und automatische microINR®-Übertragung. Ohne Konto nutzbar – dann bleiben Ihre Daten auf Ihrem Telefon.">
   <meta property="og:url" content="https://medi-note.de/">
@@ -16,6 +17,13 @@
   <meta property="og:type" content="website">
 </head>
 <body>
+
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-pill" viewBox="0 0 24 24"><g transform="rotate(-45 12 12)"><path d="M7.5 7.5H12v9H7.5a4.5 4.5 0 0 1 0-9z"/><path fill-rule="evenodd" d="M12 7.5h4.5a4.5 4.5 0 0 1 0 9H12zm1.7 1.7v5.6h2.8a2.8 2.8 0 0 0 0-5.6z"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM6.3 12.6l1.6-1.6 2.6 2.6 5.6-5.6 1.6 1.6-7.2 7.2z"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.3c.3 0 .6.15.8.4C14.9 5.5 19 10.9 19 14.8a7 7 0 0 1-14 0c0-3.9 4.1-9.3 6.2-12.1.2-.25.5-.4.8-.4z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M12 22a2.6 2.6 0 0 0 2.5-2h-5A2.6 2.6 0 0 0 12 22zm7.5-4.5-1.8-2v-5.1a5.7 5.7 0 0 0-4.4-5.6V4a1.3 1.3 0 0 0-2.6 0v.8a5.7 5.7 0 0 0-4.4 5.6v5.1l-1.8 2V19h15z"/></symbol>
+</svg>
 
 <header class="site-header">
   <nav class="nav container">
@@ -123,6 +131,81 @@
           <h3 data-i18n="features.local.title">Ihre Daten bleiben bei Ihnen</h3>
           <p data-i18n="features.local.text">Medinote funktioniert ganz ohne Konto: Ohne Registrierung werden alle Daten ausschließlich auf Ihrem Telefon gespeichert. Ein Konto erstellen Sie nur, wenn Sie es möchten.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WIDGETS ============ -->
+  <section id="widgets" class="section wx-section">
+    <div class="container wx-grid">
+      <div class="wx-copy reveal">
+        <p class="badge" data-i18n="wx.badge">Neu: Widgets für iPhone &amp; Android</p>
+        <h2 data-i18n="wx.title">Ihr Tag auf einen Blick – ohne die App zu öffnen</h2>
+        <p class="lead" data-i18n="wx.lead">Die Medinote-Widgets zeigen auf dem iPhone-Sperrbildschirm oder dem Android-Startbildschirm, ob die heutige Einnahme noch offen ist oder schon dokumentiert wurde – dazu Ihren letzten INR-Wert und die nächste geplante Messung.</p>
+        <ul class="wx-list">
+          <li>
+            <span class="ic" aria-hidden="true"><svg><use href="#i-pill"/></svg></span>
+            <span><strong data-i18n="wx.b1.title">„Heute einnehmen · 20:00“</strong><span data-i18n="wx.b1.text">Mit Medikament und Dosis aus Ihrem Plan – bis Sie die Einnahme dokumentieren.</span></span>
+          </li>
+          <li>
+            <span class="ic" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
+            <span><strong data-i18n="wx.b2.title">„Heute eingenommen“</strong><span data-i18n="wx.b2.text">Sobald alles für heute als eingenommen markiert ist – mit der nächsten Einnahme.</span></span>
+          </li>
+          <li>
+            <span class="ic" aria-hidden="true"><svg><use href="#i-bell"/></svg></span>
+            <span><strong data-i18n="wx.b3.title">Diskreter Modus</strong><span data-i18n="wx.b3.text">Auf Wunsch ohne Medikamentennamen, Dosen und INR-Werte.</span></span>
+          </li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="anleitung-widgets.html#iphone" data-i18n="wx.ctaIphone">Anleitung: iPhone</a>
+          <a class="btn btn-ghost" href="anleitung-widgets.html#android" data-i18n="wx.ctaAndroid">Anleitung: Android</a>
+        </div>
+        <p class="wx-note" data-i18n="wx.note">iPhone ab iOS 16. Die Widgets zeigen Ihren gespeicherten Plan – Ihre Erinnerungen erhalten Sie weiterhin als Benachrichtigung.</p>
+      </div>
+
+      <div class="wx-visual reveal" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen demo-screen ios f-med f-inr">
+            <div class="ios-lock">
+              <div class="ios-date" data-date="0:lock">Sonntag, 13. September</div>
+              <div class="ios-time">9:41</div>
+              <div class="ios-slots">
+                <div class="wg-lock wg-swap ios-slot-med" data-widget-cycle>
+                  <div class="wg wg-open">
+                    <div class="wg-head"><svg class="wg-ic"><use href="#i-pill"/></svg><span data-i18n="wx.w.take">Heute einnehmen · 20:00</span></div>
+                    <div class="wg-title">Marcumar</div>
+                    <div class="wg-detail" data-i18n="wx.w.dose">1,5 Tabletten · 4,5 mg</div>
+                  </div>
+                  <div class="wg wg-taken">
+                    <div class="wg-head"><svg class="wg-ic"><use href="#i-check"/></svg><span data-i18n="wx.w.taken">Heute eingenommen</span></div>
+                    <div class="wg-title">Marcumar</div>
+                    <div class="wg-detail" data-i18n="wx.w.next">Nächste: Morgen, 20:00</div>
+                  </div>
+                </div>
+                <div class="wg-lock ios-slot-inr"><div class="wg">
+                  <div class="wg-head"><svg class="wg-ic"><use href="#i-drop"/></svg><span>INR · <span data-date="-3:dm">10. Sept.</span></span></div>
+                  <div class="wg-title big" data-i18n="wx.w.inr">2,4</div>
+                  <div class="wg-detail"><span data-i18n="wx.w.nextCheck">Nächste Messung:</span> <span data-date="11:wdm">Do., 24. Sept.</span></div>
+                </div></div>
+              </div>
+              <div class="ios-foot"><i></i><i></i></div>
+              <div class="ios-homebar"></div>
+            </div>
+          </div>
+        </div>
+        <div class="wx-android wg-card wg-swap" data-widget-cycle>
+          <div class="wg wg-open">
+            <div class="wg-head"><svg class="wg-ic"><use href="#i-pill"/></svg><span data-i18n="wx.w.take">Heute einnehmen · 20:00</span></div>
+            <div class="wg-title">Marcumar</div>
+            <div class="wg-detail" data-i18n="wx.w.dose">1,5 Tabletten · 4,5 mg</div>
+          </div>
+          <div class="wg wg-taken">
+            <div class="wg-head"><svg class="wg-ic"><use href="#i-check"/></svg><span data-i18n="wx.w.taken">Heute eingenommen</span></div>
+            <div class="wg-title">Marcumar</div>
+            <div class="wg-detail" data-i18n="wx.w.next">Nächste: Morgen, 20:00</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -265,6 +348,7 @@
     <nav class="footer-links" aria-label="Rechtliches">
       <a href="anleitung-microinr.html">microINR®-Anleitung</a>
       <a href="anleitung-coaguchek.html">CoaguChek®-Anleitung</a>
+      <a href="anleitung-widgets.html" data-i18n="footer.widgets">Widget-Anleitung</a>
       <a href="impressum.html" data-i18n="footer.imprint">Impressum</a>
       <a href="datenschutz.html" data-i18n="footer.privacy">Datenschutzerklärung</a>
       <a href="mailto:kontakt@medi-note.de" data-i18n="footer.contact">Kontakt</a>
@@ -278,5 +362,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/widgets-demo.js"></script>
 </body>
 </html>

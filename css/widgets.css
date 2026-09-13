@@ -1,0 +1,854 @@
+/* ===================================================================
+   Medinote widgets — mockups of the iPhone Lock Screen and Android
+   home screen widgets, plus the animated setup demos.
+   Used by index.html (teaser) and anleitung-widgets.html (guide).
+   Everything inside a .demo-screen is sized in cqw, so a mockup scales
+   with the phone it sits in.
+   =================================================================== */
+
+:root {
+  --wall-ios: linear-gradient(158deg, #1f5c63 0%, #33406a 55%, #7d4a4a 100%);
+  --wall-android: linear-gradient(165deg, #2f6a6e 0%, #6b5877 55%, #b75d52 100%);
+}
+
+.icon-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- Widget content (same on both platforms) ---------- */
+
+.wg {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+  min-width: 0;
+  line-height: 1.22;
+  text-align: left;
+}
+
+.wg-head {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.82em;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.wg-head > span { overflow: hidden; text-overflow: ellipsis; }
+
+.wg-ic { width: 1.15em; height: 1.15em; flex: none; fill: currentColor; }
+
+.wg-title,
+.wg-detail {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wg-title { font-size: 1.08em; font-weight: 700; }
+
+.wg-title.big {
+  font-size: 1.55em;
+  font-weight: 600;
+  line-height: 1.05;
+  font-family: ui-rounded, "SF Pro Rounded", var(--font);
+}
+
+.wg-detail { font-size: 0.82em; }
+
+/* iPhone Lock Screen: monochrome text straight on the wallpaper */
+.wg-lock { color: #fff; }
+.wg-lock .wg-head { color: rgba(255, 255, 255, 0.75); }
+
+/* Android home screen: a neutral card, like the real widget */
+.wg-card {
+  background: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 1.1em;
+  padding: 0.8em 1em;
+  box-shadow: 0 0.35em 1.2em rgba(0, 0, 0, 0.22);
+}
+.wg-card .wg-head { color: rgba(0, 0, 0, 0.6); }
+
+/* Two states in one place; the parent's .is-taken crossfades them */
+.wg-swap { display: grid; min-width: 0; }
+.wg-swap > .wg { grid-area: 1 / 1; transition: opacity 0.45s ease, transform 0.45s ease; }
+.wg-swap > .wg-taken { opacity: 0; transform: translateY(0.4em); }
+.is-taken .wg-swap > .wg-open,
+.wg-swap.is-taken > .wg-open { opacity: 0; transform: translateY(-0.4em); }
+.is-taken .wg-swap > .wg-taken,
+.wg-swap.is-taken > .wg-taken { opacity: 1; transform: none; }
+
+/* ---------- Phone screen used as a stage ---------- */
+
+.demo-screen {
+  position: relative;
+  container-type: inline-size;
+  overflow: hidden;
+  font-family: var(--font);
+  -webkit-user-select: none;
+  user-select: none;
+  line-height: 1.25;
+}
+
+.demo-screen.ios {
+  background: linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58)), var(--wall-ios);
+}
+
+.demo-screen.android { background: var(--wall-android); }
+
+/* ---------- iPhone Lock Screen ---------- */
+
+.ios-lock {
+  position: absolute;
+  inset: 0;
+  background: var(--wall-ios);
+  color: #fff;
+  transform-origin: 50% 45%;
+  transition: transform 0.6s cubic-bezier(0.3, 0.7, 0.2, 1), border-radius 0.6s ease, box-shadow 0.6s ease;
+}
+
+.f-custom .ios-lock {
+  transform: scale(0.74) translateY(-5%);
+  border-radius: 9cqw;
+  box-shadow: 0 2cqw 8cqw rgba(0, 0, 0, 0.5);
+}
+
+.ios-date {
+  position: absolute;
+  top: 10.4%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 4.5cqw;
+  font-weight: 600;
+  opacity: 0.92;
+}
+
+.ios-time {
+  position: absolute;
+  top: 12.8%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 23cqw;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.ios-slots {
+  position: absolute;
+  top: 29.4%;
+  left: 7%;
+  right: 7%;
+  height: 10%;
+  display: flex;
+  gap: 4%;
+  align-items: center;
+  font-size: 3.2cqw;
+}
+
+.ios-slots > .wg-lock {
+  flex: 1 1 0;
+  min-width: 0;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+.f-med .ios-slot-med,
+.f-inr .ios-slot-inr { opacity: 1; transform: none; }
+
+.ios-editbox {
+  position: absolute;
+  border-radius: 3cqw;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.ios-editbox.date { top: 9.8%; left: 20%; right: 20%; height: 4%; }
+.ios-editbox.time { top: 12.6%; left: 13%; right: 13%; height: 14.6%; }
+.ios-editbox.slots {
+  top: 28.9%;
+  left: 5%;
+  right: 5%;
+  height: 11%;
+  display: grid;
+  place-items: center;
+  font-size: 7cqw;
+  font-weight: 300;
+}
+.ios-editbox.slots span { transition: opacity 0.3s ease; }
+.f-edit .ios-editbox { opacity: 1; }
+.f-med .ios-editbox.slots span { opacity: 0; }
+
+.ios-foot {
+  position: absolute;
+  bottom: 4.8%;
+  left: 11%;
+  right: 11%;
+  display: flex;
+  justify-content: space-between;
+  transition: opacity 0.3s ease;
+}
+.ios-foot i {
+  width: 11cqw;
+  height: 11cqw;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.28);
+}
+.f-edit .ios-foot { opacity: 0; }
+
+.ios-homebar {
+  position: absolute;
+  bottom: 1.3%;
+  left: 34%;
+  right: 34%;
+  height: 1.3cqw;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.ios-pill {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.94);
+  color: #1d1d1f;
+  border-radius: 99px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.ios-customize {
+  bottom: 5.5%;
+  left: 50%;
+  transform: translate(-50%, 40%);
+  padding: 2cqw 7cqw;
+  font-size: 4.2cqw;
+}
+.f-custom .ios-customize { opacity: 1; transform: translate(-50%, 0); }
+
+.ios-done {
+  top: 6%;
+  right: 5%;
+  padding: 1.4cqw 3.6cqw;
+  font-size: 3.8cqw;
+}
+.f-edit .ios-done { opacity: 1; }
+
+.ios-choose {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6%;
+  background: linear-gradient(rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62)), var(--wall-ios);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.f-choose .ios-choose { opacity: 1; }
+
+.ios-choose figure {
+  width: 38%;
+  text-align: center;
+  color: #fff;
+  font-size: 3.5cqw;
+  font-weight: 600;
+}
+
+.ios-choose .mini {
+  aspect-ratio: 9 / 19.5;
+  border-radius: 5cqw;
+  background: var(--wall-ios);
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  margin-bottom: 2.4cqw;
+  padding-top: 24%;
+  font-size: 8.5cqw;
+  font-weight: 700;
+}
+
+.ios-choose .mini.home {
+  padding: 20% 12% 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4cqw;
+  align-content: start;
+}
+.ios-choose .mini.home i {
+  aspect-ratio: 1;
+  border-radius: 1.8cqw;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.ios-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 61%;
+  background: #f2f2f7;
+  color: #1d1d1f;
+  border-radius: 6cqw 6cqw 0 0;
+  padding: 2.5cqw 5cqw 0;
+  font-size: 3.8cqw;
+  transform: translateY(102%);
+  transition: transform 0.55s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+.f-sheet .ios-sheet { transform: none; }
+
+.ios-sheet .grab {
+  width: 11cqw;
+  height: 1.3cqw;
+  border-radius: 99px;
+  background: #c7c7cc;
+  margin: 0 auto 3cqw;
+}
+
+.ios-sheet .search {
+  background: #e3e3e8;
+  border-radius: 3cqw;
+  padding: 2.2cqw 3cqw;
+  color: #8e8e93;
+}
+
+.sheet-list,
+.sheet-app {
+  position: absolute;
+  left: 5cqw;
+  right: 5cqw;
+  top: 21cqw;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.sheet-row {
+  display: flex;
+  align-items: center;
+  gap: 3cqw;
+  height: 12cqw;
+  border-bottom: 1px solid #e0e0e5;
+}
+.sheet-row i { width: 8cqw; height: 8cqw; border-radius: 2cqw; background: #d1d1d6; flex: none; }
+.sheet-row b { height: 2.4cqw; width: 34%; border-radius: 99px; background: #d9d9de; }
+.sheet-row img { width: 8cqw; height: 8cqw; border-radius: 2cqw; }
+.sheet-row span { font-weight: 600; }
+
+.sheet-app { opacity: 0; transform: translateX(12%); }
+.f-pick .sheet-list { opacity: 0; transform: translateX(-12%); }
+.f-pick .sheet-app { opacity: 1; transform: none; }
+
+.sheet-app .app-head {
+  display: flex;
+  align-items: center;
+  gap: 2.5cqw;
+  height: 7cqw;
+  margin-bottom: 3.5cqw;
+  font-weight: 700;
+  font-size: 4.4cqw;
+}
+.sheet-app .app-head img { width: 7cqw; height: 7cqw; border-radius: 1.8cqw; }
+
+.sheet-previews { display: grid; grid-template-columns: 1fr 1fr; gap: 4cqw; }
+
+.sheet-prev { text-align: center; font-size: 3.1cqw; font-weight: 600; color: #3a3a3c; }
+
+.sheet-prev .tile {
+  display: flex;
+  align-items: center;
+  height: 17cqw;
+  margin-bottom: 1.8cqw;
+  padding: 0 2.6cqw;
+  border-radius: 3.5cqw;
+  background: var(--wall-ios);
+  font-size: 2.9cqw;
+}
+.sheet-prev .tile > .wg-lock { width: 100%; min-width: 0; }
+
+/* ---------- Android home screen ---------- */
+
+.and-status {
+  position: absolute;
+  top: 1.1%;
+  left: 7%;
+  right: 7%;
+  color: #fff;
+  font-size: 3.4cqw;
+  font-weight: 600;
+}
+
+.and-glance {
+  position: absolute;
+  top: 6.8%;
+  left: 7%;
+  color: #fff;
+  font-size: 4.4cqw;
+}
+
+.and-widget {
+  position: absolute;
+  top: 13%;
+  left: 5%;
+  right: 5%;
+  font-size: 4cqw;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.f-placed .and-widget { opacity: 1; }
+
+.f-resize .and-widget::after {
+  content: "";
+  position: absolute;
+  inset: -1.6cqw;
+  border: 0.6cqw solid #fff;
+  border-radius: 1.5em;
+}
+
+.and-grid,
+.and-dock {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  gap: 5cqw 0;
+}
+.and-grid { top: 56%; }
+.and-dock { top: 80.5%; }
+
+.and-grid i,
+.and-dock i,
+.and-grid img {
+  width: 13cqw;
+  height: 13cqw;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.82);
+}
+.and-grid i:nth-child(3n) { background: #f6d8c8; }
+.and-grid i:nth-child(4n) { background: #cfe3e2; }
+.and-dock i:nth-child(2n) { background: #e7d6e6; }
+
+.and-search {
+  position: absolute;
+  bottom: 3.6%;
+  left: 7%;
+  right: 7%;
+  height: 10.5cqw;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.and-menu {
+  position: absolute;
+  top: 43%;
+  left: 20%;
+  width: 60%;
+  padding: 1.5cqw 0;
+  background: #fff;
+  color: #1f1b1a;
+  border-radius: 4cqw;
+  font-size: 3.6cqw;
+  box-shadow: 0 2cqw 6cqw rgba(0, 0, 0, 0.3);
+  transform-origin: 50% 0;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.f-menu .and-menu { opacity: 1; transform: none; }
+
+.and-menu div {
+  display: flex;
+  align-items: center;
+  gap: 3cqw;
+  height: 10cqw;
+  padding: 0 4cqw;
+  white-space: nowrap;
+}
+.and-menu div i { width: 4.5cqw; height: 4.5cqw; border-radius: 1.2cqw; background: #8a4a45; opacity: 0.55; flex: none; }
+.and-menu div.hl { font-weight: 700; }
+.and-menu div.hl i { opacity: 1; }
+
+.and-picker {
+  position: absolute;
+  inset: 0;
+  padding: 12cqw 5cqw 0;
+  background: #f7f2f1;
+  color: #1f1b1a;
+  font-size: 3.8cqw;
+  transform: translateY(100%);
+  transition: transform 0.55s cubic-bezier(0.3, 0.7, 0.2, 1), opacity 0.35s ease;
+}
+.f-picker .and-picker { transform: none; }
+.f-lift .and-picker { opacity: 0; }
+
+.pk-title { height: 8.5cqw; margin-bottom: 3cqw; font-size: 6.5cqw; font-weight: 600; line-height: 1.3; }
+
+.pk-search {
+  height: 10cqw;
+  margin-bottom: 3cqw;
+  padding: 0 4cqw;
+  display: flex;
+  align-items: center;
+  gap: 2.5cqw;
+  border-radius: 99px;
+  background: #ebe3e1;
+}
+.pk-search i { width: 3.6cqw; height: 3.6cqw; border: 0.7cqw solid #6d5450; border-radius: 50%; }
+
+.pk-app { padding: 3cqw 4cqw; border-radius: 4cqw; background: #fff; }
+
+.pk-row { display: flex; align-items: center; gap: 3cqw; height: 8cqw; }
+.pk-row img { width: 8cqw; height: 8cqw; border-radius: 50%; }
+.pk-row span { font-weight: 600; }
+.pk-row small { margin-left: auto; color: #6d5450; font-size: 3.2cqw; }
+
+.pk-previews {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+}
+.f-expand .pk-previews { max-height: 70cqw; opacity: 1; }
+
+.pk-prev { padding-top: 3cqw; text-align: center; font-size: 3.1cqw; font-weight: 600; color: #4a3b38; }
+.pk-prev .tile {
+  margin-bottom: 1.6cqw;
+  padding: 3.5cqw;
+  border-radius: 3cqw;
+  background: var(--wall-android);
+  font-size: 3.4cqw;
+}
+
+.pk-other {
+  display: flex;
+  align-items: center;
+  gap: 3cqw;
+  height: 14cqw;
+  margin-top: 2.5cqw;
+  padding: 0 4cqw;
+  border-radius: 4cqw;
+  background: #fff;
+}
+.pk-other i { width: 8cqw; height: 8cqw; border-radius: 50%; background: #e3d9d7; }
+.pk-other b { width: 36%; height: 2.4cqw; border-radius: 99px; background: #eadfdd; }
+
+.and-drag {
+  position: absolute;
+  top: 24.9%;
+  left: 5%;
+  right: 5%;
+  font-size: 4cqw;
+  transform-origin: 50% 0;
+  transform: scale(0.86);
+  opacity: 0;
+  transition: top 1.1s cubic-bezier(0.4, 0, 0.2, 1), transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.and-drag .wg-card { box-shadow: 0 2cqw 6cqw rgba(0, 0, 0, 0.4); }
+.f-lift .and-drag { opacity: 1; }
+.f-drag .and-drag { top: 13%; transform: none; }
+
+/* ---------- Shared overlays: touch indicator, confirmation toast ---------- */
+
+.demo-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 14%;
+  padding: 2cqw 4.2cqw;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #1d1d1f;
+  font-size: 3.6cqw;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 40%);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.f-toast .demo-toast { opacity: 1; transform: translate(-50%, 0); }
+.android .demo-toast { bottom: auto; top: 40%; } /* clear of the app icons */
+.demo-toast svg { width: 1.1em; height: 1.1em; fill: #3d8b40; vertical-align: -0.2em; margin-right: 0.3em; }
+
+.touch {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  z-index: 20;
+  width: 10cqw;
+  height: 10cqw;
+  margin: -5cqw 0 0 -5cqw;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  border: 0.8cqw solid var(--accent);
+  box-shadow: 0 1cqw 3cqw rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1), top 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, transform 0.3s ease;
+}
+.touch.show { opacity: 1; transform: none; }
+.touch.drag { transition-duration: 1.1s, 1.1s, 0.3s, 0.3s; transform: scale(0.8); }
+
+.touch::after {
+  content: "";
+  position: absolute;
+  inset: -0.8cqw;
+  border-radius: 50%;
+  border: 0.6cqw solid var(--accent);
+  opacity: 0;
+}
+
+.touch.tap { animation: touch-press 0.5s ease 0.75s both; }
+.touch.tap::after { animation: touch-ripple 0.7s ease-out 0.8s both; }
+.touch.hold { animation: touch-hold 1.5s ease 0.6s both; }
+.touch.hold::after { animation: touch-hold-ring 1.3s ease-out 0.6s both; }
+
+@keyframes touch-press {
+  40% { transform: scale(0.78); }
+  100% { transform: none; }
+}
+@keyframes touch-ripple {
+  0% { opacity: 0.9; transform: none; }
+  100% { opacity: 0; transform: scale(2.2); }
+}
+@keyframes touch-hold {
+  25%, 100% { transform: scale(0.8); }
+}
+@keyframes touch-hold-ring {
+  0% { opacity: 0.9; transform: none; }
+  100% { opacity: 0.2; transform: scale(1.9); }
+}
+
+/* ---------- Demo layout: phone + synced step list ---------- */
+
+.demo {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.demo-device { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+
+/* Narrow screens: the step list sits below the phone, so name the step here */
+.demo-caption { display: none; max-width: 290px; min-height: 2.9em; text-align: center; font-weight: 600; line-height: 1.4; }
+
+.demo-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
+
+.demo-btn {
+  min-height: 44px;
+  padding: 0.45rem 1.1rem;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.demo-btn:hover { background: var(--accent-soft); }
+
+.demo-steps { list-style: none; display: grid; gap: 0.6rem; }
+
+.demo-steps button {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem;
+  align-items: start;
+  width: 100%;
+  padding: 0.9rem 1.05rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.demo-steps button:hover { border-color: #e3bfb9; }
+
+.demo-steps .n {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-weight: 800;
+}
+
+.demo-steps strong { display: block; font-size: 1.03rem; line-height: 1.35; }
+.demo-steps small { display: block; margin-top: 0.15rem; color: var(--ink-soft); font-size: 0.94rem; line-height: 1.45; }
+
+.demo-steps button.active { border-color: var(--accent); box-shadow: var(--shadow); }
+.demo-steps button.active .n { background: var(--accent); color: #fff; }
+
+.demo-steps .bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--accent); }
+.demo-steps button.active .bar { animation: demo-bar var(--step-ms, 4000ms) linear forwards; }
+.demo.paused .demo-steps .bar { animation-play-state: paused; }
+
+@keyframes demo-bar { to { width: 100%; } }
+
+.demo-note {
+  max-width: 62rem;
+  margin: 1.8rem auto 0;
+  padding: 0.9rem 1.2rem;
+  border-radius: var(--radius);
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ---------- Platform tabs ---------- */
+
+.ptabs-wrap { text-align: center; margin-bottom: 2.4rem; }
+
+.ptabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+}
+
+.ptabs button {
+  min-height: 44px;
+  padding: 0.5rem 1.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ptabs button[aria-selected="true"] { background: var(--accent); color: #fff; }
+
+/* ---------- Widget states (guide) ---------- */
+
+.wstates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
+
+.wstate {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.wstate-stage {
+  display: flex;
+  justify-content: center;
+  padding: 1.7rem 1.5rem;
+  background: var(--wall-ios);
+  font-size: 20px;
+}
+.wstate-stage > .wg-lock { width: min(15em, 100%); }
+
+.wstate-body { padding: 1.2rem 1.4rem 1.4rem; }
+.wstate-body h3 { font-size: 1.1rem; margin-bottom: 0.35rem; }
+.wstate-body p { color: var(--ink-soft); font-size: 0.97rem; }
+
+.wstate-tag {
+  display: inline-block;
+  margin-bottom: 0.55rem;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* ---------- Home page teaser ---------- */
+
+/* Sits between the white features and the pink screenshots section */
+.wx-section { background: linear-gradient(180deg, #fff 0%, var(--bg-soft) 100%); border-top: 1px solid var(--line); }
+
+.wx-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.wx-copy h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.9rem;
+}
+
+.wx-copy .lead { margin-bottom: 1.5rem; }
+
+.wx-list { list-style: none; display: grid; gap: 0.9rem; margin-bottom: 1.8rem; }
+
+.wx-list li {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 0.85rem;
+  align-items: start;
+  color: var(--ink-soft);
+}
+.wx-list strong { display: block; color: var(--ink); }
+
+.wx-list .ic {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+.wx-list .ic svg { width: 22px; height: 22px; fill: currentColor; }
+
+.wx-copy .hero-actions { margin-bottom: 1rem; }
+
+.wx-note { color: var(--ink-soft); font-size: 0.92rem; }
+
+.wx-visual { position: relative; padding-bottom: 2.5rem; }
+
+.wx-android {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: min(270px, 72%);
+  font-size: 15px;
+}
+
+/* ---------- Responsive & motion ---------- */
+
+@media (max-width: 940px) {
+  .wx-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .wx-android { right: max(0px, calc(50% - 250px)); }
+  .demo { grid-template-columns: 1fr; gap: 2rem; }
+  .demo-caption { display: block; }
+}
+
+@media (max-width: 720px) {
+  .wstates { grid-template-columns: 1fr; }
+  .wstate-stage { font-size: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-screen *,
+  .demo-screen *::after,
+  .wg-swap > .wg {
+    transition: none !important;
+    animation: none !important;
+  }
+  .demo-steps .bar { display: none; }
+}
