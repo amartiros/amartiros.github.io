@@ -29,24 +29,275 @@
 <main class="legal-page container">
   <h1>Datenschutzerklärung</h1>
 
-  <p class="legal-todo"><strong>Hinweis (vor Veröffentlichung ersetzen):</strong> Dieser Platzhalter muss vor dem Livegang durch die vollständige Datenschutzerklärung ersetzt werden. Eine Vorlage liegt im Projekt als <em>Datenschutzerklaerung.docx</em> vor. Die Erklärung sollte sowohl diese Website (Hosting über GitHub Pages, dabei anfallende Server-Logs) als auch die Medinote-App abdecken.</p>
+  <!-- ===================================================================
+       SOURCE: ART-5 document `pilot-gate`, Part 3 (Datenschutzerklärung).
+
+       CONSISTENCY RULES from that document — do not break them:
+       1. Section 4 says plainly that Medinote does NOT encrypt the local
+          database itself. Do not soften this to "sicher gespeichert".
+       2. The TelemetryDeck / analytics description stays DELETED until
+          analytics is actually in the shipped build. The draft text is kept
+          as a comment below section 6 and must be switched on in the same
+          release as the app's bundled policy — never before.
+       3. Section 7 stays as written while the pilot is local-only and must
+          be revisited the moment Linear MED-12 lands.
+       4. Use "Referenzbereich", never "Zielbereich", in patient-facing text.
+       5. When a [[TBD]] here is filled, fill the matching one in
+          assets/legal/privacy_policy_de.json and _en.json in the same change.
+
+       Sign-offs S2, S4, S5, S6, S7 are required before publication.
+       =================================================================== -->
+
+  <p class="legal-todo"><strong>Entwurf – vor Veröffentlichung vervollständigen.</strong>
+     Alle mit <code>[[TBD: …]]</code> markierten Angaben muss der Verantwortliche
+     selbst eintragen; keine davon darf geschätzt werden. Diese Seite darf erst
+     live gehen, wenn kein Marker mehr übrig ist und die rechtliche Prüfung
+     vorliegt.</p>
+
+  <p class="legal-todo"><strong>Offener Nachweis.</strong> Die Abschnitte 4 und 7
+     sagen, dass in der kontofreien Betriebsart keine Gesundheitsdaten an einen
+     Server gehen. Dieser Satz ist erst zulässig, wenn die Netzwerkmessung am
+     ausgelieferten Build ihn belegt (Gate-Punkt G1, Linear <code>MED-12</code>).
+     Bis dahin bleibt diese Seite Entwurf und darf nicht veröffentlicht werden.
+     Die Marketing-Seiten der Website erheben diese Aussage bewusst nicht.</p>
+
+  <p>Stand: [[TBD: Datum]] · Fassung: [[TBD: Versionsnummer]]</p>
+
+  <p>Diese Erklärung gilt für die Website www.medi-note.de und für die
+     Medinote-App. Für die App gilt zusätzlich die in der App hinterlegte
+     Datenschutzerklärung, die Sie auch ohne Internetverbindung lesen können.</p>
 
   <h2>1. Verantwortlicher</h2>
-  <p>[Name und Kontaktdaten des Verantwortlichen gemäß Art. 4 Nr. 7 DSGVO]</p>
+  <p>Verantwortlich für die Verarbeitung Ihrer Daten im Sinne von Art. 4 Nr. 7
+     DSGVO ist:</p>
+  <p>[[TBD: Name, Rechtsform, ladungsfähige Anschrift – identisch mit dem
+     <a href="impressum.html">Impressum</a>]]<br>
+     E-Mail: <a href="mailto:kontakt@medi-note.de">kontakt@medi-note.de</a></p>
 
-  <h2>2. Hosting dieser Website</h2>
-  <p>Diese Website wird über GitHub Pages (GitHub, Inc.) bereitgestellt. Beim Aufruf der Seite verarbeitet GitHub technisch notwendige Daten (z. B. IP-Adresse) in Server-Logs. [Details ergänzen]</p>
+  <h2>2. Datenschutzbeauftragter</h2>
+  <p>[[TBD: Kontaktdaten des Datenschutzbeauftragten – oder die Feststellung,
+     dass keine Benennungspflicht nach § 38 BDSG besteht. Die Verarbeitung von
+     Gesundheitsdaten ist hier ausdrücklich zu prüfen und nicht pauschal zu
+     verneinen.]]</p>
 
-  <h2>3. Datenverarbeitung in der Medinote-App</h2>
-  <p>Die Medinote-App verarbeitet Gesundheitsdaten (INR-Werte, Medikationsaufzeichnungen) nur mit Ihrer ausdrücklichen Einwilligung gemäß Art. 6 Abs. 1 lit. a und Art. 9 Abs. 2 lit. a DSGVO. [Details ergänzen: Firebase/Google, Speicherorte, Speicherdauer, Auftragsverarbeiter]</p>
+  <h2>3. Diese Website</h2>
+  <p><strong>Hosting.</strong> Diese Website wird über GitHub Pages
+     bereitgestellt. Anbieter ist GitHub, Inc., 88 Colin P. Kelly Jr. Street,
+     San Francisco, CA 94107, USA. Beim Aufruf der Seite verarbeitet GitHub
+     technisch notwendige Zugriffsdaten in Server-Logfiles, darunter Ihre
+     IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite, den
+     Browsertyp und das Betriebssystem. Diese Verarbeitung ist für die
+     Auslieferung und die Sicherheit der Seite erforderlich; Rechtsgrundlage
+     ist Art. 6 Abs. 1 lit. f DSGVO.<br>
+     [[TBD: Vertragspartei und Rechtsgrundlage der Übermittlung in die USA
+     (Auftragsverarbeitungsvertrag bzw. GitHub Data Protection Agreement,
+     Standardvertragsklauseln oder Angemessenheitsbeschluss), Speicherdauer
+     der Logfiles, Zugriffsmöglichkeiten von GitHub]]</p>
 
-  <h2>4. Ihre Rechte</h2>
-  <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerruf erteilter Einwilligungen. [Details ergänzen]</p>
+  <p><strong>Keine Cookies, keine Analyse, keine Werbung.</strong> Diese Website
+     setzt keine Cookies, bindet keine Schriftarten, Karten, Videos oder
+     Analysedienste von Dritten ein und enthält keine Werbung.</p>
+
+  <p><strong>Spracheinstellung.</strong> Wenn Sie die Sprache umschalten,
+     speichert die Website Ihre Auswahl im lokalen Speicher Ihres Browsers
+     (localStorage). Diese Speicherung dient ausschließlich dazu, Ihnen die
+     gewählte Sprache beim nächsten Besuch wieder anzuzeigen. Sie erfolgt nach
+     § 25 Abs. 2 Nr. 2 TDDDG ohne Einwilligung, weil sie für die von Ihnen
+     gewünschte Funktion unbedingt erforderlich ist. Sie können den lokalen
+     Speicher jederzeit in Ihren Browsereinstellungen löschen.</p>
+
+  <p><strong>Kontaktaufnahme per E-Mail.</strong> Wenn Sie uns schreiben,
+     verarbeiten wir Ihre E-Mail-Adresse und den Inhalt Ihrer Nachricht, um Ihre
+     Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw.
+     lit. f DSGVO. Bitte senden Sie uns keine Gesundheitsangaben per E-Mail –
+     für die Nutzung der App und für Supportfragen sind sie nicht erforderlich.<br>
+     [[TBD: E-Mail-Anbieter mit Firmensitz, Speicherort,
+     Auftragsverarbeitungsvertrag und Löschfrist für Supportnachrichten]]</p>
+
+  <h2>4. Die Medinote-App: Daten in der App</h2>
+  <p>Medinote ist darauf ausgelegt, ohne Konto zu funktionieren. Die App legt
+     Einträge in einer Datenbank auf Ihrem Telefon ab. Eine vollständige
+     Netzwerkmessung am ausgelieferten Build steht noch aus; bis dahin machen
+     wir keine Aussage dazu, ob Daten ausschließlich auf dem Gerät verarbeitet
+     werden. Zu den Einträgen gehören:</p>
+  <ul>
+    <li>INR-Werte mit Datum und Uhrzeit</li>
+    <li>Ihre Medikamente, Dosierungen und Einnahmezeiten</li>
+    <li>ob eine Einnahme bestätigt oder übersprungen wurde</li>
+    <li>Ihr selbst eingetragener Referenzbereich und Ihr Wochenplan</li>
+    <li>freiwillige Angaben: Kontaktdaten Ihrer Ärztin oder Ihres Arztes und
+        Freitext-Notizen</li>
+  </ul>
+  <p>Diese lokale Datenbank wird nicht von Medinote selbst verschlüsselt.
+     Geschützt ist sie durch die Bildschirmsperre und die Geräteverschlüsselung
+     Ihres Betriebssystems und dadurch, dass andere Apps nicht auf den
+     Speicherbereich von Medinote zugreifen können. Ein Gerät ohne eingerichtete
+     Bildschirmsperre ist entsprechend schwächer geschützt.</p>
+
+  <p><strong>Messgeräte über Bluetooth.</strong> Medinote kann Werte von einem
+     kompatiblen Messgerät übernehmen. Die Netzwerkmessung am ausgelieferten
+     Build steht noch aus; deshalb machen wir derzeit keine Aussage dazu, ob
+     während der Nutzung weitere Verbindungen aufgebaut werden. Der Gerätecode
+     eines CoaguChek®-Messgeräts wird
+     im Schlüsselspeicher Ihres Betriebssystems abgelegt (iOS Keychain, Android
+     Keystore). Das Messgerät selbst ist ein Medizinprodukt seines Herstellers;
+     Medinote übernimmt dessen Werte unverändert.</p>
+
+  <p><strong>Erinnerungen und Widgets.</strong> Erinnerungen richten sich
+     ausschließlich nach Zeiten, die Sie selbst einstellen – nie nach einem
+     gemessenen Wert. Im Auslieferungszustand nennen die Erinnerungen den
+     Medikamentennamen und die Dosis, nach einer Übernahme vom Messgerät auch
+     den Messwert. Diese Angaben erscheinen damit auf Ihrem Sperrbildschirm und
+     sind für jeden lesbar, der Ihr Telefon liegen sieht. In den Einstellungen
+     können Sie den diskreten Modus einschalten; die Erinnerungen nennen dann
+     weder Medikament noch Dosis noch Messwert. Das Gleiche gilt für die
+     Medinote-Widgets auf dem iOS-Sperrbildschirm und dem
+     Android-Startbildschirm, die eine eigene Kopie der angezeigten Angaben auf
+     dem Gerät halten; diese Kopie wird bei Widerruf und bei jeder Löschung mit
+     entfernt.</p>
+
+  <p><strong>Export.</strong> Wenn Sie einen Export oder einen Bericht teilen,
+     entscheiden Sie selbst, an wen die Datei geht. Ab dem Teilen liegt sie
+     außerhalb unserer Kontrolle.</p>
+
+  <h2>5. Zwecke und Rechtsgrundlagen</h2>
+  <p>Medinote dokumentiert Ihre Einträge und erinnert Sie an Zeiten, die Sie
+     selbst gesetzt haben. Die App bewertet keine Messwerte, gibt keine
+     Dosierungsempfehlungen und trifft keine automatisierten Entscheidungen im
+     Sinne von Art. 22 DSGVO.</p>
+  <p>Gesundheitsdaten sind besondere Kategorien personenbezogener Daten nach
+     Art. 9 Abs. 1 DSGVO. Ihre Verarbeitung in der App stützt sich auf Ihre
+     ausdrückliche Einwilligung nach Art. 9 Abs. 2 lit. a DSGVO in Verbindung
+     mit Art. 6 Abs. 1 lit. a DSGVO. Sie erteilen sie beim ersten Start und
+     können sie jederzeit widerrufen.</p>
+  <p>[[TBD: Rechtsgrundlage nach Art. 6 je einzelnem Zweck – Einwilligung für
+     die Gesundheitsdaten, Vertragserfüllung für den Kontobetrieb, berechtigtes
+     Interesse für Fehlerdiagnose. Diese Zuordnung muss anwaltlich bestätigt
+     werden (S2).]]</p>
+
+  <h2>6. Nutzungsstatistik</h2>
+  <p>Die Medinote-App enthält derzeit keine Analyse- oder Tracking-Dienste. Es
+     werden keine Nutzungsereignisse an uns oder an Dritte übertragen.</p>
+  <p>Sollte eine freiwillige, standardmäßig ausgeschaltete Nutzungsstatistik
+     eingeführt werden, wird dieser Abschnitt vor der Auslieferung der
+     betreffenden App-Version ergänzt. Eine Erhebung findet erst nach Ihrer
+     ausdrücklichen Einwilligung statt.</p>
+
+  <!-- ===================================================================
+       DRAFT — DO NOT PUBLISH until the analytics SDK is actually in the
+       shipped build, and only in the same release in which the app's
+       bundled policy flips from "verwendet keine Analyse- oder
+       Tracking-Dienste". Source: ART-5 `pilot-gate`, Part 3, section 6.
+       Blocked additionally by sign-off S11 (processing agreement).
+
+       Wenn Sie es ausdrücklich einschalten, erhebt Medinote anonyme
+       Nutzungsereignisse, um zu verstehen, welche Funktionen genutzt werden
+       und wo Nutzer nicht weiterkommen. Dienstanbieter ist TelemetryDeck
+       [[TBD: vollständiger Firmenname, Rechtsform und Anschrift, Berlin]].
+
+       Übertragen werden ausschließlich anonyme Ereignisse, zum Beispiel
+       „Eintrag gespeichert" oder „Export erstellt", zusammen mit technischen
+       Angaben wie App-Version und Betriebssystemversion. Nicht übertragen
+       werden: INR-Werte, Medikamente, Dosierungen, Notizen, Arztkontaktdaten,
+       Ihre E-Mail-Adresse, Ihr Name und Ihre Gerätekennung. Aus den
+       Ereignissen lässt sich kein Gesundheitsdatum und keine einzelne Person
+       ableiten.
+
+       Rechtsgrundlage ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO.
+       Die Funktion ist standardmäßig aus. Sie können sie jederzeit in den
+       Einstellungen wieder ausschalten; die Erhebung endet dann sofort.
+
+       [[TBD: Speicherort und Speicherdauer bei TelemetryDeck,
+       Auftragsverarbeitungsvertrag, Unterauftragsverarbeiter (S11)]]
+       =================================================================== -->
+
+  <h2>7. Konto und Synchronisierung</h2>
+  <p>Die App enthält die Möglichkeit, ein Konto anzulegen, um Daten auf mehreren
+     Geräten zu nutzen. Dafür werden Firebase Authentication und Cloud Firestore
+     von Google eingesetzt; Google verarbeitet die Daten dabei als
+     Auftragsverarbeiter nach Art. 28 DSGVO. Die Firestore-Datenbank liegt in
+     der europäischen Multiregion „eur3“ und damit innerhalb des Europäischen
+     Wirtschaftsraums. Wenn Sie sich mit Google oder Apple anmelden, erfährt der
+     jeweilige Anbieter, dass Sie sich bei Medinote angemeldet haben; welche
+     Gesundheitsdaten Sie erfassen, erfährt er dadurch nicht.</p>
+  <p>In der Pilotphase ist die Konto-Funktion nicht Teil des Angebots. Eine
+     Netzwerkmessung am ausgelieferten Build steht noch aus. Bis dieser Nachweis
+     vorliegt, machen wir keine Aussage dazu, ob Daten ausschließlich auf dem
+     Gerät verarbeitet werden.</p>
+  <p>[[TBD: Vertragspartei des Auftragsverarbeitungsvertrags mit Google (exakter
+     Firmenname und Anschrift), Liste der Unterauftragsverarbeiter nach Art. 30
+     Abs. 1 lit. d, Speicherort von Firebase Authentication sowie Garantien nach
+     Kapitel V DSGVO für Zugriffe aus Drittländern]]</p>
+
+  <h2>8. Empfänger Ihrer Daten</h2>
+  <p>Wir geben Ihre Daten nicht an Dritte weiter und verkaufen sie nicht.
+     Empfänger sind ausschließlich:</p>
+  <ul>
+    <li>GitHub, Inc. – Hosting dieser Website (Abschnitt 3)</li>
+    <li>[[TBD: E-Mail-Anbieter]] – Beantwortung Ihrer Nachrichten (Abschnitt 3)</li>
+    <li>Google – nur bei Nutzung eines Kontos (Abschnitt 7)</li>
+    <li>Empfänger, die Sie selbst auswählen, wenn Sie einen Export teilen</li>
+  </ul>
+  <p>Das Schulungszentrum, über das Sie von Medinote erfahren haben, erhält
+     keine Daten aus der App und keine individuellen Rückmeldungen.</p>
+
+  <h2>9. Speicherdauer und Löschung</h2>
+  <p>Ihre Einträge in der App bleiben erhalten, bis Sie sie löschen. Sie können
+     jederzeit einzelne Einträge löschen, alle Daten löschen oder ein vorhandenes
+     Konto vollständig löschen. Widerrufen Sie Ihre Einwilligung, stoppt Medinote
+     die Verarbeitung sofort und fragt Sie, ob die vorhandenen Daten auf dem
+     Gerät bleiben oder gelöscht werden sollen.</p>
+  <p>[[TBD: Löschfristen je Datenkategorie und die automatische Löschung nach
+     Ablauf – Pflichtangabe nach Art. 13 Abs. 2 lit. a. Betrifft Server-Logfiles,
+     Supportnachrichten, Nutzungsstatistik, Kontodaten und die Unterlagen der
+     Testphase. Vor Veröffentlichung festlegen und implementieren (S4).]]</p>
+
+  <h2>10. Ihre Rechte</h2>
+  <p>Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16),
+     Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18),
+     Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21).</p>
+  <p>Auskunft und Datenübertragbarkeit können Sie direkt in der App ausüben: der
+     Export in den Einstellungen enthält alle Ihre Daten in einem
+     maschinenlesbaren Format. Er funktioniert auch ohne Konto und enthält auch
+     Einträge in Ihrem App-Export. Die Löschung können Sie
+     ebenfalls in den Einstellungen auslösen.</p>
+  <p>Für Anfragen, die nicht über die App laufen, erreichen Sie uns unter:
+     [[TBD: Kontaktweg für Betroffenenanfragen und die Antwortfrist nach
+     Art. 12 Abs. 3 DSGVO – ein Monat. Wenn es dieselbe Adresse wie oben ist,
+     ausdrücklich so benennen.]]</p>
+
+  <h2>11. Widerruf Ihrer Einwilligung</h2>
+  <p>Sie können Ihre Einwilligung jederzeit in den Einstellungen unter „Konto &amp;
+     Datenschutz“ widerrufen. Der Widerruf ist genauso einfach wie die Erteilung.
+     Mit dem Widerruf stoppt Medinote die Synchronisierung, den Empfang von
+     Messgeräten und die Benachrichtigungen; anschließend werden Sie gefragt, ob
+     die bereits erfassten Daten gelöscht werden sollen. Die Rechtmäßigkeit der
+     Verarbeitung bis zum Widerruf bleibt unberührt.</p>
+
+  <h2>12. Minderjährige</h2>
+  <p>[[TBD: Altersgrenze für die Einwilligung und das Verfahren bei
+     Minderjährigen (S6). Die App richtet sich an Erwachsene; das ist hier
+     ausdrücklich zu formulieren, nicht vorauszusetzen.]]</p>
+
+  <h2>13. Beschwerderecht</h2>
+  <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die
+     Verarbeitung Ihrer Daten zu beschweren (Art. 77 DSGVO).</p>
+  <p>[[TBD: zuständige Aufsichtsbehörde nach dem Sitz des Verantwortlichen, mit
+     vollständiger Anschrift (S5)]]</p>
+
+  <h2>14. Medinote ist kein Medizinprodukt</h2>
+  <p>Medinote dokumentiert und erinnert. Die App ist kein Medizinprodukt, gibt
+     keine Dosierungsempfehlungen und ersetzt nicht den Rat Ihres
+     Behandlungsteams. Ein angezeigter Referenzbereich wird von Ihnen selbst
+     eingetragen und von Ihnen selbst ausgelegt.</p>
 </main>
 
 <footer class="site-footer">
   <div class="container footer-legal">
-    <p>© 2026 Medinote · <a href="index.html" style="color:#b9cbd6">Startseite</a> · <a href="impressum.html" style="color:#b9cbd6">Impressum</a></p>
+    <p>© 2026 Medinote ·
+       <a href="index.html" style="color:#b9cbd6">Startseite</a> ·
+       <a href="faq.html" style="color:#b9cbd6">FAQ</a> ·
+       <a href="impressum.html" style="color:#b9cbd6">Impressum</a></p>
   </div>
 </footer>
 

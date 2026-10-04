@@ -490,6 +490,14 @@ img { max-width: 100%; display: block; }
 .legal-page h1 { margin-bottom: 1.5rem; letter-spacing: -0.02em; }
 .legal-page h2 { margin: 2rem 0 0.6rem; font-size: 1.2rem; }
 .legal-page p { color: var(--ink-soft); max-width: 46em; margin-bottom: 0.8rem; }
+.legal-page ul { color: var(--ink-soft); max-width: 46em; margin: 0 0 0.9rem 1.2rem; }
+.legal-page li { margin-bottom: 0.3rem; }
+.legal-page code {
+  background: var(--accent-soft);
+  border-radius: 5px;
+  padding: 0.08em 0.35em;
+  font-size: 0.9em;
+}
 .legal-todo {
   background: #fff6e0;
   border: 1px solid #eeddaa;
@@ -499,6 +507,162 @@ img { max-width: 100%; display: block; }
   max-width: 46em;
   margin-bottom: 2rem;
 }
+
+/* ---------- Content pages (Über uns, FAQ, Für Behandler, Pilot) ----------
+   Built from the same primitives as index.html: .section, .section-head,
+   .feature-card, .privacy-card. Only the pieces below are new. */
+
+.page-head {
+  background: linear-gradient(180deg, var(--bg-soft) 0%, #fff 100%);
+  padding: 3.4rem 0 2.6rem;
+  text-align: center;
+}
+.page-head .container { max-width: 52em; }
+.page-head .eyebrow {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  margin-bottom: 1.1rem;
+}
+.page-head h1 {
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.9rem;
+}
+.page-head .lead { color: var(--ink-soft); font-size: 1.13rem; margin: 0 auto; }
+
+.prose { max-width: 46em; margin-inline: auto; }
+.prose h2 { font-size: 1.35rem; letter-spacing: -0.01em; margin: 2.2rem 0 0.7rem; }
+.prose h3 { font-size: 1.08rem; margin: 1.6rem 0 0.4rem; }
+.prose p, .prose li { color: var(--ink-soft); margin-bottom: 0.85rem; }
+.prose ul, .prose ol { margin: 0 0 1rem 1.2rem; }
+.prose a { color: var(--accent); font-weight: 600; }
+
+/* --- Team / Über uns --- */
+.team-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.8rem;
+  align-items: start;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  max-width: 46em;
+  margin-inline: auto;
+}
+.team-photo {
+  width: 180px;
+  aspect-ratio: 1;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--accent-dark);
+  padding: 0.8rem;
+  overflow: hidden;
+}
+.team-photo img { width: 100%; height: 100%; object-fit: cover; }
+.team-name { font-size: 1.2rem; margin-bottom: 0.15rem; }
+.team-role { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 0.9rem; }
+
+/* --- Testimonial slots (empty until a real quote exists) --- */
+.voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.voice-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.5rem;
+  min-height: 9rem;
+}
+.voice-card blockquote p { color: var(--ink); font-size: 1rem; }
+.voice-card figcaption { margin-top: 1rem; font-size: 0.9rem; color: var(--ink-soft); }
+.voice-name { display: block; font-weight: 600; color: var(--ink); }
+.voice-role { display: block; }
+
+/* --- FAQ --- */
+.faq-list { max-width: 46em; margin-inline: auto; }
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+}
+.faq-item > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1.1rem 3rem 1.1rem 1.4rem;
+  font-weight: 600;
+  position: relative;
+}
+.faq-item > summary::-webkit-details-marker { display: none; }
+.faq-item > summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--accent);
+}
+.faq-item[open] > summary::after { content: "–"; }
+.faq-item > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.faq-answer { padding: 0 1.4rem 1.3rem; }
+.faq-answer p, .faq-answer li { color: var(--ink-soft); margin-bottom: 0.7rem; }
+.faq-answer ul { margin: 0 0 0.7rem 1.2rem; }
+.faq-answer a { color: var(--accent); font-weight: 600; }
+
+/* --- Pilot landing page --- */
+.pilot-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2.2rem;
+  align-items: start;
+  max-width: 52em;
+  margin-inline: auto;
+}
+.qr-slot {
+  width: 280px;
+  aspect-ratio: 1;
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.2rem;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+.qr-slot img { width: 100%; height: 100%; object-fit: contain; }
+.store-links { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.2rem; }
+.store-link {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.2rem;
+  text-decoration: none;
+  color: var(--ink);
+  background: #fff;
+}
+.store-link strong { display: block; }
+.store-link span { color: var(--ink-soft); font-size: 0.9rem; }
+.store-link[aria-disabled="true"] { opacity: 0.65; cursor: not-allowed; }
+
+/* --- Buttons on the dark CTA band --- */
+.cta-section .btn-ghost { color: #fff; border-color: rgba(255, 255, 255, 0.6); }
+.cta-section .btn-ghost:hover { background: rgba(255, 255, 255, 0.14); }
 
 /* ---------- Reveal animation ---------- */
 
@@ -528,6 +692,9 @@ img { max-width: 100%; display: block; }
   .trust-bar { justify-content: center; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: 1fr; }
+  .voice-grid { grid-template-columns: repeat(2, 1fr); }
+  .pilot-grid { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .store-links { width: min(100%, 24rem); margin-inline: auto; }
 }
 
 @media (max-width: 720px) {
@@ -553,7 +720,11 @@ img { max-width: 100%; display: block; }
 
   .lang-switch { align-self: center; }
 
-  .feature-grid, .privacy-grid { grid-template-columns: 1fr; }
+  .feature-grid, .privacy-grid, .voice-grid { grid-template-columns: 1fr; }
+
+  .team-card { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+
+  .qr-slot { width: min(100%, 17rem); }
 
   .section { padding: 3.5rem 0; }
 }

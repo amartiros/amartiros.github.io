@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medinote Pilotphase</title>
+  <meta name="description" content="Informationen zur Medinote-Pilotphase und Links zur Installation, sobald die Testversionen bereitstehen.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="../assets/icon/app-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <meta name="theme-color" content="#c0564e">
+  <style>
+    .pilot-wrap { max-width: 760px; margin: 0 auto; }
+    .pilot-card { background: var(--surface, #fff); border: 1px solid var(--border, #e8e2df); border-radius: 1.25rem; padding: clamp(1.25rem, 4vw, 2.5rem); margin: 1.5rem 0; }
+    .pilot-qr { width: 180px; aspect-ratio: 1; border: 2px dashed #c8bdb7; border-radius: 1rem; display: grid; place-items: center; text-align: center; color: #756963; margin: 1.5rem auto; padding: 1rem; }
+    .pilot-links { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .pilot-links a[aria-disabled="true"] { opacity: .6; pointer-events: none; }
+    .pilot-lang { margin-left: auto; }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav container">
+    <a class="brand" href="../index.html" aria-label="Medinote – Startseite"><span class="brand-mark"><img src="../assets/icon/app-icon.png" width="30" height="30" alt=""></span><span class="brand-name">Medinote</span></a>
+    <div class="nav-menu"><a href="../faq.html">FAQ</a><a href="../impressum.html">Impressum</a><a href="../datenschutz.html">Datenschutz</a>
+      <div class="lang-switch pilot-lang" role="group" aria-label="Sprache / Language"><button type="button" data-lang="de" class="active" aria-pressed="true">DE</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+    </div>
+  </nav>
+</header>
+<main class="section"><div class="container pilot-wrap">
+  <p class="eyebrow" data-i18n="pilot.eyebrow">Medinote · Pilotphase</p>
+  <h1 data-i18n="pilot.title">Medinote installieren</h1>
+  <p class="lead" data-i18n="pilot.lead">Scannen Sie den QR-Code oder öffnen Sie diese Seite auf dem Telefon. Die Installationslinks werden hier eingetragen, sobald TestFlight und Google Play bereit sind.</p>
+  <section class="pilot-card" aria-labelledby="install-title">
+    <h2 id="install-title" data-i18n="pilot.install">App installieren</h2>
+    <div class="pilot-qr" role="img" aria-label="QR-Code wird nach Festlegung der Zieladresse ergänzt"><span data-i18n="pilot.qr">QR-Code folgt<br>nach Freigabe der Zieladresse</span></div>
+    <p data-i18n="pilot.qrnote">Dieser Platzhalter ist noch kein scannbarer QR-Code.</p>
+    <div class="pilot-links">
+      <a class="btn btn-primary" href="#" aria-disabled="true" tabindex="-1" data-i18n="pilot.ios">TestFlight-Link folgt</a>
+      <a class="btn btn-ghost" href="#" aria-disabled="true" tabindex="-1" data-i18n="pilot.android">Google-Play-Link folgt</a>
+    </div>
+  </section>
+  <section class="pilot-card">
+    <h2 data-i18n="pilot.before">Vor dem Start</h2>
+    <ul><li data-i18n="pilot.beta">Medinote ist Beta-Software. Funktionen können sich ändern und Fehler enthalten.</li><li data-i18n="pilot.free">Die Teilnahme an der Pilotphase ist freiwillig und kostenlos.</li><li data-i18n="pilot.scope">Medinote dokumentiert Werte und Einnahmen. Die App gibt keine Dosierungsempfehlungen.</li></ul>
+    <p><a href="../faq.html#datenschutz" data-i18n="pilot.privacy">Lesen Sie die Datenschutz-FAQ</a></p>
+    <p data-i18n="pilot.help">Fragen? Schreiben Sie an <a href="mailto:kontakt@medi-note.de">kontakt@medi-note.de</a>.</p>
+  </section>
+</div></main>
+<footer class="site-footer"><div class="container footer-links"><a href="../index.html" data-i18n="footer.home">Startseite</a><a href="../faq.html" data-i18n="footer.faq">FAQ</a><a href="../ueber-uns.html" data-i18n="footer.about">Über uns</a><a href="../fuer-behandler.html" data-i18n="footer.pros">Für Behandler</a><a href="../impressum.html" data-i18n="footer.imprint">Impressum</a><a href="../datenschutz.html" data-i18n="footer.privacy">Datenschutzerklärung</a></div><div class="container footer-legal"><p data-i18n="footer.disclaimer">Medinote ersetzt keine ärztliche Beratung, Diagnose oder Behandlung. Wenden Sie sich bei Fragen zu Ihrer Therapie immer an Ihre Ärztin oder Ihren Arzt.</p><p data-i18n="footer.trademark">microINR® ist eine Marke von iLine Microsystems S.L.; CoaguChek® ist eine Marke der Roche-Gruppe. Medinote steht in keiner geschäftlichen Verbindung zu den Markeninhabern.</p></div></footer>
+<script src="../js/pilot-i18n.js"></script><script src="../js/main.js"></script>
+</body></html>
