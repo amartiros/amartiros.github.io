@@ -135,12 +135,16 @@
      Bildschirmsperre ist entsprechend schwächer geschützt.</p>
 
   <p><strong>Messgeräte über Bluetooth.</strong> Medinote kann Werte von einem
-     kompatiblen Messgerät übernehmen. Die Netzwerkmessung am ausgelieferten
+     kompatiblen Messgerät übernehmen. Unterstützt sind das microINR® Link von
+     iLine Microsystems S.L. und das CoaguChek® INRange der Roche-Gruppe. Die
+     Netzwerkmessung am ausgelieferten
      Build steht noch aus; deshalb machen wir derzeit keine Aussage dazu, ob
-     während der Nutzung weitere Verbindungen aufgebaut werden. Der Gerätecode
-     eines CoaguChek®-Messgeräts wird
+     während der Nutzung weitere Verbindungen aufgebaut werden. Beim
+     CoaguChek® INRange geben Sie bei der Einrichtung einmalig den auf dem
+     Gerät angezeigten Gerätecode ein; dieser Code wird
      im Schlüsselspeicher Ihres Betriebssystems abgelegt (iOS Keychain, Android
-     Keystore). Das Messgerät selbst ist ein Medizinprodukt seines Herstellers;
+     Keystore). Für das microINR® Link speichert Medinote keinen solchen Code.
+     Das Messgerät selbst ist ein Medizinprodukt seines Herstellers;
      Medinote übernimmt dessen Werte unverändert.</p>
 
   <p><strong>Erinnerungen und Widgets.</strong> Erinnerungen richten sich
@@ -257,9 +261,12 @@
      Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18),
      Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21).</p>
   <p>Auskunft und Datenübertragbarkeit können Sie direkt in der App ausüben: der
-     Export in den Einstellungen enthält alle Ihre Daten in einem
-     maschinenlesbaren Format. Er funktioniert auch ohne Konto und enthält auch
-     Einträge in Ihrem App-Export. Die Löschung können Sie
+     Export in den Einstellungen gibt Ihre Daten als JSON-Datei aus, also in
+     einem strukturierten, gängigen und maschinenlesbaren Format nach Art. 20
+     Abs. 1 DSGVO. Der Export liest die Datenbank auf Ihrem Telefon aus. Er
+     funktioniert deshalb auch ohne Konto – in diesem Fall bleibt der Abschnitt
+     zu den Kontodaten leer – und er enthält auch Einträge, die noch nicht mit
+     einem Konto synchronisiert wurden. Die Löschung können Sie
      ebenfalls in den Einstellungen auslösen.</p>
   <p>Für Anfragen, die nicht über die App laufen, erreichen Sie uns unter:
      [[TBD: Kontaktweg für Betroffenenanfragen und die Antwortfrist nach

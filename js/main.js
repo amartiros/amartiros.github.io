@@ -37,7 +37,7 @@
       'features.reminders.title': 'Erinnerungen zu Ihren Zeiten',
       'features.reminders.text': 'Medinote meldet sich zu den Zeiten, die Sie selbst einstellen – nie abhängig von einem Messwert. Mit einem Tipp markieren Sie die Einnahme direkt als „Eingenommen“ oder „Nicht eingenommen“ und dokumentieren sie damit.',
       'features.weekplan.title': 'Ihr Wochenplan auf einen Blick',
-      'features.weekplan.text': 'Welche Tablette an welchem Tag? Der Wochenplan zeigt Ihre Dosierung für jeden Wochentag – klar und übersichtlich, genau wie auf dem Dosierungsplan Ihrer Ärztin oder Ihres Arztes.',
+      'features.weekplan.text': 'Welche Tablette an welchem Tag? Der Wochenplan zeigt für jeden Wochentag die Dosierung an, die Sie selbst eingetragen haben – klar und übersichtlich.',
       'features.device.title': 'Messgerät: Werte übernehmen',
       'features.device.text': 'Einmal per Bluetooth verbinden – fertig. microINR® und CoaguChek® INRange senden Ihre Messwerte danach in die App, ohne Abtippen. Medinote übernimmt die Werte unverändert und bewertet sie nicht.',
       'features.device.link1': 'Anleitung: microINR® koppeln →',
@@ -121,7 +121,7 @@
       'footer.imprint': 'Impressum',
       'footer.privacy': 'Datenschutzerklärung',
       'footer.contact': 'Kontakt',
-      'footer.disclaimer': 'Medinote ersetzt keine ärztliche Beratung, Diagnose oder Behandlung. Wenden Sie sich bei Fragen zu Ihrer Therapie immer an Ihre Ärztin oder Ihren Arzt.',
+      'footer.disclaimer': 'Medinote dokumentiert und erinnert. Die App ist kein Medizinprodukt, gibt keine Dosierungsempfehlungen und ersetzt nicht den Rat Ihres Behandlungsteams.',
       'footer.trademark': 'microINR® ist eine eingetragene Marke von iLine Microsystems S.L., CoaguChek® eine eingetragene Marke von Roche. Medinote steht in keiner geschäftlichen Verbindung zu iLine Microsystems oder Roche Diagnostics.'
     },
 
@@ -155,7 +155,7 @@
       'features.reminders.title': 'Reminders at times you set',
       'features.reminders.text': 'Medinote notifies you at the times you set yourself – never based on a reading. One tap marks the dose as “taken” or “skipped” and records it.',
       'features.weekplan.title': 'Your weekly plan at a glance',
-      'features.weekplan.text': 'Which tablet on which day? The weekly plan shows your dosage for every day of the week – clear and easy to read, just like the dosing schedule from your doctor.',
+      'features.weekplan.text': 'Which tablet on which day? The weekly plan shows the dose you entered yourself for every day of the week – clear and easy to read.',
       'features.device.title': 'Meter: readings arrive automatically',
       'features.device.text': 'Pair once via Bluetooth – done. microINR® and CoaguChek® INRange then send your readings into the app, with no retyping. Medinote records the values unchanged and does not assess them.',
       'features.device.link1': 'Guide: pair microINR® →',
@@ -235,7 +235,7 @@
       'footer.imprint': 'Legal notice',
       'footer.privacy': 'Privacy policy',
       'footer.contact': 'Contact',
-      'footer.disclaimer': 'Medinote does not replace medical advice, diagnosis or treatment. Always consult your doctor with questions about your therapy.',
+      'footer.disclaimer': 'Medinote documents and reminds. It is not a medical device, gives no dosage recommendations, and does not replace the advice of your care team.',
       'footer.trademark': 'microINR® is a registered trademark of iLine Microsystems S.L.; CoaguChek® is a registered trademark of Roche. Medinote is not affiliated with iLine Microsystems or Roche Diagnostics.'
     }
   };
