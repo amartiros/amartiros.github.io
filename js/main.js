@@ -70,6 +70,10 @@
 
       'shots.title': 'Ein Blick in die App',
       'shots.sub': 'Klare Oberfläche, große Schrift, hoher Kontrast – gestaltet für den täglichen Gebrauch.',
+      // cap1 and cap2 have no figure on the page at the moment. The two INR
+      // screenshots were taken out on 5 October 2026 because the app labels
+      // in them contradicted these captions; see the comment in index.html.
+      // The keys stay so the captions come back with the re-shot figures.
       'shots.cap1': 'INR-Verlauf mit Referenzbereich',
       'shots.cap2': 'INR-Verlauf & PDF der selbst dokumentierten Werte',
       'shots.cap3': 'Wochenplan mit Tablettenübersicht',

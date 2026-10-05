@@ -1,3 +1,18 @@
+# The repository root is the published web root for medi-note.de. Anything
+# committed here is fetchable at the apex domain, so internal material must
+# not be committed in the first place. _config.yml is the second line of
+# defence and excludes the same classes from the built site.
+
 # Markdown notes (keep README)
 *.md
 !README.md
+
+# macOS directory metadata
+.DS_Store
+
+# Local agent and editor state
+.claude/
+
+# Jekyll build output
+_site/
+.jekyll-cache/

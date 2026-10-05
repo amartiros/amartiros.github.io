@@ -1,0 +1,35 @@
+# GitHub Pages build configuration for medi-note.de
+#
+# The repository root is the published web root. Every file committed here is
+# fetchable at https://medi-note.de/<path> unless it is excluded below.
+#
+# Internal review material is excluded as a class, not file by file: a note
+# added later is then excluded by default instead of relying on somebody
+# remembering to list it. Markdown has no job on the public site — the site is
+# hand-written HTML — so every .md file is excluded, including README.md.
+#
+# Keep this list in step with .gitignore. .gitignore stops most notes from
+# being committed at all; this file stops anything that was force-added
+# anyway from being served.
+
+exclude:
+  # Internal notes, reviews, audits, PR descriptions.
+  - "*.md"
+  - "**/*.md"
+
+  # macOS directory metadata. Committed by accident; never serve it.
+  - ".DS_Store"
+  - "**/.DS_Store"
+
+  # Repository-only material that must never reach the web root.
+  - "docs/"
+  - ".claude/"
+  - ".gitignore"
+  - "LICENSE"
+
+# Jekyll skips dot- and underscore-prefixed paths on its own, so .git and
+# _config.yml itself need no entry here.
+
+# No theme, no layouts, no plugins: the pages are complete HTML documents and
+# must pass through the build unchanged.
+plugins: []
