@@ -5,11 +5,11 @@ step, no external assets — plain HTML/CSS/JS.
 
 ```
 .
-├── index.html        # Single-page site (hero, features, screenshots, how it works, privacy, contact)
+├── index.html        # Single-page site (hero, features, screenshots, how it works, privacy, tester signup form)
 ├── impressum.html    # Legal notice — PLACEHOLDER, fill in before going live
 ├── datenschutz.html  # Privacy policy — PLACEHOLDER, fill in before going live
 ├── css/style.css
-├── js/main.js        # Language toggle (DE default / EN), mobile nav, scroll reveal
+├── js/main.js        # Language toggle (DE default / EN), mobile nav, scroll reveal, signup form
 ├── CNAME             # Custom domain for GitHub Pages
 └── assets/screenshots/  # Put real app screenshots here (see below)
 ```
@@ -45,6 +45,15 @@ Each phone mockup contains a `.shot-placeholder` div. Replace it with an image:
 Recommended source size: 1290 × 2796 px (iPhone portrait screenshots work
 as-is). The image is scaled with `object-fit: cover`.
 
+## Tester signup form
+
+The "Tester werden" section (`#download`) holds a signup form: first and last
+name (optional), e-mail and platform (iOS/Android, required) plus a consent
+checkbox. It posts to a Google Apps Script web app that appends each signup to
+a Google Sheet. Paste the script's `…/exec` URL into `FORM_ENDPOINT` in
+`js/main.js`; until then the form shows an error that points to the e-mail
+address. The script lives in the local `SETUP-PILOT-FORM.md`.
+
 ## Deploying to GitHub Pages
 
 The site lives at the repo root, so no build or workflow is needed:
@@ -69,5 +78,6 @@ The site lives at the repo root, so no build or workflow is needed:
 - [ ] Replace the placeholder content in `impressum.html` (§ 5 DDG — mandatory in Germany)
 - [ ] Replace the placeholder content in `datenschutz.html` (template: `Datenschutzerklaerung.docx` in the medical_assistant app repo)
 - [ ] Confirm the contact address (currently `kontakt@medi-note.de`) exists
+- [ ] Deploy the Apps Script and set `FORM_ENDPOINT` in `js/main.js`; fill in the retention period for signups in `datenschutz.html`
 - [ ] Replace screenshot placeholders with real app screenshots
 - [ ] Update the store badges in the download section once App Store / Play Store listings exist

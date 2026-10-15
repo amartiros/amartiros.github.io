@@ -94,9 +94,24 @@
 
       'cta.title': 'Machen Sie mit – in der Pilotphase',
       'cta.text': 'Medinote befindet sich derzeit in der Pilotphase in Deutschland. Werden Sie Teil des Testprogramms und gestalten Sie die App mit Ihrem Feedback mit.',
-      'cta.button': 'Per E-Mail anmelden',
+      'cta.mailAlt': 'Lieber per E-Mail?',
       'cta.soon': 'bald verfügbar',
       'cta.soon2': 'bald verfügbar',
+
+      'form.firstName': 'Vorname',
+      'form.lastName': 'Nachname',
+      'form.optional': '(optional)',
+      'form.email': 'E-Mail-Adresse',
+      'form.emailHint': 'Sie nutzen Android? Dann bitte die E-Mail-Adresse Ihres Google-Kontos – nur damit können wir Sie im Play Store freischalten.',
+      'form.platform': 'Ihr Smartphone',
+      'form.ios': 'iPhone (iOS)',
+      'form.android': 'Android',
+      'form.consent': 'Ich bin einverstanden, dass Medinote meine Angaben speichert, um mich per E-Mail zum Testprogramm einzuladen. Ich kann meine Einwilligung jederzeit per E-Mail widerrufen. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>. <span class="field-req" aria-hidden="true">*</span>',
+      'form.submit': 'Als Tester anmelden',
+      'form.sending': 'Wird gesendet …',
+      'form.required': '* Pflichtfeld',
+      'form.success': 'Vielen Dank für Ihre Anmeldung! Wir melden uns in Kürze per E-Mail mit Ihrer Einladung zum Test.',
+      'form.error': 'Das hat leider nicht geklappt. Bitte versuchen Sie es später noch einmal oder schreiben Sie uns an kontakt@medi-note.de.',
 
       'footer.claim': 'Die App für Menschen unter Gerinnungshemmer-Therapie.',
       'footer.widgets': 'Widget-Anleitung',
@@ -194,9 +209,24 @@
 
       'cta.title': 'Join us – during the pilot phase',
       'cta.text': 'Medinote is currently in its pilot phase in Germany. Become part of the test programme and help shape the app with your feedback.',
-      'cta.button': 'Sign up by e-mail',
+      'cta.mailAlt': 'Prefer e-mail?',
       'cta.soon': 'coming soon',
       'cta.soon2': 'coming soon',
+
+      'form.firstName': 'First name',
+      'form.lastName': 'Last name',
+      'form.optional': '(optional)',
+      'form.email': 'E-mail address',
+      'form.emailHint': 'Using Android? Then please enter the e-mail address of your Google account – we need it to unlock the test for you in the Play Store.',
+      'form.platform': 'Your smartphone',
+      'form.ios': 'iPhone (iOS)',
+      'form.android': 'Android',
+      'form.consent': 'I agree that Medinote may store my details in order to invite me to the test programme by e-mail. I can withdraw my consent at any time by e-mail. More in the <a href="datenschutz.html">privacy policy</a>. <span class="field-req" aria-hidden="true">*</span>',
+      'form.submit': 'Sign up as a tester',
+      'form.sending': 'Sending …',
+      'form.required': '* Required field',
+      'form.success': 'Thank you for signing up! We will e-mail you your test invitation shortly.',
+      'form.error': 'Sorry, that didn’t work. Please try again later or e-mail us at kontakt@medi-note.de.',
 
       'footer.claim': 'The app for people on anticoagulant therapy.',
       'footer.widgets': 'Widget guide',
@@ -219,9 +249,12 @@
     });
   }
 
+  var currentLang = 'de';
+
   function setLanguage(lang) {
     var dict = translations[lang];
     if (!dict) return;
+    currentLang = lang;
 
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
@@ -296,6 +329,60 @@
     reveals.forEach(function (el) { observer.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  /* ---------------- Tester signup form ---------------- */
+  // Apps Script web-app URL (…/exec) that appends each signup to the Google
+  // Sheet — see SETUP-PILOT-FORM.md. While it is empty, submitting shows the
+  // error message, which points visitors to the e-mail address instead.
+  var FORM_ENDPOINT = '';
+
+  var testerForm = document.getElementById('tester-form');
+  if (testerForm) {
+    var formBody = testerForm.querySelector('.form-body');
+    var formStatus = testerForm.querySelector('.form-status');
+    var submitBtn = testerForm.querySelector('button[type="submit"]');
+    var formShownAt = Date.now();
+
+    // Keep data-i18n in step so the language toggle re-translates the text.
+    var setText = function (el, key) {
+      el.setAttribute('data-i18n', key);
+      el.textContent = translations[currentLang][key];
+    };
+
+    var showStatus = function (kind) {
+      formStatus.className = 'form-status is-' + kind;
+      setText(formStatus, 'form.' + kind);
+    };
+
+    testerForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (submitBtn.disabled) return;
+      submitBtn.disabled = true;
+      setText(submitBtn, 'form.sending');
+
+      var params = new URLSearchParams(new FormData(testerForm));
+      params.set('elapsed', String(Date.now() - formShownAt)); // time trap, checked by the script
+      params.set('lang', currentLang);
+
+      // A form-encoded POST is a "simple" request: no CORS preflight, and
+      // Apps Script answers via a redirect that allows any origin.
+      var request = FORM_ENDPOINT
+        ? fetch(FORM_ENDPOINT, { method: 'POST', body: params })
+            .then(function (res) { return res.json(); })
+        : Promise.reject(new Error('FORM_ENDPOINT is not set'));
+
+      request.then(function (data) {
+        if (!data || !data.ok) throw new Error('Signup rejected');
+        formBody.hidden = true;
+        showStatus('success');
+        formStatus.focus();
+      }).catch(function () {
+        showStatus('error');
+        submitBtn.disabled = false;
+        setText(submitBtn, 'form.submit');
+      });
+    });
   }
 
   /* ---------------- Footer year ---------------- */

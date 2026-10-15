@@ -10,6 +10,7 @@
   --bg: #ffffff;
   --bg-soft: #fdf3f1;       /* app scaffold: soft warm pink */
   --line: #f0dcd8;
+  --line-strong: #a8857f;   /* form field borders — ≥ 3:1 on white */
   --accent: #c0564e;        /* app primary — calm "clinical brick" red */
   --accent-dark: #8a4a45;   /* app secondary — muted deep red-brown */
   --accent-soft: #f8e5e2;
@@ -427,13 +428,13 @@ img { max-width: 100%; display: block; }
 
 .cta-inner p { color: rgba(255, 255, 255, 0.88); font-size: 1.08rem; }
 
-.cta-inner .hero-actions { justify-content: center; margin: 1.8rem 0 0.8rem; }
-
 .cta-mail {
   font-weight: 600;
   letter-spacing: 0.02em;
   margin-bottom: 1.8rem;
 }
+
+.cta-mail a { color: #fff; text-underline-offset: 3px; }
 
 .store-badges {
   display: flex;
@@ -448,6 +449,142 @@ img { max-width: 100%; display: block; }
   padding: 0.55rem 1.1rem;
   font-size: 0.92rem;
   color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---------- Tester signup form ---------- */
+
+.signup-card {
+  background: #fff;
+  color: var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 34rem;
+  margin: 2rem auto 1.4rem;
+  padding: 1.8rem;
+  text-align: left;
+}
+
+.cta-inner .signup-card p { color: var(--ink-soft); font-size: 0.9rem; }
+
+.form-body { display: grid; gap: 1.2rem; }
+.form-body[hidden] { display: none; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
+
+.field-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.field-opt { font-weight: 400; color: var(--ink-soft); }
+.field-req { color: var(--accent); }
+
+.field input[type="text"],
+.field input[type="email"] {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem; /* ≥ 16px keeps iOS Safari from zooming in */
+  color: var(--ink);
+  background: #fff;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+}
+
+.field input:focus-visible,
+.choice:has(input:focus-visible) {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.cta-inner .signup-card .field-hint { margin-top: 0.4rem; font-size: 0.85rem; }
+
+.choice-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.choice:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.choice input,
+.consent input {
+  accent-color: var(--accent);
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.consent input { margin-top: 0.2rem; }
+.consent a { color: var(--accent); font-weight: 600; }
+
+/* Honeypot: invisible to people, filled in by bots */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.signup-card .btn {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.05rem;
+  padding: 0.9rem 1.6rem;
+}
+
+.signup-card .btn:disabled { opacity: 0.6; cursor: progress; }
+
+.cta-inner .signup-card .form-required { margin-top: -0.6rem; font-size: 0.82rem; }
+
+/* Stays in the layout while empty so screen readers pick up the message */
+.cta-inner .signup-card .form-status {
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  outline: none;
+}
+
+.cta-inner .signup-card .form-status.is-success {
+  color: var(--ink);
+  background: var(--success-soft);
+  border-left: 4px solid var(--success);
+  padding: 1rem 1.1rem;
+}
+
+.cta-inner .signup-card .form-status.is-error {
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  margin-top: 1rem;
+  padding: 0.9rem 1.1rem;
 }
 
 /* ---------- Footer ---------- */
@@ -554,6 +691,9 @@ img { max-width: 100%; display: block; }
   .lang-switch { align-self: center; }
 
   .feature-grid, .privacy-grid { grid-template-columns: 1fr; }
+
+  .form-row, .choice-group { grid-template-columns: 1fr; }
+  .signup-card { padding: 1.4rem 1.2rem; }
 
   .section { padding: 3.5rem 0; }
 }

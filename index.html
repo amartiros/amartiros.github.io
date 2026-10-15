@@ -326,10 +326,46 @@
     <div class="container cta-inner reveal">
       <h2 data-i18n="cta.title">Machen Sie mit – in der Pilotphase</h2>
       <p data-i18n="cta.text">Medinote befindet sich derzeit in der Pilotphase in Deutschland. Werden Sie Teil des Testprogramms und gestalten Sie die App mit Ihrem Feedback mit.</p>
-      <div class="hero-actions">
-        <a class="btn btn-light" href="mailto:kontakt@medi-note.de?subject=Medinote%20Pilotphase" data-i18n="cta.button">Per E-Mail anmelden</a>
+      <div class="signup-card">
+        <form id="tester-form" class="signup-form">
+          <div class="form-body">
+            <div class="form-row">
+              <div class="field">
+                <label class="field-label" for="tf-vorname"><span data-i18n="form.firstName">Vorname</span> <span class="field-opt" data-i18n="form.optional">(optional)</span></label>
+                <input type="text" id="tf-vorname" name="vorname" autocomplete="given-name" maxlength="80">
+              </div>
+              <div class="field">
+                <label class="field-label" for="tf-nachname"><span data-i18n="form.lastName">Nachname</span> <span class="field-opt" data-i18n="form.optional">(optional)</span></label>
+                <input type="text" id="tf-nachname" name="nachname" autocomplete="family-name" maxlength="80">
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="tf-email"><span data-i18n="form.email">E-Mail-Adresse</span> <span class="field-req" aria-hidden="true">*</span></label>
+              <input type="email" id="tf-email" name="email" autocomplete="email" maxlength="160" required aria-describedby="tf-email-hint">
+              <p class="field-hint" id="tf-email-hint" data-i18n="form.emailHint">Sie nutzen Android? Dann bitte die E-Mail-Adresse Ihres Google-Kontos – nur damit können wir Sie im Play Store freischalten.</p>
+            </div>
+            <fieldset class="field">
+              <legend class="field-label"><span data-i18n="form.platform">Ihr Smartphone</span> <span class="field-req" aria-hidden="true">*</span></legend>
+              <div class="choice-group">
+                <label class="choice"><input type="radio" name="plattform" value="ios" required> <span data-i18n="form.ios">iPhone (iOS)</span></label>
+                <label class="choice"><input type="radio" name="plattform" value="android" required> <span data-i18n="form.android">Android</span></label>
+              </div>
+            </fieldset>
+            <label class="consent">
+              <input type="checkbox" name="consent" value="ja" required>
+              <span data-i18n-html="form.consent">Ich bin einverstanden, dass Medinote meine Angaben speichert, um mich per E-Mail zum Testprogramm einzuladen. Ich kann meine Einwilligung jederzeit per E-Mail widerrufen. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>. <span class="field-req" aria-hidden="true">*</span></span>
+            </label>
+            <div class="hp" aria-hidden="true">
+              <label for="tf-website">Website</label>
+              <input type="text" id="tf-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn-primary" data-i18n="form.submit">Als Tester anmelden</button>
+            <p class="form-required" data-i18n="form.required">* Pflichtfeld</p>
+          </div>
+          <p class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+        </form>
       </div>
-      <p class="cta-mail">kontakt@medi-note.de</p>
+      <p class="cta-mail"><span data-i18n="cta.mailAlt">Lieber per E-Mail?</span> <a href="mailto:kontakt@medi-note.de?subject=Medinote%20Pilotphase">kontakt@medi-note.de</a></p>
       <div class="store-badges" aria-label="App-Store-Verfügbarkeit">
         <span class="store-badge"> <span aria-hidden="true"></span> App Store · <span data-i18n="cta.soon">bald verfügbar</span></span>
         <span class="store-badge">▶ Google Play · <span data-i18n="cta.soon2">bald verfügbar</span></span>
