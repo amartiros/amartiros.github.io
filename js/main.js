@@ -333,9 +333,9 @@
 
   /* ---------------- Tester signup form ---------------- */
   // Apps Script web-app URL (…/exec) that appends each signup to the Google
-  // Sheet — see SETUP-PILOT-FORM.md. While it is empty, submitting shows the
-  // error message, which points visitors to the e-mail address instead.
-  var FORM_ENDPOINT = '';
+  // Sheet — see SETUP-PILOT-FORM.md. If it is ever emptied, submitting shows
+  // the error message, which points visitors to the e-mail address instead.
+  var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyyI2wHdwcmWHXtUch0oVPCNOQmUpzJrvdk2tG7boOeQgOXz5mfZmARXNsY_IeQ2FC-/exec';
 
   var testerForm = document.getElementById('tester-form');
   if (testerForm) {
