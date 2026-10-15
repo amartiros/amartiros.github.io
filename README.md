@@ -5,11 +5,11 @@ step, no external assets — plain HTML/CSS/JS.
 
 ```
 .
-├── index.html        # Single-page site (hero, features, screenshots, how it works, privacy, contact)
+├── index.html        # Single-page site (hero, problem, features, widgets, screenshots, how it works, privacy, FAQ, early-access form)
 ├── impressum.html    # Legal notice — PLACEHOLDER, fill in before going live
 ├── datenschutz.html  # Privacy policy — PLACEHOLDER, fill in before going live
 ├── css/style.css
-├── js/main.js        # Language toggle (DE default / EN), mobile nav, scroll reveal
+├── js/main.js        # Language toggle (DE default / EN), mobile nav, scroll reveal, signup form
 ├── CNAME             # Custom domain for GitHub Pages
 └── assets/screenshots/  # Put real app screenshots here (see below)
 ```
@@ -32,6 +32,19 @@ shared. Besides `data-i18n` (plain text), `data-i18n-html` fills strings with
 inline markup such as `<strong>`, and `data-i18n-aria` sets an `aria-label`.
 The microINR® and CoaguChek® guides and the legal pages are German only.
 
+## Wording: documentation, not a medical device
+
+Medinote is marketed as a personal diary, not a medical device (EU MDR). The
+site's text, alt texts and screenshots all count towards the app's intended
+purpose, so keep them to recording, never judging:
+
+- Use: notieren, abhaken, übernehmen, anzeigen, erinnern (an den eigenen Plan), exportieren
+- Avoid: überwachen, bewerten, auswerten, Trend, warnen, empfehlen, „für Ihre
+  Therapie“, „begleitet“, „sicher“/„zuverlässig“, and health outcomes
+  (stabiler INR, weniger Komplikationen)
+- Doses and reference ranges are always the ones the doctor set („wie von Ihrer
+  Ärztin oder Ihrem Arzt vorgegeben“) — the app never suggests or rates them
+
 ## Replacing the screenshot placeholders
 
 Each phone mockup contains a `.shot-placeholder` div. Replace it with an image:
@@ -44,6 +57,15 @@ Each phone mockup contains a `.shot-placeholder` div. Replace it with an image:
 
 Recommended source size: 1290 × 2796 px (iPhone portrait screenshots work
 as-is). The image is scaled with `object-fit: cover`.
+
+## Early-access signup form
+
+The "Früher Zugang" section (`#frueher-zugang`) holds a signup form: first and last
+name (optional), e-mail and platform (iOS/Android, required) plus a consent
+checkbox. It posts to a Google Apps Script web app that appends each signup to
+a Google Sheet; the script's `…/exec` URL is set in `FORM_ENDPOINT` in
+`js/main.js`. If that is ever emptied, the form shows an error that points to
+the e-mail address. The script lives in the local `SETUP-PILOT-FORM.md`.
 
 ## Deploying to GitHub Pages
 
@@ -69,5 +91,8 @@ The site lives at the repo root, so no build or workflow is needed:
 - [ ] Replace the placeholder content in `impressum.html` (§ 5 DDG — mandatory in Germany)
 - [ ] Replace the placeholder content in `datenschutz.html` (template: `Datenschutzerklaerung.docx` in the medical_assistant app repo)
 - [ ] Confirm the contact address (currently `kontakt@medi-note.de`) exists
+- [x] Deploy the Apps Script and set `FORM_ENDPOINT` in `js/main.js`
+- [ ] Fill in the retention period for signups in `datenschutz.html`
 - [ ] Replace screenshot placeholders with real app screenshots
-- [ ] Update the store badges in the download section once App Store / Play Store listings exist
+- [ ] Update the store badges in the early-access section once App Store / Play Store listings exist
+- [ ] Once the app no longer shows the „Im Zielbereich“ badge (and „INR-Trend“ / „Arztbericht“ are renamed): re-shoot the screenshots, then add the FAQ „Bewertet Medinote meine INR-Werte? – Nein …“ and „bewertet keine Messwerte“ to the boundary note under the features (both are untrue until then)
