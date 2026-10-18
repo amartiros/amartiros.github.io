@@ -61,11 +61,17 @@ as-is). The image is scaled with `object-fit: cover`.
 ## Early-access signup form
 
 The "Früher Zugang" section (`#frueher-zugang`) holds a signup form: first and last
-name (optional), e-mail and platform (iOS/Android, required) plus a consent
-checkbox. It posts to a Google Apps Script web app that appends each signup to
-a Google Sheet; the script's `…/exec` URL is set in `FORM_ENDPOINT` in
-`js/main.js`. If that is ever emptied, the form shows an error that points to
-the e-mail address. The script lives in the local `SETUP-PILOT-FORM.md`.
+name, e-mail, platform (iOS/Android) and a consent checkbox, all required. It
+posts to a Google Apps Script web app that appends each signup to a Google
+Sheet; the script's `…/exec` URL is set in `FORM_ENDPOINT` in `js/main.js`. If
+that is ever emptied, the form shows an error that points to the e-mail
+address. The script lives in the local `SETUP-PILOT-FORM.md`.
+
+Names and e-mail are checked against whitelist patterns twice: in the browser
+(`rules` in `js/main.js`, for the visitor's sake) and again in the Apps Script
+(`NAME_RE` / `EMAIL_RE`), which is the check that counts, since anyone can post
+to the endpoint directly. Keep the two in step. Platform and consent only
+accept their fixed values.
 
 ## Deploying to GitHub Pages
 

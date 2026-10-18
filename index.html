@@ -369,21 +369,22 @@
       <h2 data-i18n="cta.title">Seien Sie von Anfang an dabei</h2>
       <p data-i18n="cta.text">Medinote ist derzeit in der Pilotphase in Deutschland. Testen Sie die App vor allen anderen – Ihre Rückmeldung landet direkt bei uns und hilft, Medinote für den Alltag noch besser zu machen.</p>
       <div class="signup-card">
-        <form id="tester-form" class="signup-form">
+        <!-- method="post": should main.js never run, the browser must not put name and e-mail into the URL -->
+        <form id="tester-form" class="signup-form" method="post">
           <div class="form-body">
             <div class="form-row">
               <div class="field">
-                <label class="field-label" for="tf-vorname"><span data-i18n="form.firstName">Vorname</span> <span class="field-opt" data-i18n="form.optional">(optional)</span></label>
-                <input type="text" id="tf-vorname" name="vorname" autocomplete="given-name" maxlength="80">
+                <label class="field-label" for="tf-vorname"><span data-i18n="form.firstName">Vorname</span> <span class="field-req" aria-hidden="true">*</span></label>
+                <input type="text" id="tf-vorname" name="vorname" autocomplete="given-name" maxlength="80" required data-rule="name">
               </div>
               <div class="field">
-                <label class="field-label" for="tf-nachname"><span data-i18n="form.lastName">Nachname</span> <span class="field-opt" data-i18n="form.optional">(optional)</span></label>
-                <input type="text" id="tf-nachname" name="nachname" autocomplete="family-name" maxlength="80">
+                <label class="field-label" for="tf-nachname"><span data-i18n="form.lastName">Nachname</span> <span class="field-req" aria-hidden="true">*</span></label>
+                <input type="text" id="tf-nachname" name="nachname" autocomplete="family-name" maxlength="80" required data-rule="name">
               </div>
             </div>
             <div class="field">
               <label class="field-label" for="tf-email"><span data-i18n="form.email">E-Mail-Adresse</span> <span class="field-req" aria-hidden="true">*</span></label>
-              <input type="email" id="tf-email" name="email" autocomplete="email" maxlength="160" required aria-describedby="tf-email-hint">
+              <input type="email" id="tf-email" name="email" autocomplete="email" maxlength="160" required data-rule="email" aria-describedby="tf-email-hint">
               <p class="field-hint" id="tf-email-hint" data-i18n="form.emailHint">Sie nutzen Android? Dann bitte die E-Mail-Adresse Ihres Google-Kontos – nur damit können wir Sie im Play Store freischalten.</p>
             </div>
             <fieldset class="field">

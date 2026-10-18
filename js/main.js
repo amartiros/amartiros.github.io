@@ -116,8 +116,9 @@
 
       'form.firstName': 'Vorname',
       'form.lastName': 'Nachname',
-      'form.optional': '(optional)',
+      'form.nameInvalid': 'Bitte nur Buchstaben, Leerzeichen, Bindestrich, Apostroph oder Punkt verwenden.',
       'form.email': 'E-Mail-Adresse',
+      'form.emailInvalid': 'Bitte geben Sie eine gültige E-Mail-Adresse ein, z. B. name@beispiel.de.',
       'form.emailHint': 'Sie nutzen Android? Dann bitte die E-Mail-Adresse Ihres Google-Kontos – nur damit können wir Sie im Play Store freischalten.',
       'form.platform': 'Ihr Smartphone',
       'form.ios': 'iPhone (iOS)',
@@ -126,8 +127,12 @@
       'form.submit': 'Zugang anfordern',
       'form.sending': 'Wird gesendet …',
       'form.required': '* Pflichtfeld',
+      'form.missingText': 'Bitte füllen Sie dieses Feld aus.',
+      'form.missingPlatform': 'Bitte wählen Sie Ihr Smartphone aus.',
+      'form.missingConsent': 'Bitte setzen Sie das Häkchen, damit wir Ihre Angaben für die Einladung speichern dürfen.',
       'form.success': 'Vielen Dank für Ihre Anmeldung! Wir melden uns in Kürze per E-Mail mit Ihrer Einladung zum Test.',
       'form.error': 'Das hat leider nicht geklappt. Bitte versuchen Sie es später noch einmal oder schreiben Sie uns an kontakt@medi-note.de.',
+      'form.invalid': 'Bitte prüfen Sie Ihre Angaben: Mindestens ein Feld ist leer oder enthält Zeichen, die wir nicht annehmen können. Klappt es weiterhin nicht, schreiben Sie uns an kontakt@medi-note.de.',
 
       'footer.claim': 'Das digitale INR-Tagebuch für alle, die Gerinnungshemmer nehmen.',
       'footer.widgets': 'Widget-Anleitung',
@@ -247,8 +252,9 @@
 
       'form.firstName': 'First name',
       'form.lastName': 'Last name',
-      'form.optional': '(optional)',
+      'form.nameInvalid': 'Please use only letters, spaces, hyphens, apostrophes or full stops.',
       'form.email': 'E-mail address',
+      'form.emailInvalid': 'Please enter a valid e-mail address, e.g. name@example.com.',
       'form.emailHint': 'Using Android? Then please enter the e-mail address of your Google account – we need it to unlock the test for you in the Play Store.',
       'form.platform': 'Your smartphone',
       'form.ios': 'iPhone (iOS)',
@@ -257,8 +263,12 @@
       'form.submit': 'Request access',
       'form.sending': 'Sending …',
       'form.required': '* Required field',
+      'form.missingText': 'Please fill in this field.',
+      'form.missingPlatform': 'Please choose your smartphone.',
+      'form.missingConsent': 'Please tick the box so that we may store your details for the invitation.',
       'form.success': 'Thank you for signing up! We will e-mail you your test invitation shortly.',
       'form.error': 'Sorry, that didn’t work. Please try again later or e-mail us at kontakt@medi-note.de.',
+      'form.invalid': 'Please check your details: at least one field is empty or contains characters we can’t accept. If it still doesn’t work, e-mail us at kontakt@medi-note.de.',
 
       'footer.claim': 'The digital INR diary for everyone taking anticoagulants.',
       'footer.widgets': 'Widget guide',
@@ -382,10 +392,79 @@
       el.textContent = translations[currentLang][key];
     };
 
-    var showStatus = function (kind) {
+    var showStatus = function (kind, key) {
       formStatus.className = 'form-status is-' + kind;
-      setText(formStatus, 'form.' + kind);
+      setText(formStatus, key || 'form.' + kind);
     };
+
+    var showError = function (key) {
+      showStatus('error', key);
+      submitBtn.disabled = false;
+      setText(submitBtn, 'form.submit');
+    };
+
+    // Whitelists for the data-rule fields, the same as NAME_RE / EMAIL_RE in
+    // the Apps Script (SETUP-PILOT-FORM.md); keep them in step.
+    // Names: letters in any script, spaces, full stops, hyphens, apostrophes
+    // (' ’ ʼ, and the ´ or ` often typed instead), the joiners Persian names
+    // need; an apostrophe may come first ('t Hart).
+    // E-mail: the local part browsers accept for type=email, except a leading
+    // . = + - (nothing that reads as a formula); the domain in any script
+    // (müller.de) or as punycode, with at least one dot.
+    // Built from strings rather than literals: a browser without \p{…} throws
+    // here instead of failing to parse this whole file, and then skips the
+    // check. The Apps Script still runs it.
+    var rules = {};
+    try {
+      rules.name = new RegExp('^[\'’ʼ´`]?\\p{L}[\\p{L}\\p{M} \'’ʼ´`.\\-\\u200C\\u200D]*$', 'u');
+      rules.email = new RegExp('^(?![.=+\\-])[A-Za-z0-9.!#$%&\'*+/=?^_`{|}~\\-]+@' +
+        '(?:[\\p{L}\\p{N}](?:[\\p{L}\\p{M}\\p{N}\\-]*[\\p{L}\\p{M}\\p{N}])?\\.)+' +
+        '\\p{L}[\\p{L}\\p{M}\\p{N}\\-]*[\\p{L}\\p{M}\\p{N}]$', 'u');
+    } catch (e) { /* no Unicode property escapes */ }
+
+    // The message for a field the browser flags, in the page's language
+    // rather than the browser's. Radio and checkbox are only ever flagged as
+    // missing; a text field is missing when empty, otherwise outside its rule.
+    var messageFor = function (input) {
+      var key = input.type === 'radio' ? 'form.missingPlatform'
+        : input.type === 'checkbox' ? 'form.missingConsent'
+        : !input.value.trim() ? 'form.missingText'
+        : 'form.' + input.getAttribute('data-rule') + 'Invalid';
+      return translations[currentLang][key];
+    };
+
+    // Keeps every field's validity current as the visitor types or picks, so
+    // whatever submits the form (button, Enter, requestSubmit) sees the real
+    // state: clears messages set earlier, then flags data-rule values outside
+    // their whitelist, and spaces-only as empty. This is only for the
+    // visitor; the Apps Script repeats every check, since a bot can post to
+    // the endpoint without ever loading this page.
+    var refreshValidity = function () {
+      testerForm.querySelectorAll('input').forEach(function (input) {
+        input.setCustomValidity('');
+        var rule = input.getAttribute('data-rule');
+        if (!rule) return;
+        var value = input.value.replace(/\s+/g, ' ').trim();
+        var bad = value ? rules[rule] && !rules[rule].test(value.normalize('NFC')) : input.value !== '';
+        if (bad) input.setCustomValidity(messageFor(input));
+      });
+    };
+
+    testerForm.addEventListener('input', refreshValidity);
+    testerForm.addEventListener('change', function (event) {
+      // Once the visitor leaves a field, tidy its whitespace.
+      if (event.target.hasAttribute('data-rule')) {
+        event.target.value = event.target.value.replace(/\s+/g, ' ').trim();
+      }
+      refreshValidity();
+    });
+    // Fires right before the browser shows its bubble; invalid doesn't
+    // bubble, hence the capture phase. The message set here is cleared again
+    // by the next input or change.
+    testerForm.addEventListener('invalid', function (event) {
+      event.target.setCustomValidity(messageFor(event.target));
+    }, true);
+    refreshValidity(); // values the browser restored on reload
 
     testerForm.addEventListener('submit', function (event) {
       event.preventDefault();
@@ -405,14 +484,17 @@
         : Promise.reject(new Error('FORM_ENDPOINT is not set'));
 
       request.then(function (data) {
-        if (!data || !data.ok) throw new Error('Signup rejected');
-        formBody.hidden = true;
-        showStatus('success');
-        formStatus.focus();
+        if (data && data.ok) {
+          formBody.hidden = true;
+          showStatus('success');
+          formStatus.focus();
+        } else {
+          // The script refused a field the browser let through: retrying
+          // won't help, so ask for the details to be checked instead.
+          showError(data && data.reason === 'invalid' ? 'form.invalid' : 'form.error');
+        }
       }).catch(function () {
-        showStatus('error');
-        submitBtn.disabled = false;
-        setText(submitBtn, 'form.submit');
+        showError('form.error');
       });
     });
   }

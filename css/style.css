@@ -555,7 +555,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; min-width: 0; }
   margin-bottom: 0.35rem;
 }
 
-.field-opt { font-weight: 400; color: var(--ink-soft); }
 .field-req { color: var(--accent); }
 
 .field input[type="text"],
