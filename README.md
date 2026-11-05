@@ -30,7 +30,7 @@ Pages with their own copy use the same mechanism with a page dictionary:
 over the shared dictionary — so nav, footer and widget texts (`wx.w.*`) are
 shared. Besides `data-i18n` (plain text), `data-i18n-html` fills strings with
 inline markup such as `<strong>`, and `data-i18n-aria` sets an `aria-label`.
-The microINR® and CoaguChek® guides and the legal pages are German only.
+The microINR® Link and CoaguChek® guides and the legal pages are German only.
 
 ## Wording: documentation, not a medical device
 

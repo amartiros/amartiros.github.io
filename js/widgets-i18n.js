@@ -95,7 +95,7 @@ window.medinotePageTranslations = {
     'wg.back': '← Zurück zur Startseite',
 
     'wg.footer.home': 'Startseite',
-    'wg.footer.microinr': 'microINR®-Anleitung',
+    'wg.footer.microinr': 'microINR®-Link-Anleitung',
     'wg.footer.coaguchek': 'CoaguChek®-Anleitung',
     'wg.footer.trademark': 'iPhone ist eine Marke der Apple Inc., Android eine Marke der Google LLC. Die Abbildungen sind vereinfachte Darstellungen.'
   },
@@ -192,7 +192,7 @@ window.medinotePageTranslations = {
     'wg.back': '← Back to home page',
 
     'wg.footer.home': 'Home',
-    'wg.footer.microinr': 'microINR® guide (German)',
+    'wg.footer.microinr': 'microINR® Link guide (German)',
     'wg.footer.coaguchek': 'CoaguChek® guide (German)',
     'wg.footer.trademark': 'iPhone is a trademark of Apple Inc.; Android is a trademark of Google LLC. The illustrations are simplified.'
   }
